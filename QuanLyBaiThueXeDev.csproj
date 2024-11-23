@@ -120,6 +120,9 @@
     <Compile Include="Xe.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\FKhachHang.resx">
+      <DependentUpon>FKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FLoaiXe.resx">
       <DependentUpon>FLoaiXe.cs</DependentUpon>
     </EmbeddedResource>
