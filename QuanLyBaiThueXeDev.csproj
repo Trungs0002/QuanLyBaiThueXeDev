@@ -70,6 +70,12 @@
     <Compile Include="Ctrl_QLBTX\Ctrl_PhieuThue.cs" />
     <Compile Include="Ctrl_QLBTX\Ctrl_Xe.cs" />
     <Compile Include="CUtils.cs" />
+    <Compile Include="CXe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CXe.Designer.cs">
+      <DependentUpon>CXe.cs</DependentUpon>
+    </Compile>
     <Compile Include="DoanhThu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -110,6 +116,9 @@
     </Compile>
     <EmbeddedResource Include="CLoaiXe.resx">
       <DependentUpon>CLoaiXe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CXe.resx">
+      <DependentUpon>CXe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

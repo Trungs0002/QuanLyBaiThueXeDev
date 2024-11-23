@@ -40,10 +40,10 @@
             this.txtNamSanXuat = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtMoTa = new System.Windows.Forms.TextBox();
-            this.btnThemLoaiXe = new System.Windows.Forms.Button();
-            this.btnSuaLoaiXe = new System.Windows.Forms.Button();
-            this.btnXoaLoaiXe = new System.Windows.Forms.Button();
-            this.btnTimKiemLoaiXe = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewLoaiXe)).BeginInit();
@@ -61,9 +61,9 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnXoaLoaiXe);
-            this.panel1.Controls.Add(this.btnSuaLoaiXe);
-            this.panel1.Controls.Add(this.btnThemLoaiXe);
+            this.panel1.Controls.Add(this.btnXoa);
+            this.panel1.Controls.Add(this.btnSua);
+            this.panel1.Controls.Add(this.btnThem);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtMoTa);
             this.panel1.Controls.Add(this.label4);
@@ -159,46 +159,46 @@
             this.txtMoTa.Size = new System.Drawing.Size(147, 20);
             this.txtMoTa.TabIndex = 8;
             // 
-            // btnThemLoaiXe
+            // btnThem
             // 
-            this.btnThemLoaiXe.Location = new System.Drawing.Point(34, 110);
-            this.btnThemLoaiXe.Name = "btnThemLoaiXe";
-            this.btnThemLoaiXe.Size = new System.Drawing.Size(75, 23);
-            this.btnThemLoaiXe.TabIndex = 10;
-            this.btnThemLoaiXe.Text = "btnThemLoaiXe";
-            this.btnThemLoaiXe.UseVisualStyleBackColor = true;
+            this.btnThem.Location = new System.Drawing.Point(34, 110);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 10;
+            this.btnThem.Text = "btnThem";
+            this.btnThem.UseVisualStyleBackColor = true;
             // 
-            // btnSuaLoaiXe
+            // btnSua
             // 
-            this.btnSuaLoaiXe.Location = new System.Drawing.Point(128, 110);
-            this.btnSuaLoaiXe.Name = "btnSuaLoaiXe";
-            this.btnSuaLoaiXe.Size = new System.Drawing.Size(75, 23);
-            this.btnSuaLoaiXe.TabIndex = 11;
-            this.btnSuaLoaiXe.Text = "btnSuaLoaiXe";
-            this.btnSuaLoaiXe.UseVisualStyleBackColor = true;
+            this.btnSua.Location = new System.Drawing.Point(128, 110);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 11;
+            this.btnSua.Text = "btnSua";
+            this.btnSua.UseVisualStyleBackColor = true;
             // 
-            // btnXoaLoaiXe
+            // btnXoa
             // 
-            this.btnXoaLoaiXe.Location = new System.Drawing.Point(222, 110);
-            this.btnXoaLoaiXe.Name = "btnXoaLoaiXe";
-            this.btnXoaLoaiXe.Size = new System.Drawing.Size(75, 23);
-            this.btnXoaLoaiXe.TabIndex = 12;
-            this.btnXoaLoaiXe.Text = "btnXoaLoaiXe";
-            this.btnXoaLoaiXe.UseVisualStyleBackColor = true;
+            this.btnXoa.Location = new System.Drawing.Point(222, 110);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 12;
+            this.btnXoa.Text = "btnXoa";
+            this.btnXoa.UseVisualStyleBackColor = true;
             // 
-            // btnTimKiemLoaiXe
+            // btnTimKiem
             // 
-            this.btnTimKiemLoaiXe.Location = new System.Drawing.Point(676, 15);
-            this.btnTimKiemLoaiXe.Name = "btnTimKiemLoaiXe";
-            this.btnTimKiemLoaiXe.Size = new System.Drawing.Size(75, 23);
-            this.btnTimKiemLoaiXe.TabIndex = 13;
-            this.btnTimKiemLoaiXe.Text = "btnTimKiemLoaiXe";
-            this.btnTimKiemLoaiXe.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Location = new System.Drawing.Point(676, 15);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(75, 23);
+            this.btnTimKiem.TabIndex = 13;
+            this.btnTimKiem.Text = "btnTimKiem";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.txtTimKiem);
-            this.panel2.Controls.Add(this.btnTimKiemLoaiXe);
+            this.panel2.Controls.Add(this.btnTimKiem);
             this.panel2.Location = new System.Drawing.Point(13, 209);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(775, 52);
@@ -234,9 +234,9 @@
 
         private System.Windows.Forms.DataGridView dtGridViewLoaiXe;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnXoaLoaiXe;
-        private System.Windows.Forms.Button btnSuaLoaiXe;
-        private System.Windows.Forms.Button btnThemLoaiXe;
+        private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtMoTa;
         private System.Windows.Forms.Label label4;
@@ -247,7 +247,7 @@
         private System.Windows.Forms.TextBox txtTenLoai;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtMaLoaiXe;
-        private System.Windows.Forms.Button btnTimKiemLoaiXe;
+        private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtTimKiem;
     }
