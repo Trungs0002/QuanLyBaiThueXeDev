@@ -58,10 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CLoaiXe.cs">
+    <Compile Include="View\CLoaiXe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CLoaiXe.Designer.cs">
+    <Compile Include="View\CLoaiXe.Designer.cs">
       <DependentUpon>CLoaiXe.cs</DependentUpon>
     </Compile>
     <Compile Include="Ctrl_QLBTX\Ctrl_KhachHang.cs" />
@@ -70,10 +70,10 @@
     <Compile Include="Ctrl_QLBTX\Ctrl_PhieuThue.cs" />
     <Compile Include="Ctrl_QLBTX\Ctrl_Xe.cs" />
     <Compile Include="CUtils.cs" />
-    <Compile Include="CXe.cs">
+    <Compile Include="View\CXe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CXe.Designer.cs">
+    <Compile Include="View\CXe.Designer.cs">
       <DependentUpon>CXe.cs</DependentUpon>
     </Compile>
     <Compile Include="DoanhThu.cs">
@@ -114,10 +114,10 @@
     <Compile Include="Xe.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CLoaiXe.resx">
+    <EmbeddedResource Include="View\CLoaiXe.resx">
       <DependentUpon>CLoaiXe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CXe.resx">
+    <EmbeddedResource Include="View\CXe.resx">
       <DependentUpon>CXe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
