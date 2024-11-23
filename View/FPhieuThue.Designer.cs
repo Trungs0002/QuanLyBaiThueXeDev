@@ -48,6 +48,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSoPhieuThue = new System.Windows.Forms.TextBox();
             this.dtGridViewKhachHang = new System.Windows.Forms.DataGridView();
+            this.dtimeNgayThue = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewKhachHang)).BeginInit();
@@ -80,6 +82,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.dtimeNgayThue);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtSoChungMinh);
             this.panel1.Controls.Add(this.btnXoa);
@@ -231,6 +235,22 @@
             this.dtGridViewKhachHang.Size = new System.Drawing.Size(776, 150);
             this.dtGridViewKhachHang.TabIndex = 9;
             // 
+            // dtimeNgayThue
+            // 
+            this.dtimeNgayThue.Location = new System.Drawing.Point(552, 115);
+            this.dtimeNgayThue.Name = "dtimeNgayThue";
+            this.dtimeNgayThue.Size = new System.Drawing.Size(200, 20);
+            this.dtimeNgayThue.TabIndex = 21;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(478, 121);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "txtNgayThue";
+            // 
             // FPhieuThue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,5 +292,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSoPhieuThue;
         private System.Windows.Forms.DataGridView dtGridViewKhachHang;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dtimeNgayThue;
     }
 }
