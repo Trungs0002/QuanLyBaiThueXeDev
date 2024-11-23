@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f8a29d6f11194faa9f8797a1958dd91c" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.DoanhThu" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.KhachHang" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.LoaiXe" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.NhanVien" Width="1.5" PointX="5.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.PhieuNopPhat" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.PhieuThue" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.Xe" Width="1.5" PointX="3.75" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyBaiThueXeModel.FK__PhieuNopP__MaKha__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyBaiThueXeModel.FK__PhieuThue__MaKha__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyBaiThueXeModel.FK__PhieuThue__MaLoa__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyBaiThueXeModel.FK__Xe__MaLoaiXe__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyBaiThueXeModel.FK__PhieuThue__BienS__4222D4EF" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
