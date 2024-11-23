@@ -70,6 +70,12 @@
     <Compile Include="Ctrl_QLBTX\Ctrl_PhieuThue.cs" />
     <Compile Include="Ctrl_QLBTX\Ctrl_Xe.cs" />
     <Compile Include="CUtils.cs" />
+    <Compile Include="View\FPhieuThue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FPhieuThue.Designer.cs">
+      <DependentUpon>FPhieuThue.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FXe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FLoaiXe.resx">
       <DependentUpon>FLoaiXe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FPhieuThue.resx">
+      <DependentUpon>FPhieuThue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FXe.resx">
       <DependentUpon>FXe.cs</DependentUpon>
