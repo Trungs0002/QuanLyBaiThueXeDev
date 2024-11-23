@@ -1,6 +1,6 @@
 ﻿namespace QuanLyBaiThueXeDev
 {
-    partial class CXe
+    partial class FXe
     {
         /// <summary>
         /// Required designer variable.

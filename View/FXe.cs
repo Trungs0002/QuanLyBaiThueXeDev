@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyBaiThueXeDev
 {
-    public partial class CLoaiXe : Form
+    public partial class FXe : Form
     {
-        public CLoaiXe()
+        public FXe()
         {
             InitializeComponent();
         }

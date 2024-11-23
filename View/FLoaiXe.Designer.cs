@@ -1,6 +1,6 @@
 ﻿namespace QuanLyBaiThueXeDev
 {
-    partial class CLoaiXe
+    partial class FLoaiXe
     {
         /// <summary>
         /// Required designer variable.

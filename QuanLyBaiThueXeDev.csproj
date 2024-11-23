@@ -58,11 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="View\CLoaiXe.cs">
+    <Compile Include="View\FLoaiXe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\CLoaiXe.Designer.cs">
-      <DependentUpon>CLoaiXe.cs</DependentUpon>
+    <Compile Include="View\FLoaiXe.Designer.cs">
+      <DependentUpon>FLoaiXe.cs</DependentUpon>
     </Compile>
     <Compile Include="Ctrl_QLBTX\Ctrl_KhachHang.cs" />
     <Compile Include="Ctrl_QLBTX\Ctrl_LoaiXe.cs" />
@@ -70,11 +70,11 @@
     <Compile Include="Ctrl_QLBTX\Ctrl_PhieuThue.cs" />
     <Compile Include="Ctrl_QLBTX\Ctrl_Xe.cs" />
     <Compile Include="CUtils.cs" />
-    <Compile Include="View\CXe.cs">
+    <Compile Include="View\FXe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\CXe.Designer.cs">
-      <DependentUpon>CXe.cs</DependentUpon>
+    <Compile Include="View\FXe.Designer.cs">
+      <DependentUpon>FXe.cs</DependentUpon>
     </Compile>
     <Compile Include="DoanhThu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -111,14 +111,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\FKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FKhachHang.Designer.cs">
+      <DependentUpon>FKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xe.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\CLoaiXe.resx">
-      <DependentUpon>CLoaiXe.cs</DependentUpon>
+    <EmbeddedResource Include="View\FLoaiXe.resx">
+      <DependentUpon>FLoaiXe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\CXe.resx">
-      <DependentUpon>CXe.cs</DependentUpon>
+    <EmbeddedResource Include="View\FXe.resx">
+      <DependentUpon>FXe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
