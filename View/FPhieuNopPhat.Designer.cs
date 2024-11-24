@@ -1,6 +1,6 @@
 ﻿namespace QuanLyBaiThueXeDev.View
 {
-    partial class FPhieuThue
+    partial class FPhieuNopPhat
     {
         /// <summary>
         /// Required designer variable.
@@ -32,27 +32,25 @@
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dtimeNgayThue = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtSoChungMinh = new System.Windows.Forms.TextBox();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtTongTien = new System.Windows.Forms.TextBox();
+            this.txtLyDo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtSoNgayThue = new System.Windows.Forms.TextBox();
+            this.txtSoChungMinh = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtBienSoXe = new System.Windows.Forms.TextBox();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtMaKhachHang = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtSoPhieuThue = new System.Windows.Forms.TextBox();
-            this.dtGridViewKhachHang = new System.Windows.Forms.DataGridView();
+            this.txtSoPhieuPhat = new System.Windows.Forms.TextBox();
+            this.dtGridViewPhieuPhat = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSoTienPhat = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewKhachHang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewPhieuPhat)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -62,7 +60,7 @@
             this.panel2.Location = new System.Drawing.Point(13, 210);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(775, 52);
-            this.panel2.TabIndex = 11;
+            this.panel2.TabIndex = 8;
             // 
             // txtTimKiem
             // 
@@ -82,59 +80,25 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.dtimeNgayThue);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.txtSoChungMinh);
+            this.panel1.Controls.Add(this.txtSoTienPhat);
             this.panel1.Controls.Add(this.btnXoa);
             this.panel1.Controls.Add(this.btnSua);
             this.panel1.Controls.Add(this.btnThem);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.txtTongTien);
+            this.panel1.Controls.Add(this.txtLyDo);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.txtSoNgayThue);
+            this.panel1.Controls.Add(this.txtSoChungMinh);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtBienSoXe);
+            this.panel1.Controls.Add(this.txtHoTen);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtMaKhachHang);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtSoPhieuThue);
+            this.panel1.Controls.Add(this.txtSoPhieuPhat);
             this.panel1.Location = new System.Drawing.Point(12, 32);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 171);
-            this.panel1.TabIndex = 10;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(478, 121);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 13);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "txtNgayThue";
-            // 
-            // dtimeNgayThue
-            // 
-            this.dtimeNgayThue.Location = new System.Drawing.Point(552, 115);
-            this.dtimeNgayThue.Name = "dtimeNgayThue";
-            this.dtimeNgayThue.Size = new System.Drawing.Size(200, 20);
-            this.dtimeNgayThue.TabIndex = 21;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(533, 72);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(85, 13);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "txtSoChungMinh";
-            // 
-            // txtSoChungMinh
-            // 
-            this.txtSoChungMinh.Location = new System.Drawing.Point(605, 69);
-            this.txtSoChungMinh.Name = "txtSoChungMinh";
-            this.txtSoChungMinh.Size = new System.Drawing.Size(147, 20);
-            this.txtSoChungMinh.TabIndex = 19;
+            this.panel1.TabIndex = 7;
             // 
             // btnXoa
             // 
@@ -168,48 +132,48 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(533, 34);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "txtTongTien";
+            this.label5.Text = "txtLyDo";
             // 
-            // txtTongTien
+            // txtLyDo
             // 
-            this.txtTongTien.Location = new System.Drawing.Point(605, 31);
-            this.txtTongTien.Name = "txtTongTien";
-            this.txtTongTien.Size = new System.Drawing.Size(147, 20);
-            this.txtTongTien.TabIndex = 8;
+            this.txtLyDo.Location = new System.Drawing.Point(605, 31);
+            this.txtLyDo.Name = "txtLyDo";
+            this.txtLyDo.Size = new System.Drawing.Size(147, 20);
+            this.txtLyDo.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(277, 72);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.Size = new System.Drawing.Size(85, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "txtSoNgayThue";
+            this.label4.Text = "txtSoChungMinh";
             // 
-            // txtSoNgayThue
+            // txtSoChungMinh
             // 
-            this.txtSoNgayThue.Location = new System.Drawing.Point(349, 69);
-            this.txtSoNgayThue.Name = "txtSoNgayThue";
-            this.txtSoNgayThue.Size = new System.Drawing.Size(147, 20);
-            this.txtSoNgayThue.TabIndex = 6;
+            this.txtSoChungMinh.Location = new System.Drawing.Point(349, 69);
+            this.txtSoChungMinh.Name = "txtSoChungMinh";
+            this.txtSoChungMinh.Size = new System.Drawing.Size(147, 20);
+            this.txtSoChungMinh.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(277, 34);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "txtBienSoXe";
+            this.label3.Text = "txtHoTen";
             // 
-            // txtBienSoXe
+            // txtHoTen
             // 
-            this.txtBienSoXe.Location = new System.Drawing.Point(349, 31);
-            this.txtBienSoXe.Name = "txtBienSoXe";
-            this.txtBienSoXe.Size = new System.Drawing.Size(147, 20);
-            this.txtBienSoXe.TabIndex = 4;
+            this.txtHoTen.Location = new System.Drawing.Point(349, 31);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(147, 20);
+            this.txtHoTen.TabIndex = 4;
             // 
             // label2
             // 
@@ -232,40 +196,56 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(31, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "txtSoPhieuThue";
+            this.label1.Text = "txtSoPhieuPhat";
             // 
-            // txtSoPhieuThue
+            // txtSoPhieuPhat
             // 
-            this.txtSoPhieuThue.Location = new System.Drawing.Point(103, 31);
-            this.txtSoPhieuThue.Name = "txtSoPhieuThue";
-            this.txtSoPhieuThue.Size = new System.Drawing.Size(147, 20);
-            this.txtSoPhieuThue.TabIndex = 0;
+            this.txtSoPhieuPhat.Location = new System.Drawing.Point(103, 31);
+            this.txtSoPhieuPhat.Name = "txtSoPhieuPhat";
+            this.txtSoPhieuPhat.Size = new System.Drawing.Size(147, 20);
+            this.txtSoPhieuPhat.TabIndex = 0;
             // 
-            // dtGridViewKhachHang
+            // dtGridViewPhieuPhat
             // 
-            this.dtGridViewKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridViewKhachHang.Location = new System.Drawing.Point(12, 268);
-            this.dtGridViewKhachHang.Name = "dtGridViewKhachHang";
-            this.dtGridViewKhachHang.Size = new System.Drawing.Size(776, 150);
-            this.dtGridViewKhachHang.TabIndex = 9;
+            this.dtGridViewPhieuPhat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridViewPhieuPhat.Location = new System.Drawing.Point(12, 268);
+            this.dtGridViewPhieuPhat.Name = "dtGridViewPhieuPhat";
+            this.dtGridViewPhieuPhat.Size = new System.Drawing.Size(776, 150);
+            this.dtGridViewPhieuPhat.TabIndex = 6;
             // 
-            // FPhieuThue
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(533, 72);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "txtSoTienPhat";
+            // 
+            // txtSoTienPhat
+            // 
+            this.txtSoTienPhat.Location = new System.Drawing.Point(605, 69);
+            this.txtSoTienPhat.Name = "txtSoTienPhat";
+            this.txtSoTienPhat.Size = new System.Drawing.Size(147, 20);
+            this.txtSoTienPhat.TabIndex = 19;
+            // 
+            // FPhieuNopPhat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dtGridViewKhachHang);
-            this.Name = "FPhieuThue";
-            this.Text = "FPhieuThue";
+            this.Controls.Add(this.dtGridViewPhieuPhat);
+            this.Name = "FPhieuNopPhat";
+            this.Text = "FPhieuNopPhat";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewKhachHang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewPhieuPhat)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -276,23 +256,21 @@
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtSoChungMinh;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtTongTien;
+        private System.Windows.Forms.TextBox txtLyDo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtSoNgayThue;
+        private System.Windows.Forms.TextBox txtSoChungMinh;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtBienSoXe;
+        private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMaKhachHang;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtSoPhieuThue;
-        private System.Windows.Forms.DataGridView dtGridViewKhachHang;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker dtimeNgayThue;
+        private System.Windows.Forms.TextBox txtSoPhieuPhat;
+        private System.Windows.Forms.DataGridView dtGridViewPhieuPhat;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtSoTienPhat;
     }
 }
