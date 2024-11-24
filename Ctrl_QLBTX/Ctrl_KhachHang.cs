@@ -12,10 +12,18 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
         {
             return CUtils.db.KhachHangs.ToList();
         }
-
-        public List<KhachHang> findByName(string name)
+        public List<KhachHang> findByCriteria(string searchTerm)
         {
-            return CUtils.db.KhachHangs.Where(t => t.HoTen.Contains(name)).ToList();
+            searchTerm = searchTerm.ToLower(); // Chuyển đổi tìm kiếm thành chữ thường
+
+            return CUtils.db.KhachHangs
+                .Where(kh => kh.MaKhachHang.ToString().Contains(searchTerm) || // Tìm theo mã khách hàng
+                             kh.HoTen.ToLower().Contains(searchTerm) || // Tìm theo họ tên
+                             kh.GioiTinh.ToLower().Contains(searchTerm) || // Tìm theo giới tính
+                             kh.DienThoai.ToLower().Contains(searchTerm) || // Tìm theo điện thoại
+                             kh.DiaChi.ToLower().Contains(searchTerm) || // Tìm theo địa chỉ
+                             kh.SoChungMinh.ToLower().Contains(searchTerm)) // Tìm theo số chứng minh
+                .ToList();
         }
 
         public void upDate(KhachHang khachHang)
