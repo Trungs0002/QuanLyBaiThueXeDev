@@ -179,5 +179,10 @@ namespace QuanLyBaiThueXeDev
         {
 
         }
+
+        private void dtGridViewXe_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

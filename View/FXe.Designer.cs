@@ -32,6 +32,8 @@
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtGiaThueXe = new System.Windows.Forms.TextBox();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -46,8 +48,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBienSoXe = new System.Windows.Forms.TextBox();
             this.dtGridViewXe = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtGiaThueXe = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewXe)).BeginInit();
@@ -100,6 +100,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 171);
             this.panel1.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(533, 72);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "txtGiaThueXe";
+            // 
+            // txtGiaThueXe
+            // 
+            this.txtGiaThueXe.Location = new System.Drawing.Point(605, 69);
+            this.txtGiaThueXe.Name = "txtGiaThueXe";
+            this.txtGiaThueXe.Size = new System.Drawing.Size(147, 20);
+            this.txtGiaThueXe.TabIndex = 19;
             // 
             // btnXoa
             // 
@@ -219,22 +235,7 @@
             this.dtGridViewXe.Size = new System.Drawing.Size(776, 150);
             this.dtGridViewXe.TabIndex = 3;
             this.dtGridViewXe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewXe_CellClick);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(533, 72);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 13);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "txtGiaThueXe";
-            // 
-            // txtGiaThueXe
-            // 
-            this.txtGiaThueXe.Location = new System.Drawing.Point(605, 69);
-            this.txtGiaThueXe.Name = "txtGiaThueXe";
-            this.txtGiaThueXe.Size = new System.Drawing.Size(147, 20);
-            this.txtGiaThueXe.TabIndex = 19;
+            this.dtGridViewXe.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewXe_CellContentClick);
             // 
             // FXe
             // 

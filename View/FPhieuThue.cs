@@ -117,6 +117,20 @@ namespace QuanLyBaiThueXeDev.View
                     return;
                 }
 
+                if (xe.TinhTrang == "Đang được thuê")
+                {
+                    MessageBox.Show("Xe này đã có người thuê. Vui lòng chọn xe khác.");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtSoPhieuThue.Text) ||
+                string.IsNullOrWhiteSpace(txtSoNgayMuon.Text) ||
+                comboBoxKhachHang.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
+                    return;
+                }
+
                 var phieuThue = new PhieuThue
                 {
                     SoPhieuThue = int.Parse(txtSoPhieuThue.Text),
@@ -138,6 +152,8 @@ namespace QuanLyBaiThueXeDev.View
 
                 // Lưu phiếu thuê vào cơ sở dữ liệu
                 ctrlPhieuThue.add(phieuThue);
+                xe.TinhTrang = "Đang được thuê";
+                ctrlXe.upDate(xe);
                 LoadPhieuThue(); // Cập nhật danh sách phiếu thuê
                 ClearFields();
 
@@ -273,7 +289,15 @@ namespace QuanLyBaiThueXeDev.View
                 if (phieuThue != null)
                 {
                     // Xóa phiếu thuê
+                    string bienSoXe = phieuThue.BienSoXe;
                     ctrlPhieuThue.remove(phieuThue);
+                    var xe = ctrlXe.findByBienSo(bienSoXe);
+                    if (xe != null)
+                    {
+                        xe.TinhTrang = "Còn sử dụng"; // Cập nhật trạng thái
+                        ctrlXe.upDate(xe); // Cập nhật xe trong cơ sở dữ liệu
+                    }
+
                     LoadPhieuThue(); // Cập nhật danh sách phiếu thuê
                     LoadKhachHang();
                     LoadXe();

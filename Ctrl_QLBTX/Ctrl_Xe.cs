@@ -32,7 +32,12 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
 
         public void upDate(Xe xe)
         {
-            CUtils.db.SaveChanges();
+            var existingXe = CUtils.db.Xes.Find(xe.BienSoXe);
+            if (existingXe != null)
+            {
+                existingXe.TinhTrang = xe.TinhTrang;
+                CUtils.db.SaveChanges();
+            }
         }
 
         public void add(Xe xe)
