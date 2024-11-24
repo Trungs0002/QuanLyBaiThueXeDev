@@ -32,6 +32,9 @@
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtMoTa = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,9 +46,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBienSoXe = new System.Windows.Forms.TextBox();
             this.dtGridViewXe = new System.Windows.Forms.DataGridView();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewXe)).BeginInit();
@@ -75,6 +75,7 @@
             this.btnTimKiem.TabIndex = 13;
             this.btnTimKiem.Text = "btnTimKiem";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // panel1
             // 
@@ -95,6 +96,36 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 171);
             this.panel1.TabIndex = 4;
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(222, 116);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 18;
+            this.btnXoa.Text = "btnXoa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(128, 116);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 17;
+            this.btnSua.Text = "btnSua";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(34, 116);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 16;
+            this.btnThem.Text = "btnThem";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // label5
             // 
@@ -183,35 +214,9 @@
             this.dtGridViewXe.Name = "dtGridViewXe";
             this.dtGridViewXe.Size = new System.Drawing.Size(776, 150);
             this.dtGridViewXe.TabIndex = 3;
+            this.dtGridViewXe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewXe_CellClick);
             // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(222, 116);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 18;
-            this.btnXoa.Text = "btnXoa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            // 
-            // btnSua
-            // 
-            this.btnSua.Location = new System.Drawing.Point(128, 116);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 23);
-            this.btnSua.TabIndex = 17;
-            this.btnSua.Text = "btnSua";
-            this.btnSua.UseVisualStyleBackColor = true;
-            // 
-            // btnThem
-            // 
-            this.btnThem.Location = new System.Drawing.Point(34, 116);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
-            this.btnThem.TabIndex = 16;
-            this.btnThem.Text = "btnThem";
-            this.btnThem.UseVisualStyleBackColor = true;
-            // 
-            // CXe
+            // FXe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -219,8 +224,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtGridViewXe);
-            this.Name = "CXe";
+            this.Name = "FXe";
             this.Text = "CXe";
+            this.Load += new System.EventHandler(this.FXe_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
