@@ -32,6 +32,8 @@
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBoxXe = new System.Windows.Forms.ComboBox();
+            this.comboBoxKhachHang = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTimePickerNgayThue = new System.Windows.Forms.DateTimePicker();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -44,8 +46,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSoPhieuThue = new System.Windows.Forms.TextBox();
             this.dataGridViewPhieuThue = new System.Windows.Forms.DataGridView();
-            this.comboBoxKhachHang = new System.Windows.Forms.ComboBox();
-            this.comboBoxXe = new System.Windows.Forms.ComboBox();
             this.dataGridViewKhachHang = new System.Windows.Forms.DataGridView();
             this.dataGridViewXe = new System.Windows.Forms.DataGridView();
             this.panel2.SuspendLayout();
@@ -100,6 +100,23 @@
             this.panel1.Size = new System.Drawing.Size(776, 171);
             this.panel1.TabIndex = 10;
             // 
+            // comboBoxXe
+            // 
+            this.comboBoxXe.FormattingEnabled = true;
+            this.comboBoxXe.Location = new System.Drawing.Point(358, 69);
+            this.comboBoxXe.Name = "comboBoxXe";
+            this.comboBoxXe.Size = new System.Drawing.Size(138, 21);
+            this.comboBoxXe.TabIndex = 24;
+            this.comboBoxXe.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // comboBoxKhachHang
+            // 
+            this.comboBoxKhachHang.FormattingEnabled = true;
+            this.comboBoxKhachHang.Location = new System.Drawing.Point(358, 31);
+            this.comboBoxKhachHang.Name = "comboBoxKhachHang";
+            this.comboBoxKhachHang.Size = new System.Drawing.Size(138, 21);
+            this.comboBoxKhachHang.TabIndex = 23;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -133,6 +150,7 @@
             this.btnSua.TabIndex = 17;
             this.btnSua.Text = "btnSua";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -203,23 +221,6 @@
             this.dataGridViewPhieuThue.Size = new System.Drawing.Size(776, 150);
             this.dataGridViewPhieuThue.TabIndex = 9;
             this.dataGridViewPhieuThue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPhieuThue_CellClick);
-            // 
-            // comboBoxKhachHang
-            // 
-            this.comboBoxKhachHang.FormattingEnabled = true;
-            this.comboBoxKhachHang.Location = new System.Drawing.Point(358, 31);
-            this.comboBoxKhachHang.Name = "comboBoxKhachHang";
-            this.comboBoxKhachHang.Size = new System.Drawing.Size(138, 21);
-            this.comboBoxKhachHang.TabIndex = 23;
-            // 
-            // comboBoxXe
-            // 
-            this.comboBoxXe.FormattingEnabled = true;
-            this.comboBoxXe.Location = new System.Drawing.Point(358, 69);
-            this.comboBoxXe.Name = "comboBoxXe";
-            this.comboBoxXe.Size = new System.Drawing.Size(138, 21);
-            this.comboBoxXe.TabIndex = 24;
-            this.comboBoxXe.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // dataGridViewKhachHang
             // 

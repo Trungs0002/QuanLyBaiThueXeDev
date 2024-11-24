@@ -189,5 +189,62 @@ namespace QuanLyBaiThueXeDev.View
                 }
             }
         }
+        private void ClearFields()
+        {
+            txtSoPhieuThue.Clear();
+            txtSoNgayMuon.Clear();
+            comboBoxKhachHang.SelectedIndex = -1;
+            comboBoxXe.SelectedIndex = -1;
+            dateTimePickerNgayThue.Value = DateTime.Now;
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Kiểm tra nếu không có số phiếu thuê được chọn
+                if (string.IsNullOrWhiteSpace(txtSoPhieuThue.Text))
+                {
+                    MessageBox.Show("Vui lòng chọn phiếu thuê cần sửa từ danh sách.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Lấy thông tin từ các ô nhập liệu
+                int soPhieuThue = int.Parse(txtSoPhieuThue.Text);
+                int maKhachHang = (int)comboBoxKhachHang.SelectedValue;
+                string bienSoXe = comboBoxXe.SelectedValue.ToString();
+                int soNgayMuon = int.Parse(txtSoNgayMuon.Text);
+
+                // Lấy phiếu thuê cần sửa từ cơ sở dữ liệu
+                var phieuThue = ctrlPhieuThue.findAll().FirstOrDefault(pt => pt.SoPhieuThue == soPhieuThue);
+
+                if (phieuThue == null)
+                {
+                    MessageBox.Show("Không tìm thấy phiếu thuê cần sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Cập nhật thông tin phiếu thuê
+                phieuThue.MaKhachHang = maKhachHang;
+                phieuThue.BienSoXe = bienSoXe;
+                phieuThue.SoNgayMuon = soNgayMuon;
+                phieuThue.DonGia = dsXe.FirstOrDefault(x => x.BienSoXe == bienSoXe)?.GiaThueXe ?? 0;
+
+                // Gửi thông tin cập nhật vào cơ sở dữ liệu
+                ctrlPhieuThue.update(phieuThue);
+
+                // Cập nhật lại danh sách hiển thị
+                LoadPhieuThue();
+                MessageBox.Show("Cập nhật phiếu thuê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Xóa trắng các ô nhập liệu
+                ClearFields();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
