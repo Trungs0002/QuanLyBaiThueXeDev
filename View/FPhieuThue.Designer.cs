@@ -70,6 +70,7 @@
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(619, 20);
             this.txtTimKiem.TabIndex = 14;
+            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
             // 
             // btnTimKiem
             // 
@@ -223,6 +224,7 @@
             this.dataGridViewPhieuThue.Size = new System.Drawing.Size(776, 150);
             this.dataGridViewPhieuThue.TabIndex = 9;
             this.dataGridViewPhieuThue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPhieuThue_CellClick);
+            this.dataGridViewPhieuThue.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPhieuThue_CellContentClick);
             // 
             // dataGridViewKhachHang
             // 

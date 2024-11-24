@@ -55,13 +55,17 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
         }
         public List<PhieuThue> findByCriteria(string searchTerm)
         {
-            searchTerm = searchTerm.ToLower(); // Chuyển đổi tìm kiếm thành chữ thường
+            searchTerm = searchTerm.ToLower(); // Chuyển từ khóa thành chữ thường để không phân biệt hoa thường
 
             return CUtils.db.PhieuThues
-                .Where(pt => pt.BienSoXe.ToLower().Contains(searchTerm) || // Tìm theo biển số xe
-                             pt.KhachHang.HoTen.ToLower().Contains(searchTerm)) // Tìm theo tên khách hàng
-                .ToList();
+                .Where(pt =>
+                    pt.KhachHang.HoTen.ToLower().Contains(searchTerm) ||  // Tìm theo tên khách hàng
+                    pt.BienSoXe.ToLower().Contains(searchTerm) ||         // Tìm theo biển số xe
+                    pt.SoChungMinh.ToLower().Contains(searchTerm)         // Tìm theo số chứng minh
+                ).ToList();
         }
+
+
         public void add(PhieuThue phieuThue)
         {
             CUtils.db.PhieuThues.Add(phieuThue);

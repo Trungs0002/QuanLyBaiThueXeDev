@@ -75,15 +75,21 @@ namespace QuanLyBaiThueXeDev.View
         private void LoadPhieuThue()
         {
             var list = ctrlPhieuThue.findAll();
+
             dataGridViewPhieuThue.DataSource = list.Select(pt => new
             {
                 pt.SoPhieuThue,
                 pt.MaKhachHang,
+                pt.BienSoXe, // Thêm cột BienSoXe nhưng ẩn
                 pt.SoNgayMuon,
                 pt.DonGia,
-                TongTien = pt.SoNgayMuon * pt.DonGia
+                TongTien = pt.SoNgayMuon * pt.DonGia // Tính tổng tiền thuê
             }).ToList();
+
+            // Ẩn cột BienSoXe
+            dataGridViewPhieuThue.Columns["BienSoXe"].Visible = false;
         }
+
 
         private void txtSoPhieuThue_TextChanged(object sender, EventArgs e)
         {
@@ -286,6 +292,60 @@ namespace QuanLyBaiThueXeDev.View
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Lấy từ khóa tìm kiếm từ TextBox
+                string searchTerm = txtTimKiem.Text.Trim();
+
+                // Kiểm tra nếu từ khóa tìm kiếm trống
+                if (string.IsNullOrWhiteSpace(searchTerm))
+                {
+                    LoadPhieuThue(); // Tải lại toàn bộ danh sách phiếu thuê
+                    return;
+                }
+
+                // Tìm kiếm phiếu thuê dựa trên từ khóa
+                var filteredPhieuThue = ctrlPhieuThue.findByCriteria(searchTerm);
+
+                // Hiển thị danh sách phiếu thuê đã lọc
+                dataGridViewPhieuThue.DataSource = filteredPhieuThue.Select(pt => new
+                {
+                    pt.SoPhieuThue,
+                    pt.MaKhachHang,
+                    pt.BienSoXe, // Dữ liệu vẫn cần cho tìm kiếm nhưng ẩn
+                    pt.SoNgayMuon,
+                    pt.DonGia,
+                    TongTien = pt.SoNgayMuon * pt.DonGia // Tính tổng tiền thuê
+                }).ToList();
+
+                // Ẩn cột BienSoXe
+                dataGridViewPhieuThue.Columns["BienSoXe"].Visible = false;
+
+                // Thông báo nếu không tìm thấy kết quả
+                if (filteredPhieuThue.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy phiếu thuê phù hợp với từ khóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+
+
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewPhieuThue_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
