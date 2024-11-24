@@ -51,21 +51,82 @@ namespace QuanLyBaiThueXeDev
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            xe = new Xe
+            try
             {
-                BienSoXe = txtBienSoXe.Text.Trim(),
-                MaLoaiXe = int.Parse(txtMaLoaiXe.Text),
-                MauSon = txtMauSon.Text.Trim(),
-                TinhTrang = txtTinhTrang.Text.Trim(),
-                MoTa = txtMoTa.Text.Trim(),
-                GiaThueXe = int.Parse(txtGiaThueXe.Text)
-            };
+                // Kiểm tra các trường nhập liệu có bị bỏ trống hay không
+                if (string.IsNullOrWhiteSpace(txtBienSoXe.Text) ||
+                    string.IsNullOrWhiteSpace(txtMaLoaiXe.Text) ||
+                    string.IsNullOrWhiteSpace(txtMauSon.Text) ||
+                    string.IsNullOrWhiteSpace(txtTinhTrang.Text) ||
+                    string.IsNullOrWhiteSpace(txtGiaThueXe.Text))
+                {
+                    throw new Exception("Vui lòng nhập đầy đủ thông tin.");
+                }
 
-            ctrlXe.add(xe);
-            dsXe.Add(xe);
-            load_Xe();
-            ClearFields();
+                // Kiểm tra độ dài của các trường nhập liệu
+                if (txtBienSoXe.Text.Length > 15)
+                {
+                    throw new Exception("Biển số xe không được dài quá 15 ký tự.");
+                }
+
+                if (txtMauSon.Text.Length > 50)
+                {
+                    throw new Exception("Màu sơn không được dài quá 50 ký tự.");
+                }
+
+                if (txtTinhTrang.Text.Length > 50)
+                {
+                    throw new Exception("Tình trạng không được dài quá 50 ký tự.");
+                }
+
+                if (txtMoTa.Text.Length > 255)
+                {
+                    throw new Exception("Mô tả không được dài quá 255 ký tự.");
+                }
+
+                // Kiểm tra MaLoaiXe là số
+                if (!int.TryParse(txtMaLoaiXe.Text, out int maLoaiXe))
+                {
+                    throw new Exception("Mã loại xe phải là số.");
+                }
+
+                // Kiểm tra GiaThueXe là số
+                if (!int.TryParse(txtGiaThueXe.Text, out int giaThueXe))
+                {
+                    throw new Exception("Giá thuê xe phải là số.");
+                }
+
+                // Kiểm tra biển số xe có trùng lặp hay không
+                var xeTrung = dsXe.Find(x => x.BienSoXe.Equals(txtBienSoXe.Text.Trim(), StringComparison.OrdinalIgnoreCase));
+                if (xeTrung != null)
+                {
+                    throw new Exception("Biển số xe đã tồn tại. Vui lòng nhập biển số khác.");
+                }
+
+                // Nếu không có lỗi, thêm mới xe
+                xe = new Xe
+                {
+                    BienSoXe = txtBienSoXe.Text.Trim(),
+                    MaLoaiXe = maLoaiXe,
+                    MauSon = txtMauSon.Text.Trim(),
+                    TinhTrang = txtTinhTrang.Text.Trim(),
+                    MoTa = txtMoTa.Text.Trim(),
+                    GiaThueXe = giaThueXe
+                };
+
+                // Thêm xe vào cơ sở dữ liệu và danh sách hiển thị
+                ctrlXe.add(xe);
+                dsXe.Add(xe);
+                load_Xe();            // Cập nhật lại DataGridView
+                ClearFields();        // Xóa các trường nhập liệu
+            }
+            catch (Exception ex)
+            {
+                // Hiển thị thông báo lỗi
+                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (xe != null)
@@ -112,6 +173,11 @@ namespace QuanLyBaiThueXeDev
             txtMoTa.Clear();
             txtTimKiem.Clear();
             txtGiaThueXe.Clear();
+        }
+
+        private void txtBienSoXe_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
