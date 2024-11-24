@@ -33,26 +33,26 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.dtimeNgayThue = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtSoChungMinh = new System.Windows.Forms.TextBox();
+            this.dateTimePickerNgayThue = new System.Windows.Forms.DateTimePicker();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtTongTien = new System.Windows.Forms.TextBox();
+            this.txtSoNgayMuon = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtSoNgayThue = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtBienSoXe = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtMaKhachHang = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSoPhieuThue = new System.Windows.Forms.TextBox();
-            this.dtGridViewKhachHang = new System.Windows.Forms.DataGridView();
+            this.dataGridViewPhieuThue = new System.Windows.Forms.DataGridView();
+            this.comboBoxKhachHang = new System.Windows.Forms.ComboBox();
+            this.comboBoxXe = new System.Windows.Forms.ComboBox();
+            this.dataGridViewKhachHang = new System.Windows.Forms.DataGridView();
+            this.dataGridViewXe = new System.Windows.Forms.DataGridView();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewKhachHang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPhieuThue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKhachHang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewXe)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -82,21 +82,17 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.comboBoxXe);
+            this.panel1.Controls.Add(this.comboBoxKhachHang);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.dtimeNgayThue);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.txtSoChungMinh);
+            this.panel1.Controls.Add(this.dateTimePickerNgayThue);
             this.panel1.Controls.Add(this.btnXoa);
             this.panel1.Controls.Add(this.btnSua);
             this.panel1.Controls.Add(this.btnThem);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.txtTongTien);
+            this.panel1.Controls.Add(this.txtSoNgayMuon);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.txtSoNgayThue);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtBienSoXe);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtMaKhachHang);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtSoPhieuThue);
             this.panel1.Location = new System.Drawing.Point(12, 32);
@@ -107,34 +103,18 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(478, 121);
+            this.label7.Location = new System.Drawing.Point(502, 37);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 13);
             this.label7.TabIndex = 22;
             this.label7.Text = "txtNgayThue";
             // 
-            // dtimeNgayThue
+            // dateTimePickerNgayThue
             // 
-            this.dtimeNgayThue.Location = new System.Drawing.Point(552, 115);
-            this.dtimeNgayThue.Name = "dtimeNgayThue";
-            this.dtimeNgayThue.Size = new System.Drawing.Size(200, 20);
-            this.dtimeNgayThue.TabIndex = 21;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(533, 72);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(85, 13);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "txtSoChungMinh";
-            // 
-            // txtSoChungMinh
-            // 
-            this.txtSoChungMinh.Location = new System.Drawing.Point(605, 69);
-            this.txtSoChungMinh.Name = "txtSoChungMinh";
-            this.txtSoChungMinh.Size = new System.Drawing.Size(147, 20);
-            this.txtSoChungMinh.TabIndex = 19;
+            this.dateTimePickerNgayThue.Location = new System.Drawing.Point(576, 31);
+            this.dateTimePickerNgayThue.Name = "dateTimePickerNgayThue";
+            this.dateTimePickerNgayThue.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerNgayThue.TabIndex = 21;
             // 
             // btnXoa
             // 
@@ -167,71 +147,41 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(533, 34);
+            this.label5.Location = new System.Drawing.Point(516, 74);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.Size = new System.Drawing.Size(83, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "txtTongTien";
+            this.label5.Text = "txtSoNgayMuon";
             // 
-            // txtTongTien
+            // txtSoNgayMuon
             // 
-            this.txtTongTien.Location = new System.Drawing.Point(605, 31);
-            this.txtTongTien.Name = "txtTongTien";
-            this.txtTongTien.Size = new System.Drawing.Size(147, 20);
-            this.txtTongTien.TabIndex = 8;
+            this.txtSoNgayMuon.Location = new System.Drawing.Point(605, 71);
+            this.txtSoNgayMuon.Name = "txtSoNgayMuon";
+            this.txtSoNgayMuon.Size = new System.Drawing.Size(147, 20);
+            this.txtSoNgayMuon.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(277, 72);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "txtSoNgayThue";
-            // 
-            // txtSoNgayThue
-            // 
-            this.txtSoNgayThue.Location = new System.Drawing.Point(349, 69);
-            this.txtSoNgayThue.Name = "txtSoNgayThue";
-            this.txtSoNgayThue.Size = new System.Drawing.Size(147, 20);
-            this.txtSoNgayThue.TabIndex = 6;
+            this.label4.Text = "txtXe";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(277, 34);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "txtBienSoXe";
-            // 
-            // txtBienSoXe
-            // 
-            this.txtBienSoXe.Location = new System.Drawing.Point(349, 31);
-            this.txtBienSoXe.Name = "txtBienSoXe";
-            this.txtBienSoXe.Size = new System.Drawing.Size(147, 20);
-            this.txtBienSoXe.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "txtMaKhachHang";
-            // 
-            // txtMaKhachHang
-            // 
-            this.txtMaKhachHang.Location = new System.Drawing.Point(103, 69);
-            this.txtMaKhachHang.Name = "txtMaKhachHang";
-            this.txtMaKhachHang.Size = new System.Drawing.Size(147, 20);
-            this.txtMaKhachHang.TabIndex = 2;
+            this.label3.Text = "txtKhachHang";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 34);
+            this.label1.Location = new System.Drawing.Point(14, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 13);
             this.label1.TabIndex = 1;
@@ -245,22 +195,58 @@
             this.txtSoPhieuThue.TabIndex = 0;
             this.txtSoPhieuThue.TextChanged += new System.EventHandler(this.txtSoPhieuThue_TextChanged);
             // 
-            // dtGridViewKhachHang
+            // dataGridViewPhieuThue
             // 
-            this.dtGridViewKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridViewKhachHang.Location = new System.Drawing.Point(12, 268);
-            this.dtGridViewKhachHang.Name = "dtGridViewKhachHang";
-            this.dtGridViewKhachHang.Size = new System.Drawing.Size(776, 150);
-            this.dtGridViewKhachHang.TabIndex = 9;
+            this.dataGridViewPhieuThue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPhieuThue.Location = new System.Drawing.Point(12, 268);
+            this.dataGridViewPhieuThue.Name = "dataGridViewPhieuThue";
+            this.dataGridViewPhieuThue.Size = new System.Drawing.Size(776, 150);
+            this.dataGridViewPhieuThue.TabIndex = 9;
+            this.dataGridViewPhieuThue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPhieuThue_CellClick);
+            // 
+            // comboBoxKhachHang
+            // 
+            this.comboBoxKhachHang.FormattingEnabled = true;
+            this.comboBoxKhachHang.Location = new System.Drawing.Point(358, 31);
+            this.comboBoxKhachHang.Name = "comboBoxKhachHang";
+            this.comboBoxKhachHang.Size = new System.Drawing.Size(138, 21);
+            this.comboBoxKhachHang.TabIndex = 23;
+            // 
+            // comboBoxXe
+            // 
+            this.comboBoxXe.FormattingEnabled = true;
+            this.comboBoxXe.Location = new System.Drawing.Point(358, 69);
+            this.comboBoxXe.Name = "comboBoxXe";
+            this.comboBoxXe.Size = new System.Drawing.Size(138, 21);
+            this.comboBoxXe.TabIndex = 24;
+            this.comboBoxXe.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // dataGridViewKhachHang
+            // 
+            this.dataGridViewKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewKhachHang.Location = new System.Drawing.Point(830, 32);
+            this.dataGridViewKhachHang.Name = "dataGridViewKhachHang";
+            this.dataGridViewKhachHang.Size = new System.Drawing.Size(585, 171);
+            this.dataGridViewKhachHang.TabIndex = 12;
+            // 
+            // dataGridViewXe
+            // 
+            this.dataGridViewXe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewXe.Location = new System.Drawing.Point(830, 268);
+            this.dataGridViewXe.Name = "dataGridViewXe";
+            this.dataGridViewXe.Size = new System.Drawing.Size(585, 150);
+            this.dataGridViewXe.TabIndex = 13;
             // 
             // FPhieuThue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1493, 444);
+            this.Controls.Add(this.dataGridViewXe);
+            this.Controls.Add(this.dataGridViewKhachHang);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dtGridViewKhachHang);
+            this.Controls.Add(this.dataGridViewPhieuThue);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FPhieuThue";
             this.Text = "FPhieuThue";
@@ -269,7 +255,9 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewKhachHang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPhieuThue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKhachHang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewXe)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -280,23 +268,21 @@
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtSoChungMinh;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtTongTien;
+        private System.Windows.Forms.TextBox txtSoNgayMuon;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtSoNgayThue;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtBienSoXe;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtMaKhachHang;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSoPhieuThue;
-        private System.Windows.Forms.DataGridView dtGridViewKhachHang;
+        private System.Windows.Forms.DataGridView dataGridViewPhieuThue;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker dtimeNgayThue;
+        private System.Windows.Forms.DateTimePicker dateTimePickerNgayThue;
+        private System.Windows.Forms.ComboBox comboBoxKhachHang;
+        private System.Windows.Forms.ComboBox comboBoxXe;
+        private System.Windows.Forms.DataGridView dataGridViewKhachHang;
+        private System.Windows.Forms.DataGridView dataGridViewXe;
     }
 }

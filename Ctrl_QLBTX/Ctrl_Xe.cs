@@ -46,5 +46,10 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
             CUtils.db.Xes.Remove(xe);
             CUtils.db.SaveChanges();
         }
+
+        public Xe findByBienSo(string bienSoXe)
+        {
+            return CUtils.db.Xes.FirstOrDefault(x => x.BienSoXe == bienSoXe);
+        }
     }
 }

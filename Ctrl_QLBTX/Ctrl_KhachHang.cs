@@ -42,5 +42,9 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
             CUtils.db.KhachHangs.Remove(khachHang);
             CUtils.db.SaveChanges();
         }
+        public KhachHang findById(int maKhachHang)
+        {
+            return CUtils.db.KhachHangs.FirstOrDefault(kh => kh.MaKhachHang == maKhachHang);
+        }
     }
 }
