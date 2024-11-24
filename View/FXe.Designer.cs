@@ -46,6 +46,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBienSoXe = new System.Windows.Forms.TextBox();
             this.dtGridViewXe = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtGiaThueXe = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewXe)).BeginInit();
@@ -79,6 +81,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.txtGiaThueXe);
             this.panel1.Controls.Add(this.btnXoa);
             this.panel1.Controls.Add(this.btnSua);
             this.panel1.Controls.Add(this.btnThem);
@@ -130,7 +134,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(533, 59);
+            this.label5.Location = new System.Drawing.Point(533, 34);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 13);
             this.label5.TabIndex = 9;
@@ -138,7 +142,7 @@
             // 
             // txtMoTa
             // 
-            this.txtMoTa.Location = new System.Drawing.Point(605, 56);
+            this.txtMoTa.Location = new System.Drawing.Point(605, 31);
             this.txtMoTa.Name = "txtMoTa";
             this.txtMoTa.Size = new System.Drawing.Size(147, 20);
             this.txtMoTa.TabIndex = 8;
@@ -216,6 +220,22 @@
             this.dtGridViewXe.TabIndex = 3;
             this.dtGridViewXe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewXe_CellClick);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(533, 72);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "txtGiaThueXe";
+            // 
+            // txtGiaThueXe
+            // 
+            this.txtGiaThueXe.Location = new System.Drawing.Point(605, 69);
+            this.txtGiaThueXe.Name = "txtGiaThueXe";
+            this.txtGiaThueXe.Size = new System.Drawing.Size(147, 20);
+            this.txtGiaThueXe.TabIndex = 19;
+            // 
             // FXe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,5 +277,7 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtGiaThueXe;
     }
 }

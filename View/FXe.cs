@@ -31,7 +31,7 @@ namespace QuanLyBaiThueXeDev
         private void load_Xe()
         {
             var list = from a in dsXe
-                       select new { a.BienSoXe, a.MaLoaiXe, a.MauSon, a.TinhTrang, a.MoTa };
+                       select new { a.BienSoXe, a.MaLoaiXe, a.MauSon, a.TinhTrang, a.MoTa, a.GiaThueXe };
             dtGridViewXe.DataSource = list.ToList();
         }
         private void dtGridViewXe_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -46,6 +46,7 @@ namespace QuanLyBaiThueXeDev
                 txtMauSon.Text = xe.MauSon;
                 txtTinhTrang.Text = xe.TinhTrang;
                 txtMoTa.Text = xe.MoTa;
+                txtGiaThueXe.Text = xe.GiaThueXe.ToString();
             }
         }
         private void btnThem_Click(object sender, EventArgs e)
@@ -56,7 +57,8 @@ namespace QuanLyBaiThueXeDev
                 MaLoaiXe = int.Parse(txtMaLoaiXe.Text),
                 MauSon = txtMauSon.Text.Trim(),
                 TinhTrang = txtTinhTrang.Text.Trim(),
-                MoTa = txtMoTa.Text.Trim()
+                MoTa = txtMoTa.Text.Trim(),
+                GiaThueXe = int.Parse(txtGiaThueXe.Text)
             };
 
             ctrlXe.add(xe);
@@ -72,6 +74,7 @@ namespace QuanLyBaiThueXeDev
                 xe.MauSon = txtMauSon.Text.Trim();
                 xe.TinhTrang = txtTinhTrang.Text.Trim();
                 xe.MoTa = txtMoTa.Text.Trim();
+                xe.GiaThueXe = int.Parse(txtGiaThueXe.Text);
 
                 ctrlXe.upDate(xe);
                 load_Xe();
@@ -108,6 +111,7 @@ namespace QuanLyBaiThueXeDev
             txtTinhTrang.Clear();
             txtMoTa.Clear();
             txtTimKiem.Clear();
+            txtGiaThueXe.Clear();
         }
     }
 }

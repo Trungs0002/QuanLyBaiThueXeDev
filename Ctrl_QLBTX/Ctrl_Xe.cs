@@ -22,7 +22,7 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
                             x.MaLoaiXe.ToString().Contains(searchTerm) || // Tìm theo mã loại xe
                             x.MauSon.ToLower().Contains(searchTerm) || // Tìm theo màu sơn
                             x.TinhTrang.ToLower().Contains(searchTerm) || // Tìm theo tình trạng
-                            x.MoTa.ToLower().Contains(searchTerm)) // Tìm theo mô tả
+                            x.MoTa.ToLower().Contains(searchTerm))  // Tìm theo mô tả
                 .ToList();
         }
 

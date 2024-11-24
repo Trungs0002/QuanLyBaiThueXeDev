@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QuanLyBaiThueXeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QuanLyBaiThueXeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DoanhThu">
           <Key>
             <PropertyRef Name="MaDoanhThu" />
@@ -89,6 +89,7 @@
           <Property Name="MauSon" Type="nvarchar" MaxLength="50" />
           <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
+          <Property Name="GiaThueXe" Type="int" />
         </EntityType>
         <Association Name="FK__PhieuNopP__MaKha__46E78A0C">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
@@ -179,8 +180,7 @@
             <End Role="Xe" EntitySet="Xe" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QuanLyBaiThueXeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -278,6 +278,7 @@
           <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="LoaiXe" Relationship="Self.FK__Xe__MaLoaiXe__398D8EEE" FromRole="Xe" ToRole="LoaiXe" />
           <NavigationProperty Name="PhieuThues" Relationship="Self.FK__PhieuThue__BienS__4222D4EF" FromRole="Xe" ToRole="PhieuThue" />
+          <Property Name="GiaThueXe" Type="Int32" />
         </EntityType>
         <Association Name="FK__PhieuNopP__MaKha__46E78A0C">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
@@ -458,6 +459,7 @@
           <EntitySetMapping Name="Xes">
             <EntityTypeMapping TypeName="QuanLyBaiThueXeModel.Xe">
               <MappingFragment StoreEntitySet="Xe">
+                <ScalarProperty Name="GiaThueXe" ColumnName="GiaThueXe" />
                 <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
                 <ScalarProperty Name="MaLoaiXe" ColumnName="MaLoaiXe" />
                 <ScalarProperty Name="MauSon" ColumnName="MauSon" />
