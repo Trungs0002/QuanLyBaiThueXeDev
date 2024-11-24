@@ -12,6 +12,19 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
         {
             return CUtils.db.PhieuThues.ToList();
         }
+        //public List<PhieuThue> findByCriteria(string searchTerm)
+        //{
+        //    searchTerm = searchTerm.ToLower(); // Chuyển đổi tìm kiếm thành chữ thường
+
+        //    return CUtils.db.PhieuThues
+        //        .Where(pt => pt.SoPhieuThue.ToString().Contains(searchTerm) || // Tìm theo số phiếu thuê
+        //                     pt.BienSoXe.ToLower().Contains(searchTerm) || // Tìm theo biển số xe
+        //                     pt.SoChungMinh.ToLower().Contains(searchTerm) || // Tìm theo số chứng minh
+        //                     pt.KhachHang.ToLower().Contains(searchTerm) || // Tìm theo họ tên khách hàng
+        //                     pt.DonGia.ToString().Contains(searchTerm) || // Tìm theo tổng tiền
+        //                     pt.NgayThue.ToString().Contains(searchTerm)) // Tìm theo ngày thuê
+        //        .ToList();
+        //}
 
         public void upDate(PhieuThue phieuThue)
         {

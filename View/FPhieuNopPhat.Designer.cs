@@ -32,6 +32,8 @@
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSoTienPhat = new System.Windows.Forms.TextBox();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -46,8 +48,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSoPhieuPhat = new System.Windows.Forms.TextBox();
             this.dtGridViewPhieuPhat = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtSoTienPhat = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewPhieuPhat)).BeginInit();
@@ -77,6 +77,7 @@
             this.btnTimKiem.TabIndex = 13;
             this.btnTimKiem.Text = "btnTimKiem";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // panel1
             // 
@@ -100,6 +101,22 @@
             this.panel1.Size = new System.Drawing.Size(776, 171);
             this.panel1.TabIndex = 7;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(533, 72);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "txtSoTienPhat";
+            // 
+            // txtSoTienPhat
+            // 
+            this.txtSoTienPhat.Location = new System.Drawing.Point(605, 69);
+            this.txtSoTienPhat.Name = "txtSoTienPhat";
+            this.txtSoTienPhat.Size = new System.Drawing.Size(147, 20);
+            this.txtSoTienPhat.TabIndex = 19;
+            // 
             // btnXoa
             // 
             this.btnXoa.Location = new System.Drawing.Point(222, 116);
@@ -108,6 +125,7 @@
             this.btnXoa.TabIndex = 18;
             this.btnXoa.Text = "btnXoa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -117,6 +135,7 @@
             this.btnSua.TabIndex = 17;
             this.btnSua.Text = "btnSua";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
             // btnThem
             // 
@@ -126,6 +145,7 @@
             this.btnThem.TabIndex = 16;
             this.btnThem.Text = "btnThem";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // label5
             // 
@@ -214,22 +234,7 @@
             this.dtGridViewPhieuPhat.Name = "dtGridViewPhieuPhat";
             this.dtGridViewPhieuPhat.Size = new System.Drawing.Size(776, 150);
             this.dtGridViewPhieuPhat.TabIndex = 6;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(533, 72);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 13);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "txtSoTienPhat";
-            // 
-            // txtSoTienPhat
-            // 
-            this.txtSoTienPhat.Location = new System.Drawing.Point(605, 69);
-            this.txtSoTienPhat.Name = "txtSoTienPhat";
-            this.txtSoTienPhat.Size = new System.Drawing.Size(147, 20);
-            this.txtSoTienPhat.TabIndex = 19;
+            this.dtGridViewPhieuPhat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewPhieuPhat_CellClick);
             // 
             // FPhieuNopPhat
             // 
@@ -241,6 +246,7 @@
             this.Controls.Add(this.dtGridViewPhieuPhat);
             this.Name = "FPhieuNopPhat";
             this.Text = "FPhieuNopPhat";
+            this.Load += new System.EventHandler(this.FPhieuNopPhat_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
