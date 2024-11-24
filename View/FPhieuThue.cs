@@ -21,5 +21,15 @@ namespace QuanLyBaiThueXeDev.View
         {
             this.ControlBox = false;
         }
+
+        private void txtSoPhieuThue_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -53,21 +53,68 @@ namespace QuanLyBaiThueXeDev.View
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            khachHang = new KhachHang
+            try
             {
-                MaKhachHang = int.Parse(txtMaKhachHang.Text),
-                HoTen = txtHoTen.Text.Trim(),
-                GioiTinh = txtGioiTinh.Text.Trim(),
-                DienThoai = txtDienThoai.Text.Trim(),
-                DiaChi = txtDiaChi.Text.Trim(),
-                SoChungMinh = txtSoChungMinh.Text.Trim()
-            };
+                // Kiểm tra các trường nhập liệu có bị bỏ trống hay không
+                if (string.IsNullOrWhiteSpace(txtMaKhachHang.Text) ||
+                    string.IsNullOrWhiteSpace(txtHoTen.Text) ||
+                    string.IsNullOrWhiteSpace(txtGioiTinh.Text) ||
+                    string.IsNullOrWhiteSpace(txtDienThoai.Text) ||
+                    string.IsNullOrWhiteSpace(txtDiaChi.Text) ||
+                    string.IsNullOrWhiteSpace(txtSoChungMinh.Text))
+                {
+                    throw new Exception("Vui lòng nhập đầy đủ thông tin.");
+                }
 
-            ctrlKhachHang.add(khachHang);
-            dsKhachHang.Add(khachHang);
-            load_KhachHang();
-            ClearFields();
+                // Kiểm tra độ dài của các trường nhập liệu
+                if (txtHoTen.Text.Length > 50 ||
+                    txtGioiTinh.Text.Length > 10 ||
+                    txtDienThoai.Text.Length > 15 ||
+                    txtDiaChi.Text.Length > 100 ||
+                    txtSoChungMinh.Text.Length > 12)
+                {
+                    throw new Exception("Một số trường nhập liệu quá dài. Vui lòng kiểm tra lại.");
+                }
+
+                // Chuyển đổi mã khách hàng
+                int maKhachHangMoi;
+                if (!int.TryParse(txtMaKhachHang.Text, out maKhachHangMoi))
+                {
+                    throw new Exception("Mã khách hàng phải là số.");
+                }
+
+                // Kiểm tra mã khách hàng trùng lặp bằng Find
+                var khachHangTrung = dsKhachHang.Find(kh => kh.MaKhachHang == maKhachHangMoi);
+                if (khachHangTrung != null)
+                {
+                    throw new Exception("Mã khách hàng bị trùng. Vui lòng nhập mã khác.");
+                }
+
+                // Nếu không trùng, thực hiện thêm mới
+                khachHang = new KhachHang
+                {
+                    MaKhachHang = maKhachHangMoi,
+                    HoTen = txtHoTen.Text.Trim(),
+                    GioiTinh = txtGioiTinh.Text.Trim(),
+                    DienThoai = txtDienThoai.Text.Trim(),
+                    DiaChi = txtDiaChi.Text.Trim(),
+                    SoChungMinh = txtSoChungMinh.Text.Trim()
+                };
+
+                ctrlKhachHang.add(khachHang); // Thêm khách hàng vào cơ sở dữ liệu
+                dsKhachHang.Add(khachHang);  // Thêm vào danh sách hiển thị
+                load_KhachHang();            // Cập nhật lại DataGridView
+                ClearFields();               // Xóa trường nhập liệu
+            }
+            catch (Exception ex)
+            {
+                // Hiển thị thông báo lỗi
+                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+
+
 
         private void btnSua_Click(object sender, EventArgs e)
         {
@@ -112,6 +159,11 @@ namespace QuanLyBaiThueXeDev.View
             txtDiaChi.Clear();
             txtSoChungMinh.Clear();
             khachHang = null;
+        }
+
+        private void txtMaKhachHang_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -214,7 +214,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 34);
+            this.label1.Location = new System.Drawing.Point(7, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 13);
             this.label1.TabIndex = 1;
@@ -226,6 +226,7 @@
             this.txtMaKhachHang.Name = "txtMaKhachHang";
             this.txtMaKhachHang.Size = new System.Drawing.Size(147, 20);
             this.txtMaKhachHang.TabIndex = 0;
+            this.txtMaKhachHang.TextChanged += new System.EventHandler(this.txtMaKhachHang_TextChanged);
             // 
             // dtGridViewKhachHang
             // 

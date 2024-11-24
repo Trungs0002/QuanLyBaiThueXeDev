@@ -162,6 +162,7 @@
             this.btnThem.TabIndex = 16;
             this.btnThem.Text = "btnThem";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // label5
             // 
@@ -242,6 +243,7 @@
             this.txtSoPhieuThue.Name = "txtSoPhieuThue";
             this.txtSoPhieuThue.Size = new System.Drawing.Size(147, 20);
             this.txtSoPhieuThue.TabIndex = 0;
+            this.txtSoPhieuThue.TextChanged += new System.EventHandler(this.txtSoPhieuThue_TextChanged);
             // 
             // dtGridViewKhachHang
             // 
