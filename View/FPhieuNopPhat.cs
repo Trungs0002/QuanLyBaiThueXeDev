@@ -24,6 +24,7 @@ namespace QuanLyBaiThueXeDev.View
 
         private void FPhieuNopPhat_Load(object sender, EventArgs e)
         {
+            this.ControlBox = false;
             dsPhieuNopPhat = ctrlPhieuNopPhat.findAll();
             load_PhieuNopPhat();
         }

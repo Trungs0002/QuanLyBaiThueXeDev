@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ctrl_QLBTX\Ctrl_NhanVien.cs" />
+    <Compile Include="mdiProperties.cs" />
     <Compile Include="View\FDoanhThu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +95,12 @@
     </Compile>
     <Compile Include="View\FPhieuThue.Designer.cs">
       <DependentUpon>FPhieuThue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FTong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FTong.Designer.cs">
+      <DependentUpon>FTong.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FXe.cs">
       <SubType>Form</SubType>
@@ -162,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FPhieuThue.resx">
       <DependentUpon>FPhieuThue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FTong.resx">
+      <DependentUpon>FTong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FXe.resx">
       <DependentUpon>FXe.cs</DependentUpon>

@@ -224,6 +224,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtGridViewXe);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FXe";
             this.Text = "CXe";
             this.Load += new System.EventHandler(this.FXe_Load);

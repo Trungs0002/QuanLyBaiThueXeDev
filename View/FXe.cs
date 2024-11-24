@@ -24,6 +24,7 @@ namespace QuanLyBaiThueXeDev
 
         private void FXe_Load(object sender, EventArgs e)
         {
+            this.ControlBox = false;
             dsXe = ctrlXe.findAll();
             load_Xe();
         }

@@ -204,6 +204,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtGridViewKhachHang);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FNhanVien";
             this.Text = "FNhanVien";
             this.Load += new System.EventHandler(this.FNhanVien_Load);

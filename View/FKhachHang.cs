@@ -25,6 +25,7 @@ namespace QuanLyBaiThueXeDev.View
 
         private void FKhachHang_Load(object sender, EventArgs e)
         {
+            this.ControlBox = false;
             dsKhachHang = ctrlKhachHang.findAll();
             load_KhachHang();
         }

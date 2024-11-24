@@ -244,6 +244,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtGridViewKhachHang);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FKhachHang";
             this.Text = "FKhachHang";
             this.Load += new System.EventHandler(this.FKhachHang_Load);

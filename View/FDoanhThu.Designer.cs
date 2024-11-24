@@ -76,8 +76,10 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dtGridViewDoanhThu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FDoanhThu";
             this.Text = "FDoanhThu";
+            this.Load += new System.EventHandler(this.FDoanhThu_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewDoanhThu)).EndInit();

@@ -24,6 +24,7 @@ namespace QuanLyBaiThueXeDev
 
         private void FLoaiXe_Load(object sender, EventArgs e)
         {
+            this.ControlBox = false;
             dsLoaiXe = ctrlLoaiXe.findAll();
             load_LoaiXe();
         }

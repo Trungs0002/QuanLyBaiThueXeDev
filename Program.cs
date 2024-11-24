@@ -17,7 +17,7 @@ namespace QuanLyBaiThueXeDev
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FPhieuNopPhat());
+            Application.Run(new FTong());
         }
     }
 }

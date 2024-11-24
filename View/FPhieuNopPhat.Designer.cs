@@ -244,6 +244,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtGridViewPhieuPhat);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FPhieuNopPhat";
             this.Text = "FPhieuNopPhat";
             this.Load += new System.EventHandler(this.FPhieuNopPhat_Load);

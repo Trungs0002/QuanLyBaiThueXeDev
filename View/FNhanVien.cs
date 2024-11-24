@@ -24,6 +24,7 @@ namespace QuanLyBaiThueXeDev.View
 
         private void FNhanVien_Load(object sender, EventArgs e)
         {
+            this.ControlBox = false;
             dsNhanVien = ctrlNhanVien.findAll();
             load_NhanVien();
         }

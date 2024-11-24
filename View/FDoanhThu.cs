@@ -16,5 +16,10 @@ namespace QuanLyBaiThueXeDev.View
         {
             InitializeComponent();
         }
+
+        private void FDoanhThu_Load(object sender, EventArgs e)
+        {
+            this.ControlBox = false;
+        }
     }
 }
