@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyBaiThueXeDev.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace QuanLyBaiThueXeDev
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FXe());
+            Application.Run(new FNhanVien());
         }
     }
 }

@@ -73,6 +73,7 @@
             this.btnTimKiem.TabIndex = 13;
             this.btnTimKiem.Text = "btnTimKiem";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // panel1
             // 
@@ -100,6 +101,7 @@
             this.btnXoa.TabIndex = 18;
             this.btnXoa.Text = "btnXoa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -109,6 +111,7 @@
             this.btnSua.TabIndex = 17;
             this.btnSua.Text = "btnSua";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -118,6 +121,7 @@
             this.btnThem.TabIndex = 16;
             this.btnThem.Text = "btnThem";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // label4
             // 
@@ -190,6 +194,7 @@
             this.dtGridViewKhachHang.Name = "dtGridViewKhachHang";
             this.dtGridViewKhachHang.Size = new System.Drawing.Size(776, 150);
             this.dtGridViewKhachHang.TabIndex = 9;
+            this.dtGridViewKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewKhachHang_CellClick);
             // 
             // FNhanVien
             // 
@@ -201,6 +206,7 @@
             this.Controls.Add(this.dtGridViewKhachHang);
             this.Name = "FNhanVien";
             this.Text = "FNhanVien";
+            this.Load += new System.EventHandler(this.FNhanVien_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
