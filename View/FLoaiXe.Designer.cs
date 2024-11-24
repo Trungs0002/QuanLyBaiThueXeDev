@@ -30,19 +30,19 @@
         {
             this.dtGridViewLoaiXe = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtMaLoaiXe = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtTenLoai = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtHangSanXuat = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtNamSanXuat = new System.Windows.Forms.TextBox();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtMoTa = new System.Windows.Forms.TextBox();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtNamSanXuat = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtHangSanXuat = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTenLoai = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtMaLoaiXe = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
@@ -58,6 +58,7 @@
             this.dtGridViewLoaiXe.Name = "dtGridViewLoaiXe";
             this.dtGridViewLoaiXe.Size = new System.Drawing.Size(776, 150);
             this.dtGridViewLoaiXe.TabIndex = 0;
+            this.dtGridViewLoaiXe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewLoaiXe_CellClick);
             // 
             // panel1
             // 
@@ -79,69 +80,35 @@
             this.panel1.Size = new System.Drawing.Size(776, 171);
             this.panel1.TabIndex = 1;
             // 
-            // txtMaLoaiXe
+            // btnXoa
             // 
-            this.txtMaLoaiXe.Location = new System.Drawing.Point(103, 31);
-            this.txtMaLoaiXe.Name = "txtMaLoaiXe";
-            this.txtMaLoaiXe.Size = new System.Drawing.Size(147, 20);
-            this.txtMaLoaiXe.TabIndex = 0;
+            this.btnXoa.Location = new System.Drawing.Point(222, 110);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 12;
+            this.btnXoa.Text = "btnXoa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // label1
+            // btnSua
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "txtMaLoaiXe";
+            this.btnSua.Location = new System.Drawing.Point(128, 110);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 11;
+            this.btnSua.Text = "btnSua";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
-            // label2
+            // btnThem
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "txtTenLoai";
-            // 
-            // txtTenLoai
-            // 
-            this.txtTenLoai.Location = new System.Drawing.Point(103, 69);
-            this.txtTenLoai.Name = "txtTenLoai";
-            this.txtTenLoai.Size = new System.Drawing.Size(147, 20);
-            this.txtTenLoai.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(277, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "txtHangSanXuat";
-            // 
-            // txtHangSanXuat
-            // 
-            this.txtHangSanXuat.Location = new System.Drawing.Point(349, 31);
-            this.txtHangSanXuat.Name = "txtHangSanXuat";
-            this.txtHangSanXuat.Size = new System.Drawing.Size(147, 20);
-            this.txtHangSanXuat.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(277, 72);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "txtNamSanXuat";
-            // 
-            // txtNamSanXuat
-            // 
-            this.txtNamSanXuat.Location = new System.Drawing.Point(349, 69);
-            this.txtNamSanXuat.Name = "txtNamSanXuat";
-            this.txtNamSanXuat.Size = new System.Drawing.Size(147, 20);
-            this.txtNamSanXuat.TabIndex = 6;
+            this.btnThem.Location = new System.Drawing.Point(34, 110);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 10;
+            this.btnThem.Text = "btnThem";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // label5
             // 
@@ -159,32 +126,69 @@
             this.txtMoTa.Size = new System.Drawing.Size(147, 20);
             this.txtMoTa.TabIndex = 8;
             // 
-            // btnThem
+            // label4
             // 
-            this.btnThem.Location = new System.Drawing.Point(34, 110);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
-            this.btnThem.TabIndex = 10;
-            this.btnThem.Text = "btnThem";
-            this.btnThem.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(277, 72);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "txtNamSanXuat";
             // 
-            // btnSua
+            // txtNamSanXuat
             // 
-            this.btnSua.Location = new System.Drawing.Point(128, 110);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 23);
-            this.btnSua.TabIndex = 11;
-            this.btnSua.Text = "btnSua";
-            this.btnSua.UseVisualStyleBackColor = true;
+            this.txtNamSanXuat.Location = new System.Drawing.Point(349, 69);
+            this.txtNamSanXuat.Name = "txtNamSanXuat";
+            this.txtNamSanXuat.Size = new System.Drawing.Size(147, 20);
+            this.txtNamSanXuat.TabIndex = 6;
             // 
-            // btnXoa
+            // label3
             // 
-            this.btnXoa.Location = new System.Drawing.Point(222, 110);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 12;
-            this.btnXoa.Text = "btnXoa";
-            this.btnXoa.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(277, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "txtHangSanXuat";
+            // 
+            // txtHangSanXuat
+            // 
+            this.txtHangSanXuat.Location = new System.Drawing.Point(349, 31);
+            this.txtHangSanXuat.Name = "txtHangSanXuat";
+            this.txtHangSanXuat.Size = new System.Drawing.Size(147, 20);
+            this.txtHangSanXuat.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(31, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "txtTenLoai";
+            // 
+            // txtTenLoai
+            // 
+            this.txtTenLoai.Location = new System.Drawing.Point(103, 69);
+            this.txtTenLoai.Name = "txtTenLoai";
+            this.txtTenLoai.Size = new System.Drawing.Size(147, 20);
+            this.txtTenLoai.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(31, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "txtMaLoaiXe";
+            // 
+            // txtMaLoaiXe
+            // 
+            this.txtMaLoaiXe.Location = new System.Drawing.Point(103, 31);
+            this.txtMaLoaiXe.Name = "txtMaLoaiXe";
+            this.txtMaLoaiXe.Size = new System.Drawing.Size(147, 20);
+            this.txtMaLoaiXe.TabIndex = 0;
             // 
             // btnTimKiem
             // 
@@ -194,6 +198,7 @@
             this.btnTimKiem.TabIndex = 13;
             this.btnTimKiem.Text = "btnTimKiem";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // panel2
             // 
@@ -211,7 +216,7 @@
             this.txtTimKiem.Size = new System.Drawing.Size(619, 20);
             this.txtTimKiem.TabIndex = 14;
             // 
-            // CLoaiXe
+            // FLoaiXe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -219,8 +224,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtGridViewLoaiXe);
-            this.Name = "CLoaiXe";
+            this.Name = "FLoaiXe";
             this.Text = "CLoaiXe";
+            this.Load += new System.EventHandler(this.FLoaiXe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewLoaiXe)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

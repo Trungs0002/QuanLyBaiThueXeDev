@@ -13,9 +13,17 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
             return CUtils.db.Xes.ToList();
         }
 
-        public List<Xe> findByLicensePlate(string licensePlate)
+        public List<Xe> findByCriteria(string searchTerm)
         {
-            return CUtils.db.Xes.Where(t => t.BienSoXe.Contains(licensePlate)).ToList();
+            searchTerm = searchTerm.ToLower(); // Chuyển đổi tìm kiếm thành chữ thường
+
+            return CUtils.db.Xes
+                .Where(x => x.BienSoXe.ToLower().Contains(searchTerm) || // Tìm theo biển số xe
+                            x.MaLoaiXe.ToString().Contains(searchTerm) || // Tìm theo mã loại xe
+                            x.MauSon.ToLower().Contains(searchTerm) || // Tìm theo màu sơn
+                            x.TinhTrang.ToLower().Contains(searchTerm) || // Tìm theo tình trạng
+                            x.MoTa.ToLower().Contains(searchTerm)) // Tìm theo mô tả
+                .ToList();
         }
 
         public void upDate(Xe xe)

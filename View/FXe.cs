@@ -95,12 +95,9 @@ namespace QuanLyBaiThueXeDev
         }
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string searchTerm = txtTimKiem.Text;
-            var results = dsXe
-                .Where(x => x.BienSoXe.Contains(searchTerm) || x.MauSon.Contains(searchTerm))
-                .Select(x => new { x.BienSoXe, x.MaLoaiXe, x.MauSon, x.TinhTrang, x.MoTa })
-                .ToList();
-            dtGridViewXe.DataSource = results;
+            string searchTerm = txtTimKiem.Text; 
+            dsXe = ctrlXe.findByCriteria(searchTerm); 
+            load_Xe();
         }
         private void ClearFields()
         {

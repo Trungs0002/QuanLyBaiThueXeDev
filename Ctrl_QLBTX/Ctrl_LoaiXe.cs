@@ -13,9 +13,17 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
             return CUtils.db.LoaiXes.ToList();
         }
 
-        public List<LoaiXe> findByName(string name)
+        public List<LoaiXe> findByName(string searchTerm)
         {
-            return CUtils.db.LoaiXes.Where(t => t.TenLoai.Contains(name)).ToList();
+            searchTerm = searchTerm.ToLower();
+
+            return CUtils.db.LoaiXes
+                .Where(t => t.MaLoaiXe.ToString().Contains(searchTerm) || 
+                            t.TenLoai.ToLower().Contains(searchTerm) || 
+                            t.HangSanXuat.ToLower().Contains(searchTerm) || 
+                            t.NamSanXuat.ToString().Contains(searchTerm) || 
+                            t.MoTa.ToLower().Contains(searchTerm)) 
+                .ToList();
         }
 
         public void upDate(LoaiXe loaiXe)
