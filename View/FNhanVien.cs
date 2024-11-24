@@ -50,19 +50,67 @@ namespace QuanLyBaiThueXeDev.View
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            nhanVien = new NhanVien
+            try
             {
-                MaNhanVien = int.Parse(txtMaNhanVien.Text),
-                TenNhanVien = txtTenNhanVien.Text.Trim(),
-                DienThoai = txtDienThoai.Text.Trim(),
-                MoTa = txtMoTa.Text.Trim()
-            };
+                // 1. Kiểm tra các trường bắt buộc có bị bỏ trống không
+                if (string.IsNullOrWhiteSpace(txtMaNhanVien.Text) ||
+                    string.IsNullOrWhiteSpace(txtTenNhanVien.Text) ||
+                    string.IsNullOrWhiteSpace(txtDienThoai.Text))
+                {
+                    throw new Exception("Vui lòng nhập đầy đủ thông tin bắt buộc.");
+                }
 
-            ctrlNhanVien.add(nhanVien);
-            dsNhanVien.Add(nhanVien);
-            load_NhanVien();
-            ClearFields();
+                // 2. Kiểm tra độ dài chuỗi nhập liệu
+                if (txtTenNhanVien.Text.Length > 100)
+                {
+                    throw new Exception("Tên nhân viên không được vượt quá 100 ký tự.");
+                }
+
+                if (txtDienThoai.Text.Length != 10)
+                {
+                    throw new Exception("Số điện thoại không hợp lệ.");
+                }
+
+                if (txtMoTa.Text.Length > 255)
+                {
+                    throw new Exception("Mô tả không được vượt quá 255 ký tự.");
+                }
+
+                // 3. Kiểm tra mã nhân viên có phải là số không
+                if (!int.TryParse(txtMaNhanVien.Text, out int maNhanVien))
+                {
+                    throw new Exception("Mã nhân viên phải là số.");
+                }
+
+                // 4. Kiểm tra mã nhân viên có bị trùng không
+                var nhanVienTrung = dsNhanVien.Find(nv => nv.MaNhanVien == maNhanVien);
+                if (nhanVienTrung != null)
+                {
+                    throw new Exception("Mã nhân viên đã tồn tại. Vui lòng nhập mã khác.");
+                }
+
+                // 5. Tạo đối tượng NhanVien nếu không có lỗi
+                nhanVien = new NhanVien
+                {
+                    MaNhanVien = maNhanVien,
+                    TenNhanVien = txtTenNhanVien.Text.Trim(),
+                    DienThoai = txtDienThoai.Text.Trim(),
+                    MoTa = txtMoTa.Text.Trim()
+                };
+
+                // 6. Thêm vào cơ sở dữ liệu và danh sách hiển thị
+                ctrlNhanVien.add(nhanVien);  // Thêm vào cơ sở dữ liệu
+                dsNhanVien.Add(nhanVien);   // Thêm vào danh sách tạm
+                load_NhanVien();            // Cập nhật DataGridView
+                ClearFields();              // Xóa các trường nhập liệu
+            }
+            catch (Exception ex)
+            {
+                // Hiển thị thông báo lỗi
+                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void btnSua_Click(object sender, EventArgs e)
         {
@@ -103,6 +151,16 @@ namespace QuanLyBaiThueXeDev.View
             txtDienThoai.Clear();
             txtMoTa.Clear();
             nhanVien = null;
+        }
+
+        private void txtMaNhanVien_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDienThoai_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
