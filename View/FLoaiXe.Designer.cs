@@ -46,9 +46,11 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.dtGridViewXe = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewLoaiXe)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewXe)).BeginInit();
             this.SuspendLayout();
             // 
             // dtGridViewLoaiXe
@@ -216,11 +218,20 @@
             this.txtTimKiem.Size = new System.Drawing.Size(619, 20);
             this.txtTimKiem.TabIndex = 14;
             // 
+            // dtGridViewXe
+            // 
+            this.dtGridViewXe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridViewXe.Location = new System.Drawing.Point(794, 267);
+            this.dtGridViewXe.Name = "dtGridViewXe";
+            this.dtGridViewXe.Size = new System.Drawing.Size(709, 150);
+            this.dtGridViewXe.TabIndex = 3;
+            // 
             // FLoaiXe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1515, 447);
+            this.Controls.Add(this.dtGridViewXe);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtGridViewLoaiXe);
@@ -233,6 +244,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewXe)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -257,5 +269,6 @@
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.DataGridView dtGridViewXe;
     }
 }

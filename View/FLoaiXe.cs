@@ -17,6 +17,10 @@ namespace QuanLyBaiThueXeDev
         private List<LoaiXe> dsLoaiXe = null;
         private LoaiXe loaiXe;
         private int index;
+
+        private Ctrl_Xe ctrlXe = new Ctrl_Xe();
+        private List<Xe> dsXe = null;
+
         public FLoaiXe()
         {
             InitializeComponent();
@@ -27,6 +31,13 @@ namespace QuanLyBaiThueXeDev
             this.ControlBox = false;
             dsLoaiXe = ctrlLoaiXe.findAll();
             load_LoaiXe();
+        }
+        private void LoadXeByLoaiXe(int maLoaiXe)
+        {
+            dsXe = ctrlXe.findByLoaiXe(maLoaiXe); 
+            var list = from x in dsXe
+                       select new { x.BienSoXe, x.MauSon, x.TinhTrang, x.MoTa };
+            dtGridViewXe.DataSource = list.ToList();
         }
         private void load_LoaiXe()
         {
@@ -46,6 +57,8 @@ namespace QuanLyBaiThueXeDev
                 txtHangSanXuat.Text = loaiXe.HangSanXuat;
                 txtNamSanXuat.Text = loaiXe.NamSanXuat.ToString();
                 txtMoTa.Text = loaiXe.MoTa;
+
+                LoadXeByLoaiXe(loaiXe.MaLoaiXe); 
             }
         }
 

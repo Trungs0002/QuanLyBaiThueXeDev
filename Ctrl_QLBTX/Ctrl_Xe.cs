@@ -25,6 +25,10 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
                             x.MoTa.ToLower().Contains(searchTerm))  // Tìm theo mô tả
                 .ToList();
         }
+        public List<Xe> findByLoaiXe(int maLoaiXe)
+        {
+            return CUtils.db.Xes.Where(x => x.MaLoaiXe == maLoaiXe).ToList();
+        }
 
         public void upDate(Xe xe)
         {

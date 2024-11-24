@@ -26,6 +26,7 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
                 .ToList();
         }
 
+
         public void upDate(LoaiXe loaiXe)
         {
             CUtils.db.SaveChanges();
