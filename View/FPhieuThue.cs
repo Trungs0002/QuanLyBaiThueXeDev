@@ -133,6 +133,7 @@ namespace QuanLyBaiThueXeDev.View
                 // Lưu phiếu thuê vào cơ sở dữ liệu
                 ctrlPhieuThue.add(phieuThue);
                 LoadPhieuThue(); // Cập nhật danh sách phiếu thuê
+                ClearFields();
 
                 // Hiển thị thông báo thành công
                 MessageBox.Show("Thêm phiếu thuê thành công!");
@@ -235,6 +236,8 @@ namespace QuanLyBaiThueXeDev.View
 
                 // Cập nhật lại danh sách hiển thị
                 LoadPhieuThue();
+                LoadKhachHang();
+                LoadXe();
                 MessageBox.Show("Cập nhật phiếu thuê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Xóa trắng các ô nhập liệu
@@ -245,6 +248,46 @@ namespace QuanLyBaiThueXeDev.View
                 MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Kiểm tra xem có phiếu thuê nào được chọn không
+                if (string.IsNullOrWhiteSpace(txtSoPhieuThue.Text))
+                {
+                    MessageBox.Show("Vui lòng chọn phiếu thuê để xóa.");
+                    return;
+                }
 
+                // Lấy số phiếu thuê cần xóa
+                int soPhieuThue = int.Parse(txtSoPhieuThue.Text);
+
+                // Lấy thông tin phiếu thuê từ cơ sở dữ liệu
+                var phieuThue = ctrlPhieuThue.findAll().FirstOrDefault(pt => pt.SoPhieuThue == soPhieuThue);
+                if (phieuThue != null)
+                {
+                    // Xóa phiếu thuê
+                    ctrlPhieuThue.remove(phieuThue);
+                    LoadPhieuThue(); // Cập nhật danh sách phiếu thuê
+                    LoadKhachHang();
+                    LoadXe();
+
+                    MessageBox.Show("Xóa phiếu thuê thành công!");
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy phiếu thuê để xóa.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
+            }
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

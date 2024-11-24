@@ -79,6 +79,7 @@
             this.btnTimKiem.TabIndex = 13;
             this.btnTimKiem.Text = "btnTimKiem";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // panel1
             // 
@@ -141,6 +142,7 @@
             this.btnXoa.TabIndex = 18;
             this.btnXoa.Text = "btnXoa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 

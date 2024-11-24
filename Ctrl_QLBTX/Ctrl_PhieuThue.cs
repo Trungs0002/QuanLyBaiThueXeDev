@@ -53,7 +53,15 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
                 throw new Exception("Không tìm thấy phiếu thuê với mã số: " + phieuThue.SoPhieuThue);
             }
         }
+        public List<PhieuThue> findByCriteria(string searchTerm)
+        {
+            searchTerm = searchTerm.ToLower(); // Chuyển đổi tìm kiếm thành chữ thường
 
+            return CUtils.db.PhieuThues
+                .Where(pt => pt.BienSoXe.ToLower().Contains(searchTerm) || // Tìm theo biển số xe
+                             pt.KhachHang.HoTen.ToLower().Contains(searchTerm)) // Tìm theo tên khách hàng
+                .ToList();
+        }
         public void add(PhieuThue phieuThue)
         {
             CUtils.db.PhieuThues.Add(phieuThue);
