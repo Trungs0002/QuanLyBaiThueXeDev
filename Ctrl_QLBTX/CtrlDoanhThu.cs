@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
 {
-    internal class CtrlDoanhThu
+    public class CtrlDoanhThu
     {
         
     }
