@@ -38,12 +38,21 @@ namespace QuanLyBaiThueXeDev
             var list = from x in dsXe
                        select new { x.BienSoXe, x.MauSon, x.TinhTrang, x.MoTa };
             dtGridViewXe.DataSource = list.ToList();
+            dtGridViewXe.Columns["BienSoXe"].Width = 100;
+            dtGridViewXe.Columns["MauSon"].Width = 100;
+            dtGridViewXe.Columns["TinhTrang"].Width = 200;
+            dtGridViewXe.Columns["MoTa"].Width = 333;
         }
         private void load_LoaiXe()
         {
             var list = from a in dsLoaiXe
                        select new { a.MaLoaiXe, a.TenLoai, a.HangSanXuat, a.NamSanXuat, a.MoTa };
             dtGridViewLoaiXe.DataSource = list.ToList();
+            dtGridViewLoaiXe.Columns["MaLoaiXe"].Width = 80;
+            dtGridViewLoaiXe.Columns["TenLoai"].Width = 100;
+            dtGridViewLoaiXe.Columns["HangSanXuat"].Width = 100;
+            dtGridViewLoaiXe.Columns["NamSanXuat"].Width = 100;
+            dtGridViewLoaiXe.Columns["MoTa"].Width = 352;
         }
         private void dtGridViewLoaiXe_CellClick(object sender, DataGridViewCellEventArgs e)
         {

@@ -104,6 +104,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 xe.Activate();
             }
+            label1.Text = "QUẢN LÍ BÃI THUÊ XE | XE";
         }
 
         private void Xe_FormClosed(object sender, FormClosedEventArgs e)
@@ -199,7 +200,7 @@ namespace QuanLyBaiThueXeDev.View
 
         private void FTong_Load(object sender, EventArgs e)
         {
-
+            label2.Text = "Hello, J97!";
         }
 
         private void label2_Click(object sender, EventArgs e)
