@@ -133,7 +133,16 @@ namespace QuanLyBaiThueXeDev
             {
                 if (loaiXe != null)
                 {
-                    // Hiển thị hộp thoại xác nhận trước khi xóa
+                    // Kiểm tra xem có xe thuộc loại xe đang được thuê hay không
+                    var dsXeDangDuocThue = dsXe.Where(x => x.MaLoaiXe == loaiXe.MaLoaiXe && x.TinhTrang.Equals("Đang được thuê", StringComparison.OrdinalIgnoreCase)).ToList();
+
+                    if (dsXeDangDuocThue.Count > 0)
+                    {
+                        MessageBox.Show("Loại xe đang có xe được thuê, không thể xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Hỏi xác nhận trước khi xóa
                     var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa loại xe này không?",
                                                         "Xác nhận",
                                                         MessageBoxButtons.YesNo,
@@ -160,6 +169,7 @@ namespace QuanLyBaiThueXeDev
                 MessageBox.Show($"Xóa loại xe thất bại! Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
         private void btnTimKiem_Click(object sender, EventArgs e)

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtTinhTrang = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtGiaThueXe = new System.Windows.Forms.TextBox();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -41,7 +43,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtMoTa = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtTinhTrang = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtMauSon = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBienSoXe = new System.Windows.Forms.TextBox();
             this.dtGridViewXe = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
@@ -92,6 +92,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.panel1.Controls.Add(this.txtTinhTrang);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtGiaThueXe);
@@ -101,7 +102,6 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtMoTa);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.txtTinhTrang);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtMauSon);
             this.panel1.Controls.Add(this.label2);
@@ -112,6 +112,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1118, 171);
             this.panel1.TabIndex = 4;
+            // 
+            // txtTinhTrang
+            // 
+            this.txtTinhTrang.FormattingEnabled = true;
+            this.txtTinhTrang.Location = new System.Drawing.Point(447, 88);
+            this.txtTinhTrang.Name = "txtTinhTrang";
+            this.txtTinhTrang.Size = new System.Drawing.Size(147, 21);
+            this.txtTinhTrang.TabIndex = 23;
+            this.txtTinhTrang.SelectedIndexChanged += new System.EventHandler(this.txtTinhTrang_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Cambria", 12.25F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(14, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 20);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "QUẢN LÍ XE";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label6
             // 
@@ -200,15 +220,6 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Tình Trạng";
             // 
-            // txtTinhTrang
-            // 
-            this.txtTinhTrang.BackColor = System.Drawing.Color.White;
-            this.txtTinhTrang.Font = new System.Drawing.Font("Cambria", 8.25F);
-            this.txtTinhTrang.Location = new System.Drawing.Point(447, 89);
-            this.txtTinhTrang.Name = "txtTinhTrang";
-            this.txtTinhTrang.Size = new System.Drawing.Size(147, 20);
-            this.txtTinhTrang.TabIndex = 6;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -270,14 +281,14 @@
             // 
             this.dtGridViewXe.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dtGridViewXe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Cambria", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridViewXe.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Cambria", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridViewXe.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtGridViewXe.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(201)))), ((int)(((byte)(155)))));
             this.dtGridViewXe.Location = new System.Drawing.Point(243, 433);
             this.dtGridViewXe.Name = "dtGridViewXe";
@@ -285,17 +296,6 @@
             this.dtGridViewXe.TabIndex = 3;
             this.dtGridViewXe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewXe_CellClick);
             this.dtGridViewXe.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewXe_CellContentClick);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Cambria", 12.25F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(14, 13);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 20);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "QUẢN LÍ XE";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -353,7 +353,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtMoTa;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtTinhTrang;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtMauSon;
         private System.Windows.Forms.Label label2;
@@ -369,5 +368,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox txtTinhTrang;
     }
 }

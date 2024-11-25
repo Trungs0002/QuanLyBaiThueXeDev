@@ -158,6 +158,13 @@ namespace QuanLyBaiThueXeDev
             {
                 if (xe != null)
                 {
+                    // Kiểm tra tình trạng xe
+                    if (xe.TinhTrang.Equals("Đang được thuê", StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show("Xe đang được sử dụng, không thể xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     // Hỏi xác nhận trước khi xóa
                     var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa xe này không?",
                                                         "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -184,6 +191,7 @@ namespace QuanLyBaiThueXeDev
             }
         }
 
+
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string searchTerm = txtTimKiem.Text; 
@@ -195,7 +203,6 @@ namespace QuanLyBaiThueXeDev
             txtBienSoXe.Clear();
             txtMaLoaiXe.Clear();
             txtMauSon.Clear();
-            txtTinhTrang.Clear();
             txtMoTa.Clear();
             txtTimKiem.Clear();
             txtGiaThueXe.Clear();
@@ -212,6 +219,11 @@ namespace QuanLyBaiThueXeDev
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTinhTrang_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
