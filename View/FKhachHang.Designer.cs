@@ -35,6 +35,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.txtSoChungMinh = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@
             this.listViewLichSuThue = new System.Windows.Forms.ListView();
             this.btnLoadLichSu = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
@@ -132,6 +132,16 @@
             this.txtSoChungMinh.Name = "txtSoChungMinh";
             this.txtSoChungMinh.Size = new System.Drawing.Size(180, 20);
             this.txtSoChungMinh.TabIndex = 19;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Cambria", 12.25F, System.Drawing.FontStyle.Bold);
+            this.label8.Location = new System.Drawing.Point(16, 14);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(184, 20);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "QUẢN LÍ KHÁCH HÀNG";
             // 
             // btnXoa
             // 
@@ -279,6 +289,7 @@
             this.dtGridViewKhachHang.Size = new System.Drawing.Size(776, 220);
             this.dtGridViewKhachHang.TabIndex = 6;
             this.dtGridViewKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewKhachHang_CellClick);
+            this.dtGridViewKhachHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewKhachHang_CellContentClick);
             // 
             // listViewLichSuThue
             // 
@@ -316,16 +327,6 @@
             this.label9.Size = new System.Drawing.Size(346, 20);
             this.label9.TabIndex = 28;
             this.label9.Text = "TÌM KIẾM KHÁCH HÀNG TRONG HỆ THỐNG";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Cambria", 12.25F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(16, 14);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(184, 20);
-            this.label8.TabIndex = 27;
-            this.label8.Text = "QUẢN LÍ KHÁCH HÀNG";
             // 
             // label10
             // 

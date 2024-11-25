@@ -31,31 +31,141 @@ namespace QuanLyBaiThueXeDev.View
             dataGridViewKhachHang.Columns.Clear(); // Xóa các cột cũ nếu có
 
             // Thêm cột cho thông tin khách hàng
-            dataGridViewKhachHang.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã Khách Hàng", DataPropertyName = "MaKhachHang" });
-            dataGridViewKhachHang.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Họ Tên", DataPropertyName = "HoTen" });
-            dataGridViewKhachHang.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Giới Tính", DataPropertyName = "GioiTinh" });
-            dataGridViewKhachHang.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Điện Thoại", DataPropertyName = "DienThoai" });
-            dataGridViewKhachHang.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Địa Chỉ", DataPropertyName = "DiaChi" });
-            dataGridViewKhachHang.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Số Chứng Minh", DataPropertyName = "SoChungMinh" });
+            //dataGridViewKhachHang.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã Khách Hàng", DataPropertyName = "MaKhachHang" });
+            //dataGridViewKhachHang.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Họ Tên", DataPropertyName = "HoTen" });
+            //dataGridViewKhachHang.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Giới Tính", DataPropertyName = "GioiTinh" });
+            //dataGridViewKhachHang.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Điện Thoại", DataPropertyName = "DienThoai" });
+            //dataGridViewKhachHang.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Địa Chỉ", DataPropertyName = "DiaChi" });
+            //dataGridViewKhachHang.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Số Chứng Minh", DataPropertyName = "SoChungMinh" });
+
+            var maKhachHangColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Mã Khách Hàng",
+                DataPropertyName = "MaKhachHang",
+                Width = 100 // Chiều rộng cột
+            };
+            dataGridViewKhachHang.Columns.Add(maKhachHangColumn);
+
+            var hoTenColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Họ Tên",
+                DataPropertyName = "HoTen",
+                Width = 162 // Chiều rộng cột
+            };
+            dataGridViewKhachHang.Columns.Add(hoTenColumn);
+
+            var gioiTinhColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Giới Tính",
+                DataPropertyName = "GioiTinh",
+                Width = 100 // Chiều rộng cột
+            };
+            dataGridViewKhachHang.Columns.Add(gioiTinhColumn);
+
+            var dienThoaiColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Điện Thoại",
+                DataPropertyName = "DienThoai",
+                Width = 120 // Chiều rộng cột
+            };
+            dataGridViewKhachHang.Columns.Add(dienThoaiColumn);
+
+            var diaChiColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Địa Chỉ",
+                DataPropertyName = "DiaChi",
+                Width = 200 // Chiều rộng cột
+            };
+            dataGridViewKhachHang.Columns.Add(diaChiColumn);
+
+            var soChungMinhColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Số Chứng Minh",
+                DataPropertyName = "SoChungMinh",
+                Width = 120 // Chiều rộng cột
+            };
+            dataGridViewKhachHang.Columns.Add(soChungMinhColumn);
+
+            //dataGridViewKhachHang.Columns["MaKhachHang"].Width = 100;
+            //dataGridViewKhachHang.Columns["HoTen"].Width = 150;
+            //dataGridViewKhachHang.Columns["GioiTinh"].Width = 100;
+            //dataGridViewKhachHang.Columns["DienThoai"].Width = 120;
+            //dataGridViewKhachHang.Columns["DiaChi"].Width = 200;
+            //dataGridViewKhachHang.Columns["SoChungMinh"].Width = 150;
 
             dataGridViewXe.AutoGenerateColumns = false; // Tắt tự động tạo cột
             dataGridViewXe.Columns.Clear(); // Xóa các cột cũ nếu có
 
             // Thêm cột cho thông tin xe
-            dataGridViewXe.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Biển Số Xe", DataPropertyName = "BienSoXe" });
-            dataGridViewXe.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã Loại Xe", DataPropertyName = "MaLoaiXe" });
-            dataGridViewXe.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Màu Sơn", DataPropertyName = "MauSon" });
-            dataGridViewXe.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Tình Trạng", DataPropertyName = "TinhTrang" });
-            dataGridViewXe.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mô Tả", DataPropertyName = "MoTa" });
-            dataGridViewXe.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Giá Thuê", DataPropertyName = "GiaThueXe" });
+            //dataGridViewXe.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Biển Số Xe", DataPropertyName = "BienSoXe" });
+            //dataGridViewXe.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã Loại Xe", DataPropertyName = "MaLoaiXe" });
+            //dataGridViewXe.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Màu Sơn", DataPropertyName = "MauSon" });
+            //dataGridViewXe.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Tình Trạng", DataPropertyName = "TinhTrang" });
+            //dataGridViewXe.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mô Tả", DataPropertyName = "MoTa" });
+            //dataGridViewXe.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Giá Thuê", DataPropertyName = "GiaThueXe" });
+
+            var bienSoXeColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Biển Số Xe",
+                DataPropertyName = "BienSoXe",
+                Width = 120 // Chiều rộng cột
+            };
+            dataGridViewXe.Columns.Add(bienSoXeColumn);
+
+            var maLoaiXeColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Mã Loại Xe",
+                DataPropertyName = "MaLoaiXe",
+                Width = 100 // Chiều rộng cột
+            };
+            dataGridViewXe.Columns.Add(maLoaiXeColumn);
+
+            var mauSonColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Màu Sơn",
+                DataPropertyName = "MauSon",
+                Width = 100 // Chiều rộng cột
+            };
+            dataGridViewXe.Columns.Add(mauSonColumn);
+
+            var tinhTrangColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Tình Trạng",
+                DataPropertyName = "TinhTrang",
+                Width = 150 // Chiều rộng cột
+            };
+            dataGridViewXe.Columns.Add(tinhTrangColumn);
+
+            var moTaColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Mô Tả",
+                DataPropertyName = "MoTa",
+                Width = 212 // Chiều rộng cột
+            };
+            dataGridViewXe.Columns.Add(moTaColumn);
+
+            var giaThueXeColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Giá Thuê",
+                DataPropertyName = "GiaThueXe",
+                Width = 120 // Chiều rộng cột
+            };
+            dataGridViewXe.Columns.Add(giaThueXeColumn);
+
+            //dataGridViewXe.Columns["BienSoXe"].Width = 120;
+            //dataGridViewXe.Columns["MaLoaiXe"].Width = 100;
+            //dataGridViewXe.Columns["MauSon"].Width = 100;
+            //dataGridViewXe.Columns["TinhTrang"].Width = 100;
+            //dataGridViewXe.Columns["MoTa"].Width = 200;
+            //dataGridViewXe.Columns["GiaThuXe"].Width = 100;
         }
         private void FPhieuThue_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
+            SetupDataGridView();
             LoadKhachHang();
             LoadXe();
             LoadPhieuThue();
-            SetupDataGridView();
         }
         private void LoadKhachHang()
         {
@@ -427,6 +537,11 @@ namespace QuanLyBaiThueXeDev.View
         }
 
         private void dataGridViewPhieuThue_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewXe_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

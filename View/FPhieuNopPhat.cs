@@ -51,6 +51,14 @@ namespace QuanLyBaiThueXeDev.View
                            NgayTraXe = p.NgayTraXe.HasValue ? p.NgayTraXe.Value.ToString("dd/MM/yyyy") : "Chưa có"  // Định dạng ngày
                        };
             dtGridViewPhieuPhat.DataSource = list.ToList();
+
+            dtGridViewPhieuPhat.Columns["SoPhieuPhat"].Width = 100;
+            dtGridViewPhieuPhat.Columns["HoTenKhachHang"].Width = 165;
+            dtGridViewPhieuPhat.Columns["SoChungMinh"].Width = 120;
+            dtGridViewPhieuPhat.Columns["LyDoNopPhat"].Width = 230;
+            dtGridViewPhieuPhat.Columns["SoTienNopPhat"].Width = 150;
+            dtGridViewPhieuPhat.Columns["NgayThueXe"].Width = 120;
+            dtGridViewPhieuPhat.Columns["NgayTraXe"].Width = 120;
         }
         private void dtGridViewPhieuPhat_CellClick(object sender, DataGridViewCellEventArgs e)
         {

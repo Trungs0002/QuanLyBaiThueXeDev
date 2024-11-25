@@ -24,6 +24,19 @@ namespace QuanLyBaiThueXeDev.View
         bool menuExpand1 = false;
         bool sideExpand = true;
 
+        private Form currentForm = null;
+        private void OpenForm(Form newForm)
+        {
+            if (currentForm != null)
+            {
+                currentForm.Close(); 
+            }
+            currentForm = newForm; 
+            currentForm.MdiParent = this; 
+            currentForm.Dock = DockStyle.Fill; 
+            currentForm.Show(); 
+        }
+
         private void mdiProp()
         {
             this.SetBevel(false);
@@ -42,18 +55,20 @@ namespace QuanLyBaiThueXeDev.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (doanhthu == null)
-            {
-                doanhthu = new FDoanhThu();
-                doanhthu.FormClosed += Doanhthu_FormClosed; 
-                doanhthu.MdiParent = this;
-                doanhthu.Dock = DockStyle.Fill;
-                doanhthu.Show();
-            }
-            else
-            {
-                doanhthu.Activate();
-            }
+            //if (doanhthu == null)
+            //{
+            //    doanhthu = new FDoanhThu();
+            //    doanhthu.FormClosed += Doanhthu_FormClosed; 
+            //    doanhthu.MdiParent = this;
+            //    doanhthu.Dock = DockStyle.Fill;
+            //    doanhthu.Show();
+            //}
+            //else
+            //{
+            //    doanhthu.Activate();
+            //}
+            OpenForm(new FDoanhThu());
+            label1.Text = "QUẢN LÍ BÃI THUÊ XE | DOANH THU";
         }
 
         private void Doanhthu_FormClosed(object sender, FormClosedEventArgs e)
@@ -92,19 +107,20 @@ namespace QuanLyBaiThueXeDev.View
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (xe == null)
-            {
-                xe = new FXe();
-                xe.FormClosed += Xe_FormClosed; 
-                xe.MdiParent = this;
-                xe.Dock = DockStyle.Fill;
-                xe.Show();
-            }
-            else
-            {
-                xe.Activate();
-            }
-            label1.Text = "QUẢN LÍ BÃI THUÊ XE | XE";
+            //if (xe == null)
+            //{
+            //    xe = new FXe();
+            //    xe.FormClosed += Xe_FormClosed; 
+            //    xe.MdiParent = this;
+            //    xe.Dock = DockStyle.Fill;
+            //    xe.Show();
+            //}
+            //else
+            //{
+            //    xe.Activate();
+            //}
+            OpenForm(new FXe());
+           label1.Text = "QUẢN LÍ BÃI THUÊ XE | XE";
         }
 
         private void Xe_FormClosed(object sender, FormClosedEventArgs e)
@@ -215,18 +231,20 @@ namespace QuanLyBaiThueXeDev.View
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (khachhang == null)
-            {
-                khachhang = new FKhachHang();
-                khachhang.FormClosed += Khachhang_FormClosed;
-                khachhang.MdiParent = this;
-                khachhang.Dock = DockStyle.Fill;
-                khachhang.Show();
-            }
-            else
-            {
-                khachhang.Activate();
-            }
+            //if (khachhang == null)
+            //{
+            //    khachhang = new FKhachHang();
+            //    khachhang.FormClosed += Khachhang_FormClosed;
+            //    khachhang.MdiParent = this;
+            //    khachhang.Dock = DockStyle.Fill;
+            //    khachhang.Show();
+            //}
+            //else
+            //{
+            //    khachhang.Activate();
+            //}
+            OpenForm(new FKhachHang());
+            label1.Text = "QUẢN LÍ BÃI THUÊ XE | KHÁCH HÀNG";
         }
 
         private void Khachhang_FormClosed(object sender, FormClosedEventArgs e)
@@ -236,18 +254,20 @@ namespace QuanLyBaiThueXeDev.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (nhanvien == null)
-            {
-                nhanvien = new FNhanVien();
-                nhanvien.FormClosed += Nhanvien_FormClosed; 
-                nhanvien.MdiParent = this;
-                nhanvien.Dock = DockStyle.Fill;
-                nhanvien.Show();
-            }
-            else
-            {
-                nhanvien.Activate();
-            }
+            //if (nhanvien == null)
+            //{
+            //    nhanvien = new FNhanVien();
+            //    nhanvien.FormClosed += Nhanvien_FormClosed; 
+            //    nhanvien.MdiParent = this;
+            //    nhanvien.Dock = DockStyle.Fill;
+            //    nhanvien.Show();
+            //}
+            //else
+            //{
+            //    nhanvien.Activate();
+            //}
+            OpenForm(new FNhanVien());
+            label1.Text = "QUẢN LÍ BÃI THUÊ XE | NHÂN VIÊN";
         }
 
         private void Nhanvien_FormClosed(object sender, FormClosedEventArgs e)
@@ -257,18 +277,20 @@ namespace QuanLyBaiThueXeDev.View
 
         private void button9_Click(object sender, EventArgs e)
         {
-            if (phieuthue == null)
-            {
-                phieuthue = new FPhieuThue();
-                phieuthue.FormClosed += Phieuthue_FormClosed; 
-                phieuthue.MdiParent = this;
-                phieuthue.Dock = DockStyle.Fill;
-                phieuthue.Show();
-            }
-            else
-            {
-                phieuthue.Activate();
-            }
+            //if (phieuthue == null)
+            //{
+            //    phieuthue = new FPhieuThue();
+            //    phieuthue.FormClosed += Phieuthue_FormClosed; 
+            //    phieuthue.MdiParent = this;
+            //    phieuthue.Dock = DockStyle.Fill;
+            //    phieuthue.Show();
+            //}
+            //else
+            //{
+            //    phieuthue.Activate();
+            //}
+            OpenForm(new FPhieuThue());
+            label1.Text = "QUẢN LÍ BÃI THUÊ XE | PHIẾU THUÊ";
         }
 
         private void Phieuthue_FormClosed(object sender, FormClosedEventArgs e)
@@ -278,18 +300,20 @@ namespace QuanLyBaiThueXeDev.View
 
         private void button10_Click(object sender, EventArgs e)
         {
-            if (phieunopphat == null)
-            {
-                phieunopphat = new FPhieuNopPhat();
-                phieunopphat.FormClosed += Phieunopphat_FormClosed; 
-                phieunopphat.MdiParent = this;
-                phieunopphat.Dock = DockStyle.Fill;
-                phieunopphat.Show();
-            }
-            else
-            {
-                phieunopphat.Activate();
-            }
+            //if (phieunopphat == null)
+            //{
+            //    phieunopphat = new FPhieuNopPhat();
+            //    phieunopphat.FormClosed += Phieunopphat_FormClosed; 
+            //    phieunopphat.MdiParent = this;
+            //    phieunopphat.Dock = DockStyle.Fill;
+            //    phieunopphat.Show();
+            //}
+            //else
+            //{
+            //    phieunopphat.Activate();
+            //}
+            OpenForm(new FPhieuNopPhat());
+            label1.Text = "QUẢN LÍ BÃI THUÊ XE | PHIẾU NỘP PHẠT";
         }
 
         private void Phieunopphat_FormClosed(object sender, FormClosedEventArgs e)
@@ -299,18 +323,20 @@ namespace QuanLyBaiThueXeDev.View
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (loaixe == null)
-            {
-                loaixe = new FLoaiXe();
-                loaixe.FormClosed += Loaixe_FormClosed; 
-                loaixe.MdiParent = this;
-                loaixe.Dock = DockStyle.Fill;
-                loaixe.Show();
-            }
-            else
-            {
-                loaixe.Activate();
-            }
+            //if (loaixe == null)
+            //{
+            //    loaixe = new FLoaiXe();
+            //    loaixe.FormClosed += Loaixe_FormClosed; 
+            //    loaixe.MdiParent = this;
+            //    loaixe.Dock = DockStyle.Fill;
+            //    loaixe.Show();
+            //}
+            //else
+            //{
+            //    loaixe.Activate();
+            //}
+            OpenForm(new FLoaiXe());
+            label1.Text = "QUẢN LÍ BÃI THUÊ XE | LOẠI XE";
         }
 
         private void Loaixe_FormClosed(object sender, FormClosedEventArgs e)
