@@ -70,6 +70,12 @@ namespace QuanLyBaiThueXeDev.View
             var list = from kh in dsKhachHang
                        select new { kh.MaKhachHang, kh.HoTen, kh.GioiTinh, kh.DienThoai, kh.DiaChi, kh.SoChungMinh };
             dtGridViewKhachHang.DataSource = list.ToList();
+            dtGridViewKhachHang.Columns["MaKhachHang"].Width = 90;
+            dtGridViewKhachHang.Columns["HoTen"].Width = 142; 
+            dtGridViewKhachHang.Columns["GioiTinh"].Width = 101; 
+            dtGridViewKhachHang.Columns["DienThoai"].Width = 120; 
+            dtGridViewKhachHang.Columns["DiaChi"].Width = 142; 
+            dtGridViewKhachHang.Columns["SoChungMinh"].Width = 120;
         }
         private void dtGridViewKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
