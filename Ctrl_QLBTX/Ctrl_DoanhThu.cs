@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 
 namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
 {
@@ -11,13 +10,13 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
 
         public Ctrl_DoanhThu()
         {
-            // Khởi tạo context hoặc Inject context nếu dùng Unity
+            // Khởi tạo context
             context = new QuanLyBaiThueXeEntities();
         }
 
         public List<LichSuThue> GetLichSuThueTheoThang(int month, int year)
         {
-            return CUtils.db.LichSuThues
+            return context.LichSuThues
                 .Where(ls => ls.NgayThue.Month == month && ls.NgayThue.Year == year)
                 .ToList();
         }
@@ -26,13 +25,13 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
         {
             try
             {
-                return CUtils.db.LichSuThues
+                return context.LichSuThues
                     .Where(ls => ls.NgayThue.Month == month && ls.NgayThue.Year == year)
                     .Sum(ls => ls.TongTien);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception("Có lỗi xảy ra khi tính doanh thu", ex);
+                return 0;
             }
         }
 
@@ -50,17 +49,7 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
                 .ToList();
         }
 
-        public List<dynamic> GetDoanhThuTheoThang(int month, int year)
-        {
-            // Đây chỉ là ví dụ. Bạn cần thay thế bằng logic lấy dữ liệu thật từ cơ sở dữ liệu.
-              return new List<dynamic>
-            {
-            new { Ngay = "01", TongTien = 100000 },
-            new { Ngay = "02", TongTien = 150000 },
-            new { Ngay = "03", TongTien = 200000 }
-            };
-        }
-
 
     }
+
 }

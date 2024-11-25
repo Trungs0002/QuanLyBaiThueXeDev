@@ -75,18 +75,35 @@ namespace QuanLyBaiThueXeDev
         {
             try
             {
+                // Kiểm tra xem mã loại xe đã tồn tại hay chưa
+                int maLoaiXeMoi;
+                if (!int.TryParse(txtMaLoaiXe.Text, out maLoaiXeMoi))
+                {
+                    MessageBox.Show("Mã loại xe phải là số. Vui lòng kiểm tra lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var loaiXeTrung = dsLoaiXe.FirstOrDefault(lx => lx.MaLoaiXe == maLoaiXeMoi);
+                if (loaiXeTrung != null)
+                {
+                    MessageBox.Show("Mã loại xe đã tồn tại. Vui lòng nhập mã khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Nếu không trùng, tạo đối tượng mới
                 loaiXe = new LoaiXe
                 {
-                    MaLoaiXe = int.Parse(txtMaLoaiXe.Text),
+                    MaLoaiXe = maLoaiXeMoi,
                     TenLoai = txtTenLoai.Text.Trim(),
                     HangSanXuat = txtHangSanXuat.Text.Trim(),
                     NamSanXuat = int.Parse(txtNamSanXuat.Text),
                     MoTa = txtMoTa.Text.Trim()
                 };
 
+                // Thêm loại xe vào danh sách và cơ sở dữ liệu
                 ctrlLoaiXe.add(loaiXe); // Thêm vào cơ sở dữ liệu
                 dsLoaiXe.Add(loaiXe);   // Thêm vào danh sách hiển thị
-                load_LoaiXe();          // Tải lại danh sách
+                load_LoaiXe();          // Cập nhật danh sách hiển thị
                 ClearFields();          // Xóa các trường nhập liệu
 
                 MessageBox.Show("Thêm loại xe thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -96,6 +113,7 @@ namespace QuanLyBaiThueXeDev
                 MessageBox.Show($"Thêm loại xe thất bại! Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
         private void btnSua_Click(object sender, EventArgs e)
