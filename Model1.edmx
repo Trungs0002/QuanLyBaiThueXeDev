@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QuanLyBaiThueXeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QuanLyBaiThueXeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DoanhThu">
           <Key>
             <PropertyRef Name="MaDoanhThu" />
@@ -105,7 +105,7 @@
           <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
           <Property Name="GiaThueXe" Type="int" />
         </EntityType>
-        <Association Name="FK__LichSuThu__MaKha__5DCAEF64">
+        <Association Name="FK__LichSuThu__MaKha__60A75C0F">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
           <End Role="LichSuThue" Type="Self.LichSuThue" Multiplicity="*" />
           <ReferentialConstraint>
@@ -117,7 +117,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhieuNopP__MaKha__46E78A0C">
+        <Association Name="FK__PhieuNopP__MaKha__59063A47">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
           <End Role="PhieuNopPhat" Type="Self.PhieuNopPhat" Multiplicity="*" />
           <ReferentialConstraint>
@@ -129,7 +129,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhieuThue__BienS__4222D4EF">
+        <Association Name="FK__PhieuThue__BienS__5441852A">
           <End Role="Xe" Type="Self.Xe" Multiplicity="0..1" />
           <End Role="PhieuThue" Type="Self.PhieuThue" Multiplicity="*" />
           <ReferentialConstraint>
@@ -141,7 +141,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhieuThue__MaKha__412EB0B6">
+        <Association Name="FK__PhieuThue__MaKha__534D60F1">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
           <End Role="PhieuThue" Type="Self.PhieuThue" Multiplicity="*" />
           <ReferentialConstraint>
@@ -153,7 +153,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhieuThue__MaLoa__4316F928">
+        <Association Name="FK__PhieuThue__MaLoa__5535A963">
           <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="0..1" />
           <End Role="PhieuThue" Type="Self.PhieuThue" Multiplicity="*" />
           <ReferentialConstraint>
@@ -165,7 +165,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Xe__MaLoaiXe__398D8EEE">
+        <Association Name="FK__Xe__MaLoaiXe__4BAC3F29">
           <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="0..1" />
           <End Role="Xe" Type="Self.Xe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -186,33 +186,32 @@
           <EntitySet Name="PhieuNopPhat" EntityType="Self.PhieuNopPhat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuThue" EntityType="Self.PhieuThue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Xe" EntityType="Self.Xe" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__LichSuThu__MaKha__5DCAEF64" Association="Self.FK__LichSuThu__MaKha__5DCAEF64">
+          <AssociationSet Name="FK__LichSuThu__MaKha__60A75C0F" Association="Self.FK__LichSuThu__MaKha__60A75C0F">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="LichSuThue" EntitySet="LichSuThue" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhieuNopP__MaKha__46E78A0C" Association="Self.FK__PhieuNopP__MaKha__46E78A0C">
+          <AssociationSet Name="FK__PhieuNopP__MaKha__59063A47" Association="Self.FK__PhieuNopP__MaKha__59063A47">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="PhieuNopPhat" EntitySet="PhieuNopPhat" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhieuThue__BienS__4222D4EF" Association="Self.FK__PhieuThue__BienS__4222D4EF">
+          <AssociationSet Name="FK__PhieuThue__BienS__5441852A" Association="Self.FK__PhieuThue__BienS__5441852A">
             <End Role="Xe" EntitySet="Xe" />
             <End Role="PhieuThue" EntitySet="PhieuThue" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhieuThue__MaKha__412EB0B6" Association="Self.FK__PhieuThue__MaKha__412EB0B6">
+          <AssociationSet Name="FK__PhieuThue__MaKha__534D60F1" Association="Self.FK__PhieuThue__MaKha__534D60F1">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="PhieuThue" EntitySet="PhieuThue" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhieuThue__MaLoa__4316F928" Association="Self.FK__PhieuThue__MaLoa__4316F928">
+          <AssociationSet Name="FK__PhieuThue__MaLoa__5535A963" Association="Self.FK__PhieuThue__MaLoa__5535A963">
             <End Role="LoaiXe" EntitySet="LoaiXe" />
             <End Role="PhieuThue" EntitySet="PhieuThue" />
           </AssociationSet>
-          <AssociationSet Name="FK__Xe__MaLoaiXe__398D8EEE" Association="Self.FK__Xe__MaLoaiXe__398D8EEE">
+          <AssociationSet Name="FK__Xe__MaLoaiXe__4BAC3F29" Association="Self.FK__Xe__MaLoaiXe__4BAC3F29">
             <End Role="LoaiXe" EntitySet="LoaiXe" />
             <End Role="Xe" EntitySet="Xe" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QuanLyBaiThueXeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
