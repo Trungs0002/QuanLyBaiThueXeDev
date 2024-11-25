@@ -68,6 +68,7 @@ namespace QuanLyBaiThueXeDev.View
             //    doanhthu.Activate();
             //}
             OpenForm(new FDoanhThu());
+            label1.Text = "QUẢN LÍ BÃI THUÊ XE | DOANH THU";
         }
 
         private void Doanhthu_FormClosed(object sender, FormClosedEventArgs e)
@@ -243,6 +244,7 @@ namespace QuanLyBaiThueXeDev.View
             //    khachhang.Activate();
             //}
             OpenForm(new FKhachHang());
+            label1.Text = "QUẢN LÍ BÃI THUÊ XE | KHÁCH HÀNG";
         }
 
         private void Khachhang_FormClosed(object sender, FormClosedEventArgs e)
@@ -265,6 +267,7 @@ namespace QuanLyBaiThueXeDev.View
             //    nhanvien.Activate();
             //}
             OpenForm(new FNhanVien());
+            label1.Text = "QUẢN LÍ BÃI THUÊ XE | NHÂN VIÊN";
         }
 
         private void Nhanvien_FormClosed(object sender, FormClosedEventArgs e)
@@ -287,6 +290,7 @@ namespace QuanLyBaiThueXeDev.View
             //    phieuthue.Activate();
             //}
             OpenForm(new FPhieuThue());
+            label1.Text = "QUẢN LÍ BÃI THUÊ XE | PHIẾU THUÊ";
         }
 
         private void Phieuthue_FormClosed(object sender, FormClosedEventArgs e)
@@ -309,6 +313,7 @@ namespace QuanLyBaiThueXeDev.View
             //    phieunopphat.Activate();
             //}
             OpenForm(new FPhieuNopPhat());
+            label1.Text = "QUẢN LÍ BÃI THUÊ XE | PHIẾU NỘP PHẠT";
         }
 
         private void Phieunopphat_FormClosed(object sender, FormClosedEventArgs e)
@@ -331,6 +336,7 @@ namespace QuanLyBaiThueXeDev.View
             //    loaixe.Activate();
             //}
             OpenForm(new FLoaiXe());
+            label1.Text = "QUẢN LÍ BÃI THUÊ XE | LOẠI XE";
         }
 
         private void Loaixe_FormClosed(object sender, FormClosedEventArgs e)
