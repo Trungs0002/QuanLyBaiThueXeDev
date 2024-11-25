@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
@@ -289,7 +289,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtGridViewXe.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dtGridViewXe.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(201)))), ((int)(((byte)(155)))));
+            this.dtGridViewXe.GridColor = System.Drawing.SystemColors.WindowText;
             this.dtGridViewXe.Location = new System.Drawing.Point(243, 433);
             this.dtGridViewXe.Name = "dtGridViewXe";
             this.dtGridViewXe.Size = new System.Drawing.Size(1118, 422);
