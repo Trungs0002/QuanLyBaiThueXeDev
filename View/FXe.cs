@@ -20,6 +20,7 @@ namespace QuanLyBaiThueXeDev
         public FXe()
         {
             InitializeComponent();
+
         }
 
         private void FXe_Load(object sender, EventArgs e)
@@ -33,6 +34,12 @@ namespace QuanLyBaiThueXeDev
             var list = from a in dsXe
                        select new { a.BienSoXe, a.MaLoaiXe, a.MauSon, a.TinhTrang, a.MoTa, a.GiaThueXe };
             dtGridViewXe.DataSource = list.ToList();
+            dtGridViewXe.Columns["BienSoXe"].Width = 150;
+            dtGridViewXe.Columns["MaLoaiXe"].Width = 80;
+            dtGridViewXe.Columns["MauSon"].Width = 150;
+            dtGridViewXe.Columns["TinhTrang"].Width = 200;
+            dtGridViewXe.Columns["MoTa"].Width = 378;
+            dtGridViewXe.Columns["GiaThueXe"].Width = 100;
         }
         private void dtGridViewXe_CellClick(object sender, DataGridViewCellEventArgs e)
         {
