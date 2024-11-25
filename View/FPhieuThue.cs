@@ -288,6 +288,21 @@ namespace QuanLyBaiThueXeDev.View
                 var phieuThue = ctrlPhieuThue.findAll().FirstOrDefault(pt => pt.SoPhieuThue == soPhieuThue);
                 if (phieuThue != null)
                 {
+                    // Lưu thông tin vào bảng lịch sử thuê trước khi xóa
+                    var lichSuThue = new LichSuThue
+                    {
+                        MaKhachHang = phieuThue.MaKhachHang ?? 0, // Lấy mã khách hàng
+                        BienSoXe = phieuThue.BienSoXe,
+                        SoNgayMuon = phieuThue.SoNgayMuon ?? 0, // Lấy số ngày thuê
+                        DonGia = (int)(phieuThue.DonGia ?? 0), // Lấy đơn giá
+                        TongTien = (int)(phieuThue.SoNgayMuon * phieuThue.DonGia), // Tính tổng tiền
+                        NgayThue = phieuThue.NgayThue ?? DateTime.Now // Ngày thuê
+                    };
+
+                    // Thêm lịch sử thuê vào cơ sở dữ liệu
+                    CUtils.db.LichSuThues.Add(lichSuThue);
+                    CUtils.db.SaveChanges();
+
                     // Xóa phiếu thuê
                     string bienSoXe = phieuThue.BienSoXe;
                     ctrlPhieuThue.remove(phieuThue);
@@ -299,8 +314,15 @@ namespace QuanLyBaiThueXeDev.View
                     }
 
                     LoadPhieuThue(); // Cập nhật danh sách phiếu thuê
-                    LoadKhachHang();
-                    LoadXe();
+                    LoadXe(); // Cập nhật danh sách xe
+
+                    // Cập nhật lịch sử thuê trong FKhachHang
+                    var khachHangForm = Application.OpenForms.OfType<FKhachHang>().FirstOrDefault();
+                    if (khachHangForm != null)
+                    {
+                        // Gọi phương thức LoadLichSuThue với mã khách hàng từ phiếu thuê
+                        khachHangForm.LoadLichSuThue(phieuThue.MaKhachHang ?? 0);
+                    }
 
                     MessageBox.Show("Xóa phiếu thuê thành công!");
                 }

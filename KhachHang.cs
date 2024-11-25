@@ -17,6 +17,7 @@ namespace QuanLyBaiThueXeDev
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KhachHang()
         {
+            this.LichSuThues = new HashSet<LichSuThue>();
             this.PhieuNopPhats = new HashSet<PhieuNopPhat>();
             this.PhieuThues = new HashSet<PhieuThue>();
         }
@@ -32,6 +33,8 @@ namespace QuanLyBaiThueXeDev
         public Nullable<System.DateTime> NgayDangKy { get; set; }
         public Nullable<bool> DaThueXe { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LichSuThue> LichSuThues { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuNopPhat> PhieuNopPhats { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

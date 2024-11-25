@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace QuanLyBaiThueXeDev.View
 {
     public partial class FKhachHang : Form
@@ -22,12 +23,47 @@ namespace QuanLyBaiThueXeDev.View
         {
             InitializeComponent();
         }
-
         private void FKhachHang_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
             dsKhachHang = ctrlKhachHang.findAll();
             load_KhachHang();
+            SetupListView();
+
+        }
+        private void SetupListView()
+        {
+            listViewLichSuThue.View = System.Windows.Forms.View.Details;
+            listViewLichSuThue.FullRowSelect = true;
+
+            // Thêm các cột vào ListView
+            listViewLichSuThue.Columns.Add("Mã Khách Hàng", 100);
+            listViewLichSuThue.Columns.Add("Biển Số Xe", 100);
+            listViewLichSuThue.Columns.Add("Số Ngày Mượn", 100);
+            listViewLichSuThue.Columns.Add("Đơn Giá", 100);
+            listViewLichSuThue.Columns.Add("Tổng Tiền", 100);
+            listViewLichSuThue.Columns.Add("Ngày Thuê", 100);
+        }
+        public void LoadLichSuThue(int maKhachHang)
+        {
+            listViewLichSuThue.Items.Clear(); // Xóa tất cả mục hiện tại trong ListView
+            var lichSuThueList = CUtils.db.LichSuThues.Where(ls => ls.MaKhachHang == maKhachHang).ToList();
+
+            foreach (var lichSu in lichSuThueList)
+            {
+                var item = new ListViewItem(lichSu.MaKhachHang.ToString());
+                item.SubItems.Add(lichSu.BienSoXe);
+                item.SubItems.Add(lichSu.SoNgayMuon.ToString());
+                item.SubItems.Add(lichSu.DonGia.ToString());
+                item.SubItems.Add(lichSu.TongTien.ToString());
+                item.SubItems.Add(lichSu.NgayThue.ToString("dd/MM/yyyy")); // Thêm ngày thuê
+                listViewLichSuThue.Items.Add(item);
+            }
+
+            if (lichSuThueList.Count == 0)
+            {
+                MessageBox.Show("Không có lịch sử thuê nào cho khách hàng này.");
+            }
         }
         private void load_KhachHang()
         {
@@ -164,6 +200,26 @@ namespace QuanLyBaiThueXeDev.View
         private void txtMaKhachHang_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLoadLichSu_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtMaKhachHang.Text))
+            {
+                MessageBox.Show("Vui lòng chọn một khách hàng để xem lịch sử.");
+                return;
+            }
+
+            // Lấy mã khách hàng từ textbox
+            int maKhachHang;
+            if (int.TryParse(txtMaKhachHang.Text, out maKhachHang))
+            {
+                LoadLichSuThue(maKhachHang); // Gọi phương thức để tải lịch sử thuê
+            }
+            else
+            {
+                MessageBox.Show("Mã khách hàng không hợp lệ.");
+            }
         }
     }
 }

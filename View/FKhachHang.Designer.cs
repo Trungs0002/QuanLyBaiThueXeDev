@@ -48,6 +48,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtMaKhachHang = new System.Windows.Forms.TextBox();
             this.dtGridViewKhachHang = new System.Windows.Forms.DataGridView();
+            this.listViewLichSuThue = new System.Windows.Forms.ListView();
+            this.btnLoadLichSu = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewKhachHang)).BeginInit();
@@ -237,11 +239,32 @@
             this.dtGridViewKhachHang.TabIndex = 6;
             this.dtGridViewKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewKhachHang_CellClick);
             // 
+            // listViewLichSuThue
+            // 
+            this.listViewLichSuThue.HideSelection = false;
+            this.listViewLichSuThue.Location = new System.Drawing.Point(838, 63);
+            this.listViewLichSuThue.Name = "listViewLichSuThue";
+            this.listViewLichSuThue.Size = new System.Drawing.Size(594, 171);
+            this.listViewLichSuThue.TabIndex = 9;
+            this.listViewLichSuThue.UseCompatibleStateImageBehavior = false;
+            // 
+            // btnLoadLichSu
+            // 
+            this.btnLoadLichSu.Location = new System.Drawing.Point(838, 32);
+            this.btnLoadLichSu.Name = "btnLoadLichSu";
+            this.btnLoadLichSu.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadLichSu.TabIndex = 10;
+            this.btnLoadLichSu.Text = "button1";
+            this.btnLoadLichSu.UseVisualStyleBackColor = true;
+            this.btnLoadLichSu.Click += new System.EventHandler(this.btnLoadLichSu_Click);
+            // 
             // FKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1479, 450);
+            this.Controls.Add(this.btnLoadLichSu);
+            this.Controls.Add(this.listViewLichSuThue);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtGridViewKhachHang);
@@ -280,5 +303,7 @@
         private System.Windows.Forms.DataGridView dtGridViewKhachHang;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtSoChungMinh;
+        private System.Windows.Forms.ListView listViewLichSuThue;
+        private System.Windows.Forms.Button btnLoadLichSu;
     }
 }

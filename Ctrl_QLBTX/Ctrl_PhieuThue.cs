@@ -81,6 +81,20 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
         {
 
         }
+        public void AddLichSuThue(int maKhachHang, string bienSoXe, int soNgayMuon, int donGia)
+        {
+            var lichSuThue = new LichSuThue
+            {
+                MaKhachHang = maKhachHang,
+                BienSoXe = bienSoXe,
+                SoNgayMuon = soNgayMuon,
+                DonGia = donGia,
+                TongTien = soNgayMuon * donGia, // Tính tổng tiền
+                NgayThue = DateTime.Now // Ngày thuê hiện tại
+            };
 
+            CUtils.db.LichSuThues.Add(lichSuThue);
+            CUtils.db.SaveChanges();
+        }
     }
 }

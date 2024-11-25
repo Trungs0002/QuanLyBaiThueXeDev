@@ -26,6 +26,7 @@ namespace QuanLyBaiThueXeDev
         public string TinhTrang { get; set; }
         public string MoTa { get; set; }
         public Nullable<int> GiaThueXe { get; set; }
+    
         public virtual LoaiXe LoaiXe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuThue> PhieuThues { get; set; }

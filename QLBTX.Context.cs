@@ -27,6 +27,7 @@ namespace QuanLyBaiThueXeDev
     
         public virtual DbSet<DoanhThu> DoanhThus { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
+        public virtual DbSet<LichSuThue> LichSuThues { get; set; }
         public virtual DbSet<LoaiXe> LoaiXes { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<PhieuNopPhat> PhieuNopPhats { get; set; }

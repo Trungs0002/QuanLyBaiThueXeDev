@@ -31,6 +31,18 @@
           <Property Name="NgayDangKy" Type="datetime" />
           <Property Name="DaThueXe" Type="bit" />
         </EntityType>
+        <EntityType Name="LichSuThue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaKhachHang" Type="int" Nullable="false" />
+          <Property Name="BienSoXe" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="SoNgayMuon" Type="int" Nullable="false" />
+          <Property Name="DonGia" Type="int" Nullable="false" />
+          <Property Name="TongTien" Type="int" Nullable="false" />
+          <Property Name="NgayThue" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="LoaiXe">
           <Key>
             <PropertyRef Name="MaLoaiXe" />
@@ -91,6 +103,18 @@
           <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
           <Property Name="GiaThueXe" Type="int" />
         </EntityType>
+        <Association Name="FK__LichSuThu__MaKha__5DCAEF64">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
+          <End Role="LichSuThue" Type="Self.LichSuThue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="MaKhachHang" />
+            </Principal>
+            <Dependent Role="LichSuThue">
+              <PropertyRef Name="MaKhachHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PhieuNopP__MaKha__46E78A0C">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
           <End Role="PhieuNopPhat" Type="Self.PhieuNopPhat" Multiplicity="*" />
@@ -154,11 +178,16 @@
         <EntityContainer Name="QuanLyBaiThueXeModelStoreContainer">
           <EntitySet Name="DoanhThu" EntityType="Self.DoanhThu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LichSuThue" EntityType="Self.LichSuThue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiXe" EntityType="Self.LoaiXe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuNopPhat" EntityType="Self.PhieuNopPhat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuThue" EntityType="Self.PhieuThue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Xe" EntityType="Self.Xe" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__LichSuThu__MaKha__5DCAEF64" Association="Self.FK__LichSuThu__MaKha__5DCAEF64">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="LichSuThue" EntitySet="LichSuThue" />
+          </AssociationSet>
           <AssociationSet Name="FK__PhieuNopP__MaKha__46E78A0C" Association="Self.FK__PhieuNopP__MaKha__46E78A0C">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="PhieuNopPhat" EntitySet="PhieuNopPhat" />
@@ -209,8 +238,22 @@
           <Property Name="SoTaiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="NgayDangKy" Type="DateTime" Precision="3" />
           <Property Name="DaThueXe" Type="Boolean" />
+          <NavigationProperty Name="LichSuThues" Relationship="Self.FK__LichSuThu__MaKha__5DCAEF64" FromRole="KhachHang" ToRole="LichSuThue" />
           <NavigationProperty Name="PhieuNopPhats" Relationship="Self.FK__PhieuNopP__MaKha__46E78A0C" FromRole="KhachHang" ToRole="PhieuNopPhat" />
           <NavigationProperty Name="PhieuThues" Relationship="Self.FK__PhieuThue__MaKha__412EB0B6" FromRole="KhachHang" ToRole="PhieuThue" />
+        </EntityType>
+        <EntityType Name="LichSuThue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaKhachHang" Type="Int32" Nullable="false" />
+          <Property Name="BienSoXe" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoNgayMuon" Type="Int32" Nullable="false" />
+          <Property Name="DonGia" Type="Int32" Nullable="false" />
+          <Property Name="TongTien" Type="Int32" Nullable="false" />
+          <Property Name="NgayThue" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="KhachHang" Relationship="Self.FK__LichSuThu__MaKha__5DCAEF64" FromRole="LichSuThue" ToRole="KhachHang" />
         </EntityType>
         <EntityType Name="LoaiXe">
           <Key>
@@ -276,10 +319,22 @@
           <Property Name="MauSon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GiaThueXe" Type="Int32" />
           <NavigationProperty Name="LoaiXe" Relationship="Self.FK__Xe__MaLoaiXe__398D8EEE" FromRole="Xe" ToRole="LoaiXe" />
           <NavigationProperty Name="PhieuThues" Relationship="Self.FK__PhieuThue__BienS__4222D4EF" FromRole="Xe" ToRole="PhieuThue" />
-          <Property Name="GiaThueXe" Type="Int32" />
         </EntityType>
+        <Association Name="FK__LichSuThu__MaKha__5DCAEF64">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
+          <End Role="LichSuThue" Type="Self.LichSuThue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="MaKhachHang" />
+            </Principal>
+            <Dependent Role="LichSuThue">
+              <PropertyRef Name="MaKhachHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PhieuNopP__MaKha__46E78A0C">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
           <End Role="PhieuNopPhat" Type="Self.PhieuNopPhat" Multiplicity="*" />
@@ -343,11 +398,16 @@
         <EntityContainer Name="QuanLyBaiThueXeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DoanhThus" EntityType="Self.DoanhThu" />
           <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+          <EntitySet Name="LichSuThues" EntityType="Self.LichSuThue" />
           <EntitySet Name="LoaiXes" EntityType="Self.LoaiXe" />
           <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
           <EntitySet Name="PhieuNopPhats" EntityType="Self.PhieuNopPhat" />
           <EntitySet Name="PhieuThues" EntityType="Self.PhieuThue" />
           <EntitySet Name="Xes" EntityType="Self.Xe" />
+          <AssociationSet Name="FK__LichSuThu__MaKha__5DCAEF64" Association="Self.FK__LichSuThu__MaKha__5DCAEF64">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="LichSuThue" EntitySet="LichSuThues" />
+          </AssociationSet>
           <AssociationSet Name="FK__PhieuNopP__MaKha__46E78A0C" Association="Self.FK__PhieuNopP__MaKha__46E78A0C">
             <End Role="KhachHang" EntitySet="KhachHangs" />
             <End Role="PhieuNopPhat" EntitySet="PhieuNopPhats" />
@@ -400,6 +460,19 @@
                 <ScalarProperty Name="SoTaiKhoan" ColumnName="SoTaiKhoan" />
                 <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
                 <ScalarProperty Name="DaThueXe" ColumnName="DaThueXe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LichSuThues">
+            <EntityTypeMapping TypeName="QuanLyBaiThueXeModel.LichSuThue">
+              <MappingFragment StoreEntitySet="LichSuThue">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
+                <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
+                <ScalarProperty Name="SoNgayMuon" ColumnName="SoNgayMuon" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="NgayThue" ColumnName="NgayThue" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -459,12 +532,12 @@
           <EntitySetMapping Name="Xes">
             <EntityTypeMapping TypeName="QuanLyBaiThueXeModel.Xe">
               <MappingFragment StoreEntitySet="Xe">
-                <ScalarProperty Name="GiaThueXe" ColumnName="GiaThueXe" />
                 <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
                 <ScalarProperty Name="MaLoaiXe" ColumnName="MaLoaiXe" />
                 <ScalarProperty Name="MauSon" ColumnName="MauSon" />
                 <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="GiaThueXe" ColumnName="GiaThueXe" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
