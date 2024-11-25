@@ -348,7 +348,7 @@ namespace QuanLyBaiThueXeDev.View
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
     }
 }
