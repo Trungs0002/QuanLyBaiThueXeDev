@@ -325,5 +325,10 @@ namespace QuanLyBaiThueXeDev.View
         {
 
         }
+
+        private void dtGridViewKhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
