@@ -105,7 +105,7 @@ namespace QuanLyBaiThueXeDev.View
                 // Kiểm tra độ dài của các trường nhập liệu
                 if (txtHoTen.Text.Length > 50 ||
                     txtGioiTinh.Text.Length > 10 ||
-                    txtDienThoai.Text.Length > 15 ||
+                    txtDienThoai.Text.Length > 10 ||
                     txtDiaChi.Text.Length > 100 ||
                     txtSoChungMinh.Text.Length > 12)
                 {
