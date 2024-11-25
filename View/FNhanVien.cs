@@ -33,6 +33,10 @@ namespace QuanLyBaiThueXeDev.View
             var list = from nv in dsNhanVien
                        select new { nv.MaNhanVien, nv.TenNhanVien, nv.DienThoai, nv.MoTa };
             dtGridViewKhachHang.DataSource = list.ToList();
+            dtGridViewKhachHang.Columns["MaNhanVien"].Width = 100; 
+            dtGridViewKhachHang.Columns["TenNhanVien"].Width = 200; 
+            dtGridViewKhachHang.Columns["DienThoai"].Width = 150; 
+            dtGridViewKhachHang.Columns["MoTa"].Width = 557;
         }
         private void dtGridViewKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -159,6 +163,21 @@ namespace QuanLyBaiThueXeDev.View
         }
 
         private void txtDienThoai_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaNhanVien_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTenNhanVien_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtGridViewKhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
