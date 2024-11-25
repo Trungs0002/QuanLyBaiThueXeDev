@@ -60,7 +60,7 @@ namespace QuanLyBaiThueXeDev
         {
             try
             {
-                // Kiểm tra các trường nhập liệu có bị bỏ trống hay không
+                // Kiểm tra các trường nhập liệu
                 if (string.IsNullOrWhiteSpace(txtBienSoXe.Text) ||
                     string.IsNullOrWhiteSpace(txtMaLoaiXe.Text) ||
                     string.IsNullOrWhiteSpace(txtMauSon.Text) ||
@@ -70,47 +70,21 @@ namespace QuanLyBaiThueXeDev
                     throw new Exception("Vui lòng nhập đầy đủ thông tin.");
                 }
 
-                // Kiểm tra độ dài của các trường nhập liệu
-                if (txtBienSoXe.Text.Length > 15)
+                // Kiểm tra độ dài của Biển số xe
+                if (txtBienSoXe.Text.Length != 9)
                 {
-                    throw new Exception("Biển số xe không được dài quá 15 ký tự.");
+                    throw new Exception("Biển số xe phải đúng 9 ký tự.");
                 }
 
-                if (txtMauSon.Text.Length > 50)
-                {
-                    throw new Exception("Màu sơn không được dài quá 50 ký tự.");
-                }
-
-                if (txtTinhTrang.Text.Length > 50)
-                {
-                    throw new Exception("Tình trạng không được dài quá 50 ký tự.");
-                }
-
-                if (txtMoTa.Text.Length > 255)
-                {
-                    throw new Exception("Mô tả không được dài quá 255 ký tự.");
-                }
-
-                // Kiểm tra MaLoaiXe là số
+                // Kiểm tra dữ liệu hợp lệ
                 if (!int.TryParse(txtMaLoaiXe.Text, out int maLoaiXe))
-                {
                     throw new Exception("Mã loại xe phải là số.");
-                }
-
-                // Kiểm tra GiaThueXe là số
                 if (!int.TryParse(txtGiaThueXe.Text, out int giaThueXe))
-                {
                     throw new Exception("Giá thuê xe phải là số.");
-                }
+                if (dsXe.Any(x => x.BienSoXe.Equals(txtBienSoXe.Text.Trim(), StringComparison.OrdinalIgnoreCase)))
+                    throw new Exception("Biển số xe đã tồn tại.");
 
-                // Kiểm tra biển số xe có trùng lặp hay không
-                var xeTrung = dsXe.Find(x => x.BienSoXe.Equals(txtBienSoXe.Text.Trim(), StringComparison.OrdinalIgnoreCase));
-                if (xeTrung != null)
-                {
-                    throw new Exception("Biển số xe đã tồn tại. Vui lòng nhập biển số khác.");
-                }
-
-                // Nếu không có lỗi, thêm mới xe
+                // Thêm mới xe
                 xe = new Xe
                 {
                     BienSoXe = txtBienSoXe.Text.Trim(),
@@ -121,50 +95,103 @@ namespace QuanLyBaiThueXeDev
                     GiaThueXe = giaThueXe
                 };
 
-                // Thêm xe vào cơ sở dữ liệu và danh sách hiển thị
-                ctrlXe.add(xe);
-                dsXe.Add(xe);
-                load_Xe();            // Cập nhật lại DataGridView
-                ClearFields();        // Xóa các trường nhập liệu
+                ctrlXe.add(xe); // Thêm xe vào cơ sở dữ liệu
+                dsXe.Add(xe);   // Cập nhật danh sách hiển thị
+                load_Xe();      // Tải lại DataGridView
+                ClearFields();  // Xóa các trường nhập liệu
+
+                MessageBox.Show("Thêm xe thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                // Hiển thị thông báo lỗi
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Thêm xe thất bại! Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (xe != null)
+            try
             {
-                xe.MaLoaiXe = int.Parse(txtMaLoaiXe.Text);
-                xe.MauSon = txtMauSon.Text.Trim();
-                xe.TinhTrang = txtTinhTrang.Text.Trim();
-                xe.MoTa = txtMoTa.Text.Trim();
-                xe.GiaThueXe = int.Parse(txtGiaThueXe.Text);
+                if (xe != null)
+                {
+                    // Kiểm tra độ dài của Biển số xe
+                    if (txtBienSoXe.Text.Length != 9)
+                    {
+                        throw new Exception("Biển số xe phải đúng 9 ký tự.");
+                    }
 
-                ctrlXe.upDate(xe);
-                load_Xe();
-                ClearFields();
+                    if (!int.TryParse(txtMaLoaiXe.Text, out int maLoaiXe))
+                        throw new Exception("Mã loại xe phải là số.");
+                    if (!int.TryParse(txtGiaThueXe.Text, out int giaThueXe))
+                        throw new Exception("Giá thuê xe phải là số.");
+
+                    // Cập nhật thông tin xe
+                    xe.MaLoaiXe = maLoaiXe;
+                    xe.MauSon = txtMauSon.Text.Trim();
+                    xe.TinhTrang = txtTinhTrang.Text.Trim();
+                    xe.MoTa = txtMoTa.Text.Trim();
+                    xe.GiaThueXe = giaThueXe;
+
+                    ctrlXe.upDate(xe); // Cập nhật trong cơ sở dữ liệu
+                    load_Xe();         // Tải lại DataGridView
+                    ClearFields();     // Xóa các trường nhập liệu
+
+                    MessageBox.Show("Cập nhật xe thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Chưa chọn xe để cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Chưa chọn xe để cập nhật!!!");
+                MessageBox.Show($"Cập nhật xe thất bại! Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (xe != null)
+            try
             {
-                ctrlXe.remove(xe);
-                dsXe.Remove(xe);
-                load_Xe();
-                ClearFields();
-                xe = null;
+                if (xe != null)
+                {
+                    // Kiểm tra tình trạng xe
+                    if (xe.TinhTrang.Equals("Đang được thuê", StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show("Xe đang được sử dụng, không thể xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Hỏi xác nhận trước khi xóa
+                    var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa xe này không?",
+                                                        "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        ctrlXe.remove(xe); // Xóa khỏi cơ sở dữ liệu
+                        dsXe.Remove(xe);   // Xóa khỏi danh sách hiển thị
+                        load_Xe();         // Tải lại DataGridView
+                        ClearFields();     // Xóa các trường nhập liệu
+                        xe = null;
+
+                        MessageBox.Show("Xóa xe thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Chưa chọn xe để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Xóa xe thất bại! Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string searchTerm = txtTimKiem.Text; 
@@ -176,7 +203,6 @@ namespace QuanLyBaiThueXeDev
             txtBienSoXe.Clear();
             txtMaLoaiXe.Clear();
             txtMauSon.Clear();
-            txtTinhTrang.Clear();
             txtMoTa.Clear();
             txtTimKiem.Clear();
             txtGiaThueXe.Clear();
@@ -193,6 +219,11 @@ namespace QuanLyBaiThueXeDev
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTinhTrang_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

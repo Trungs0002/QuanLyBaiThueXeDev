@@ -70,6 +70,12 @@ namespace QuanLyBaiThueXeDev.View
             var list = from kh in dsKhachHang
                        select new { kh.MaKhachHang, kh.HoTen, kh.GioiTinh, kh.DienThoai, kh.DiaChi, kh.SoChungMinh };
             dtGridViewKhachHang.DataSource = list.ToList();
+            dtGridViewKhachHang.Columns["MaKhachHang"].Width = 90;
+            dtGridViewKhachHang.Columns["HoTen"].Width = 142; 
+            dtGridViewKhachHang.Columns["GioiTinh"].Width = 101; 
+            dtGridViewKhachHang.Columns["DienThoai"].Width = 120; 
+            dtGridViewKhachHang.Columns["DiaChi"].Width = 142; 
+            dtGridViewKhachHang.Columns["SoChungMinh"].Width = 120;
         }
         private void dtGridViewKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -91,7 +97,7 @@ namespace QuanLyBaiThueXeDev.View
         {
             try
             {
-                // Kiểm tra các trường nhập liệu có bị bỏ trống hay không
+                // Kiểm tra các trường bắt buộc
                 if (string.IsNullOrWhiteSpace(txtMaKhachHang.Text) ||
                     string.IsNullOrWhiteSpace(txtHoTen.Text) ||
                     string.IsNullOrWhiteSpace(txtGioiTinh.Text) ||
@@ -102,31 +108,46 @@ namespace QuanLyBaiThueXeDev.View
                     throw new Exception("Vui lòng nhập đầy đủ thông tin.");
                 }
 
-                // Kiểm tra độ dài của các trường nhập liệu
-                if (txtHoTen.Text.Length > 50 ||
-                    txtGioiTinh.Text.Length > 10 ||
-                    txtDienThoai.Text.Length > 15 ||
-                    txtDiaChi.Text.Length > 100 ||
-                    txtSoChungMinh.Text.Length > 12)
+                // Kiểm tra độ dài và định dạng
+                if (txtHoTen.Text.Length > 50)
                 {
-                    throw new Exception("Một số trường nhập liệu quá dài. Vui lòng kiểm tra lại.");
+                    throw new Exception("Tên khách hàng không được vượt quá 50 ký tự.");
                 }
 
-                // Chuyển đổi mã khách hàng
-                int maKhachHangMoi;
-                if (!int.TryParse(txtMaKhachHang.Text, out maKhachHangMoi))
+                if (txtGioiTinh.Text.Length > 10)
+                {
+                    throw new Exception("Giới tính không được vượt quá 10 ký tự.");
+                }
+
+                if (txtDienThoai.Text.Length != 10 || !txtDienThoai.Text.All(char.IsDigit))
+                {
+                    throw new Exception("Số điện thoại phải đúng 10 chữ số.");
+                }
+
+                if (txtDiaChi.Text.Length > 100)
+                {
+                    throw new Exception("Địa chỉ không được vượt quá 100 ký tự.");
+                }
+
+                if (txtSoChungMinh.Text.Length != 12 || !txtSoChungMinh.Text.All(char.IsDigit))
+                {
+                    throw new Exception("Số chứng minh phải đúng 12 chữ số.");
+                }
+
+                // Kiểm tra mã khách hàng là số
+                if (!int.TryParse(txtMaKhachHang.Text, out int maKhachHangMoi))
                 {
                     throw new Exception("Mã khách hàng phải là số.");
                 }
 
-                // Kiểm tra mã khách hàng trùng lặp bằng Find
+                // Kiểm tra mã khách hàng trùng lặp
                 var khachHangTrung = dsKhachHang.Find(kh => kh.MaKhachHang == maKhachHangMoi);
                 if (khachHangTrung != null)
                 {
-                    throw new Exception("Mã khách hàng bị trùng. Vui lòng nhập mã khác.");
+                    throw new Exception("Mã khách hàng đã tồn tại. Vui lòng nhập mã khác.");
                 }
 
-                // Nếu không trùng, thực hiện thêm mới
+                // Tạo đối tượng khách hàng
                 khachHang = new KhachHang
                 {
                     MaKhachHang = maKhachHangMoi,
@@ -137,47 +158,125 @@ namespace QuanLyBaiThueXeDev.View
                     SoChungMinh = txtSoChungMinh.Text.Trim()
                 };
 
-                ctrlKhachHang.add(khachHang); // Thêm khách hàng vào cơ sở dữ liệu
-                dsKhachHang.Add(khachHang);  // Thêm vào danh sách hiển thị
-                load_KhachHang();            // Cập nhật lại DataGridView
-                ClearFields();               // Xóa trường nhập liệu
+                // Thêm khách hàng vào cơ sở dữ liệu và danh sách hiển thị
+                ctrlKhachHang.add(khachHang);
+                dsKhachHang.Add(khachHang);
+                load_KhachHang();
+                ClearFields();
+
+                MessageBox.Show("Thêm khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                // Hiển thị thông báo lỗi
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Thêm khách hàng thất bại! Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
 
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (khachHang != null)
+            try
             {
-                khachHang.HoTen = txtHoTen.Text.Trim();
-                khachHang.GioiTinh = txtGioiTinh.Text.Trim();
-                khachHang.DienThoai = txtDienThoai.Text.Trim();
-                khachHang.DiaChi = txtDiaChi.Text.Trim();
-                khachHang.SoChungMinh = txtSoChungMinh.Text.Trim();
+                if (khachHang != null)
+                {
+                    // Kiểm tra độ dài và định dạng
+                    if (txtHoTen.Text.Length > 50)
+                    {
+                        throw new Exception("Tên khách hàng không được vượt quá 50 ký tự.");
+                    }
 
-                ctrlKhachHang.upDate(khachHang);
-                load_KhachHang();
-                ClearFields();
+                    if (txtGioiTinh.Text.Length > 10)
+                    {
+                        throw new Exception("Giới tính không được vượt quá 10 ký tự.");
+                    }
+
+                    if (txtDienThoai.Text.Length != 10 || !txtDienThoai.Text.All(char.IsDigit))
+                    {
+                        throw new Exception("Số điện thoại phải đúng 10 chữ số.");
+                    }
+
+                    if (txtDiaChi.Text.Length > 100)
+                    {
+                        throw new Exception("Địa chỉ không được vượt quá 100 ký tự.");
+                    }
+
+                    if (txtSoChungMinh.Text.Length != 12 || !txtSoChungMinh.Text.All(char.IsDigit))
+                    {
+                        throw new Exception("Số chứng minh phải đúng 12 chữ số.");
+                    }
+
+                    // Kiểm tra xem thông tin có thay đổi không
+                    bool isChanged = khachHang.HoTen.Trim() != txtHoTen.Text.Trim() ||
+                                     khachHang.GioiTinh.Trim() != txtGioiTinh.Text.Trim() ||
+                                     khachHang.DienThoai.Trim() != txtDienThoai.Text.Trim() ||
+                                     khachHang.DiaChi.Trim() != txtDiaChi.Text.Trim() ||
+                                     khachHang.SoChungMinh.Trim() != txtSoChungMinh.Text.Trim();
+
+                    if (!isChanged)
+                    {
+                        MessageBox.Show("Không có thay đổi nào để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Cập nhật thông tin khách hàng
+                    khachHang.HoTen = txtHoTen.Text.Trim();
+                    khachHang.GioiTinh = txtGioiTinh.Text.Trim();
+                    khachHang.DienThoai = txtDienThoai.Text.Trim();
+                    khachHang.DiaChi = txtDiaChi.Text.Trim();
+                    khachHang.SoChungMinh = txtSoChungMinh.Text.Trim();
+
+                    ctrlKhachHang.upDate(khachHang);
+                    load_KhachHang();
+                    ClearFields();
+
+                    MessageBox.Show("Cập nhật khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Chưa chọn khách hàng để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Cập nhật khách hàng thất bại! Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (khachHang != null)
+            try
             {
-                ctrlKhachHang.remove(khachHang);
-                dsKhachHang.RemoveAt(index);
-                load_KhachHang();
-                ClearFields();
+                if (khachHang != null)
+                {
+                    // Hỏi xác nhận trước khi xóa
+                    var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng này không?",
+                                                        "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        ctrlKhachHang.remove(khachHang);
+                        dsKhachHang.RemoveAt(index);
+                        load_KhachHang();
+                        ClearFields();
+
+                        MessageBox.Show("Xóa khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Chưa chọn khách hàng để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Xóa khách hàng thất bại! Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
