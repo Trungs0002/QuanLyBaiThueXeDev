@@ -28,8 +28,27 @@ namespace QuanLyBaiThueXeDev.View
 
             // Cấu hình biểu đồ
             ConfigureChart();
+            CustomizeChartFont();
         }
+        private void CustomizeChartFont()
+        {
+            chartDoanhThu.Titles[0].Font = new Font("Cambria", 8.25f, FontStyle.Bold);
 
+            // Thay đổi font cho nhãn trục X
+            chartDoanhThu.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Cambria", 8.25f, FontStyle.Bold);
+
+            // Thay đổi font cho nhãn trục Y
+            chartDoanhThu.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Cambria", 8.25f, FontStyle.Bold);
+
+            // Thay đổi font cho tiêu đề trục X
+            chartDoanhThu.ChartAreas[0].AxisX.TitleFont = new Font("Cambria", 8.25f, FontStyle.Bold);
+
+            // Thay đổi font cho tiêu đề trục Y
+            chartDoanhThu.ChartAreas[0].AxisY.TitleFont = new Font("Cambria", 8.25f, FontStyle.Bold);
+
+            // Thay đổi font cho chú thích
+            chartDoanhThu.Legends[0].Font = new Font("Cambria", 8.25f, FontStyle.Bold);
+        }
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
@@ -77,9 +96,17 @@ namespace QuanLyBaiThueXeDev.View
                     NgayThue = ls.NgayThue.ToString("dd/MM/yyyy")
                 }).ToList();
 
+                dtGridViewDoanhThu.Columns["MaKhachHang"].Width = 100; 
+                dtGridViewDoanhThu.Columns["BienSoXe"].Width = 100; 
+                dtGridViewDoanhThu.Columns["SoNgayMuon"].Width = 105;
+                dtGridViewDoanhThu.Columns["DonGia"].Width = 150; 
+                dtGridViewDoanhThu.Columns["TongTien"].Width = 150; 
+                dtGridViewDoanhThu.Columns["NgayThue"].Width = 100;
+
                 // Cập nhật tổng doanh thu
                 decimal tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoThang(month, year);
                 txtTongDoanhThu.Text = tongDoanhThu.ToString("N0");
+                label4.Text = "DANH SÁCH LỊCH SỬ PHIẾU THUÊ | THEO THÁNG " + month;
             }
             catch (Exception ex)
             {
@@ -141,7 +168,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 ChartType = SeriesChartType.Column,
                 BorderWidth = 2,
-                Color = Color.Blue
+                Color = Color.FromArgb(56, 56, 56)
             };
 
             series.Points.AddXY($"{dateTimePickerMonth.Value.Month}/{dateTimePickerMonth.Value.Year}", tongDoanhThu);
@@ -150,6 +177,9 @@ namespace QuanLyBaiThueXeDev.View
             chartDoanhThu.ChartAreas[0].RecalculateAxesScale();
         }
 
+        private void dateTimePickerMonth_ValueChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

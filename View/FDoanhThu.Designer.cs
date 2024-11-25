@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel2 = new System.Windows.Forms.Panel();
             this.timkiem = new System.Windows.Forms.Button();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
@@ -40,19 +41,12 @@
             this.btnThongKe = new System.Windows.Forms.Button();
             this.txtTongDoanhThu = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtNgayThue = new System.Windows.Forms.TextBox();
-            this.txtTongTien = new System.Windows.Forms.TextBox();
-            this.txtDonGia = new System.Windows.Forms.TextBox();
-            this.txtSoNgayMuon = new System.Windows.Forms.TextBox();
-            this.txtBienSoXe = new System.Windows.Forms.TextBox();
-            this.txtMaKH = new System.Windows.Forms.TextBox();
             this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewDoanhThu)).BeginInit();
             this.panel1.SuspendLayout();
@@ -61,10 +55,11 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
             this.panel2.Controls.Add(this.timkiem);
             this.panel2.Controls.Add(this.txtTimKiem);
             this.panel2.Controls.Add(this.btnTimKiem);
-            this.panel2.Location = new System.Drawing.Point(17, 258);
+            this.panel2.Location = new System.Drawing.Point(112, 423);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(775, 52);
@@ -72,17 +67,21 @@
             // 
             // timkiem
             // 
-            this.timkiem.Location = new System.Drawing.Point(682, 13);
+            this.timkiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.timkiem.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.timkiem.ForeColor = System.Drawing.Color.White;
+            this.timkiem.Location = new System.Drawing.Point(670, 11);
             this.timkiem.Name = "timkiem";
-            this.timkiem.Size = new System.Drawing.Size(75, 23);
+            this.timkiem.Size = new System.Drawing.Size(80, 30);
             this.timkiem.TabIndex = 15;
             this.timkiem.Text = "Tìm kiếm";
-            this.timkiem.UseVisualStyleBackColor = true;
+            this.timkiem.UseVisualStyleBackColor = false;
             this.timkiem.Click += new System.EventHandler(this.timkiem_Click);
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Location = new System.Drawing.Point(44, 18);
+            this.txtTimKiem.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.txtTimKiem.Location = new System.Drawing.Point(28, 17);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(619, 20);
@@ -101,34 +100,48 @@
             // dtGridViewDoanhThu
             // 
             this.dtGridViewDoanhThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridViewDoanhThu.Location = new System.Drawing.Point(16, 330);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridViewDoanhThu.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dtGridViewDoanhThu.Location = new System.Drawing.Point(111, 519);
             this.dtGridViewDoanhThu.Margin = new System.Windows.Forms.Padding(4);
             this.dtGridViewDoanhThu.Name = "dtGridViewDoanhThu";
             this.dtGridViewDoanhThu.RowHeadersWidth = 51;
-            this.dtGridViewDoanhThu.Size = new System.Drawing.Size(776, 150);
+            this.dtGridViewDoanhThu.Size = new System.Drawing.Size(776, 308);
             this.dtGridViewDoanhThu.TabIndex = 9;
             // 
             // dateTimePickerMonth
             // 
-            this.dateTimePickerMonth.Location = new System.Drawing.Point(14, 124);
+            this.dateTimePickerMonth.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.dateTimePickerMonth.Location = new System.Drawing.Point(176, 45);
             this.dateTimePickerMonth.Name = "dateTimePickerMonth";
             this.dateTimePickerMonth.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerMonth.TabIndex = 13;
+            this.dateTimePickerMonth.ValueChanged += new System.EventHandler(this.dateTimePickerMonth_ValueChanged);
             // 
             // btnThongKe
             // 
-            this.btnThongKe.Location = new System.Drawing.Point(234, 124);
+            this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.btnThongKe.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnThongKe.ForeColor = System.Drawing.Color.White;
+            this.btnThongKe.Location = new System.Drawing.Point(172, 81);
             this.btnThongKe.Margin = new System.Windows.Forms.Padding(2);
             this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Size = new System.Drawing.Size(112, 33);
+            this.btnThongKe.Size = new System.Drawing.Size(80, 30);
             this.btnThongKe.TabIndex = 14;
             this.btnThongKe.Text = "Xuất";
-            this.btnThongKe.UseVisualStyleBackColor = true;
+            this.btnThongKe.UseVisualStyleBackColor = false;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
             // txtTongDoanhThu
             // 
-            this.txtTongDoanhThu.Location = new System.Drawing.Point(14, 160);
+            this.txtTongDoanhThu.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.txtTongDoanhThu.Location = new System.Drawing.Point(176, 126);
             this.txtTongDoanhThu.Margin = new System.Windows.Forms.Padding(2);
             this.txtTongDoanhThu.Name = "txtTongDoanhThu";
             this.txtTongDoanhThu.Size = new System.Drawing.Size(200, 20);
@@ -136,157 +149,103 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.txtTongDoanhThu);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.dateTimePickerMonth);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtNgayThue);
-            this.panel1.Controls.Add(this.txtTongTien);
-            this.panel1.Controls.Add(this.txtDonGia);
-            this.panel1.Controls.Add(this.txtSoNgayMuon);
-            this.panel1.Controls.Add(this.txtBienSoXe);
-            this.panel1.Controls.Add(this.txtMaKH);
+            this.panel1.Controls.Add(this.txtTongDoanhThu);
+            this.panel1.Controls.Add(this.dateTimePickerMonth);
             this.panel1.Controls.Add(this.btnThongKe);
-            this.panel1.Location = new System.Drawing.Point(17, 55);
+            this.panel1.Location = new System.Drawing.Point(111, 212);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(775, 188);
+            this.panel1.Size = new System.Drawing.Size(420, 167);
             this.panel1.TabIndex = 16;
             // 
-            // label6
+            // chartDoanhThu
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(364, 81);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 13);
-            this.label6.TabIndex = 27;
-            this.label6.Text = "Ngày thuê";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(220, 79);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "Số tiền";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(368, 26);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 13);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Đơn giá";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(197, 33);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 13);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Số ngày mượn";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 72);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Biển số xe";
+            this.chartDoanhThu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.chartDoanhThu.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.chartDoanhThu.BorderSkin.PageColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            chartArea3.Name = "ChartArea1";
+            this.chartDoanhThu.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartDoanhThu.Legends.Add(legend3);
+            this.chartDoanhThu.Location = new System.Drawing.Point(950, 212);
+            this.chartDoanhThu.Margin = new System.Windows.Forms.Padding(2);
+            this.chartDoanhThu.Name = "chartDoanhThu";
+            this.chartDoanhThu.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.chartDoanhThu.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))))};
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartDoanhThu.Series.Add(series3);
+            this.chartDoanhThu.Size = new System.Drawing.Size(595, 615);
+            this.chartDoanhThu.TabIndex = 17;
+            this.chartDoanhThu.Text = "chart1";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 33);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(42, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "Mã khách hàng";
+            this.label1.Size = new System.Drawing.Size(95, 12);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Chọn Tháng/Năm";
             // 
-            // txtNgayThue
+            // label2
             // 
-            this.txtNgayThue.Location = new System.Drawing.Point(430, 79);
-            this.txtNgayThue.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNgayThue.Name = "txtNgayThue";
-            this.txtNgayThue.Size = new System.Drawing.Size(76, 20);
-            this.txtNgayThue.TabIndex = 21;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(43, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(121, 12);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Tổng Doanh Thu (VND)";
             // 
-            // txtTongTien
+            // label11
             // 
-            this.txtTongTien.Location = new System.Drawing.Point(272, 76);
-            this.txtTongTien.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTongTien.Name = "txtTongTien";
-            this.txtTongTien.Size = new System.Drawing.Size(76, 20);
-            this.txtTongTien.TabIndex = 20;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Cambria", 12.25F, System.Drawing.FontStyle.Bold);
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label11.Location = new System.Drawing.Point(16, 13);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(187, 20);
+            this.label11.TabIndex = 33;
+            this.label11.Text = "TRUY VẤN DOANH THU";
             // 
-            // txtDonGia
+            // label3
             // 
-            this.txtDonGia.Location = new System.Drawing.Point(430, 28);
-            this.txtDonGia.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDonGia.Name = "txtDonGia";
-            this.txtDonGia.Size = new System.Drawing.Size(76, 20);
-            this.txtDonGia.TabIndex = 19;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Cambria", 12.25F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(108, 399);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(255, 20);
+            this.label3.TabIndex = 34;
+            this.label3.Text = "TÌM KIẾM LỊCH SỬ PHIẾU THUÊ";
             // 
-            // txtSoNgayMuon
+            // label4
             // 
-            this.txtSoNgayMuon.Location = new System.Drawing.Point(272, 28);
-            this.txtSoNgayMuon.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSoNgayMuon.Name = "txtSoNgayMuon";
-            this.txtSoNgayMuon.Size = new System.Drawing.Size(76, 20);
-            this.txtSoNgayMuon.TabIndex = 18;
-            // 
-            // txtBienSoXe
-            // 
-            this.txtBienSoXe.Location = new System.Drawing.Point(98, 67);
-            this.txtBienSoXe.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBienSoXe.Name = "txtBienSoXe";
-            this.txtBienSoXe.Size = new System.Drawing.Size(76, 20);
-            this.txtBienSoXe.TabIndex = 17;
-            // 
-            // txtMaKH
-            // 
-            this.txtMaKH.Location = new System.Drawing.Point(98, 31);
-            this.txtMaKH.Margin = new System.Windows.Forms.Padding(2);
-            this.txtMaKH.Name = "txtMaKH";
-            this.txtMaKH.Size = new System.Drawing.Size(76, 20);
-            this.txtMaKH.TabIndex = 16;
-            // 
-            // chartDoanhThu
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chartDoanhThu.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartDoanhThu.Legends.Add(legend1);
-            this.chartDoanhThu.Location = new System.Drawing.Point(825, 89);
-            this.chartDoanhThu.Margin = new System.Windows.Forms.Padding(2);
-            this.chartDoanhThu.Name = "chartDoanhThu";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartDoanhThu.Series.Add(series1);
-            this.chartDoanhThu.Size = new System.Drawing.Size(368, 299);
-            this.chartDoanhThu.TabIndex = 17;
-            this.chartDoanhThu.Text = "chart1";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Cambria", 12.25F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(107, 491);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(380, 20);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "DANH SÁCH LỊCH SỬ PHIẾU THUÊ THEO THÁNG";
             // 
             // FDoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1616, 554);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.ClientSize = new System.Drawing.Size(1629, 1005);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.chartDoanhThu);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -303,6 +262,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -317,18 +277,11 @@
         private System.Windows.Forms.TextBox txtTongDoanhThu;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button timkiem;
-        private System.Windows.Forms.TextBox txtDonGia;
-        private System.Windows.Forms.TextBox txtSoNgayMuon;
-        private System.Windows.Forms.TextBox txtBienSoXe;
-        private System.Windows.Forms.TextBox txtMaKH;
-        private System.Windows.Forms.TextBox txtNgayThue;
-        private System.Windows.Forms.TextBox txtTongTien;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDoanhThu;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
