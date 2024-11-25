@@ -211,7 +211,9 @@ namespace QuanLyBaiThueXeDev.View
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            FLogin f = new FLogin();
+            f.Show();
+            this.Hide();
         }
 
         private void FTong_Load(object sender, EventArgs e)
