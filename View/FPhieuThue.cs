@@ -211,71 +211,76 @@ namespace QuanLyBaiThueXeDev.View
         {
             try
             {
-                // Lấy thông tin xe từ cơ sở dữ liệu
-                string bienSoXe = comboBoxXe.SelectedValue.ToString();
-                var xe = dsXe.FirstOrDefault(x => x.BienSoXe == bienSoXe);
-                if (xe == null)
-                {
-                    MessageBox.Show("Không tìm thấy xe với biển số này.");
-                    return;
-                }
-
-                // Lấy thông tin loại xe từ cơ sở dữ liệu
-                var loaiXe = ctrlLoaiXe.findAll().FirstOrDefault(lx => lx.MaLoaiXe == xe.MaLoaiXe);
-                if (loaiXe == null)
-                {
-                    MessageBox.Show("Không tìm thấy loại xe.");
-                    return;
-                }
-
-                if (xe.TinhTrang == "Đang được thuê")
-                {
-                    MessageBox.Show("Xe này đã có người thuê. Vui lòng chọn xe khác.");
-                    return;
-                }
-
+                // Ràng buộc dữ liệu trước khi thêm
                 if (string.IsNullOrWhiteSpace(txtSoPhieuThue.Text) ||
-                string.IsNullOrWhiteSpace(txtSoNgayMuon.Text) ||
-                comboBoxKhachHang.SelectedIndex == -1)
+                    string.IsNullOrWhiteSpace(txtSoNgayMuon.Text) ||
+                    comboBoxKhachHang.SelectedIndex == -1 ||
+                    comboBoxXe.SelectedIndex == -1)
                 {
-                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                if (!int.TryParse(txtSoPhieuThue.Text, out int soPhieuThue))
+                {
+                    MessageBox.Show("Số phiếu thuê phải là số nguyên hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!int.TryParse(txtSoNgayMuon.Text, out int soNgayMuon) || soNgayMuon <= 0)
+                {
+                    MessageBox.Show("Số ngày mượn phải là số nguyên dương.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Kiểm tra trùng Số Phiếu Thuê
+                var existingPhieuThue = ctrlPhieuThue.findAll().FirstOrDefault(pt => pt.SoPhieuThue == soPhieuThue);
+                if (existingPhieuThue != null)
+                {
+                    MessageBox.Show("Số phiếu thuê đã tồn tại. Vui lòng nhập số khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Kiểm tra trạng thái xe
+                string bienSoXe = comboBoxXe.SelectedValue.ToString();
+                var xe = ctrlXe.findByBienSo(bienSoXe);
+                if (xe != null && xe.TinhTrang == "Đang được thuê")
+                {
+                    MessageBox.Show("Xe này đã có người thuê. Vui lòng chọn xe khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Tạo phiếu thuê và lưu dữ liệu
                 var phieuThue = new PhieuThue
                 {
-                    SoPhieuThue = int.Parse(txtSoPhieuThue.Text),
+                    SoPhieuThue = soPhieuThue,
                     NgayThue = dateTimePickerNgayThue.Value,
                     MaKhachHang = (int)comboBoxKhachHang.SelectedValue,
-                    SoChungMinh = dsKhachHang.FirstOrDefault(kh => kh.MaKhachHang == (int)comboBoxKhachHang.SelectedValue)?.SoChungMinh,
                     BienSoXe = bienSoXe,
-                    MaLoaiXe = xe.MaLoaiXe,
-                    HangSanXuat = loaiXe.HangSanXuat,
-                    NamSanXuat = loaiXe.NamSanXuat,
-                    TinhTrang = xe.TinhTrang,
-                    SoLuong = 1,
-                    SoNgayMuon = int.Parse(txtSoNgayMuon.Text),
-                    DonGia = xe.GiaThueXe // Lấy giá thuê từ xe
+                    SoNgayMuon = soNgayMuon,
+                    DonGia = xe?.GiaThueXe ?? 0 // Lấy giá thuê từ xe
                 };
 
-                // Tính tổng tiền
-                //phieuThue.TongTien = phieuThue.SoNgayMuon * phieuThue.DonGia;
-
-                // Lưu phiếu thuê vào cơ sở dữ liệu
                 ctrlPhieuThue.add(phieuThue);
-                xe.TinhTrang = "Đang được thuê";
-                ctrlXe.upDate(xe);
-                LoadPhieuThue(); // Cập nhật danh sách phiếu thuê
+
+                // Cập nhật trạng thái xe
+                if (xe != null)
+                {
+                    xe.TinhTrang = "Đang được thuê";
+                    ctrlXe.upDate(xe);
+                }
+
+                LoadPhieuThue();
                 ClearFields();
 
-                // Hiển thị thông báo thành công
-                MessageBox.Show("Thêm phiếu thuê thành công!");
+                MessageBox.Show("Thêm phiếu thuê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -336,51 +341,47 @@ namespace QuanLyBaiThueXeDev.View
         {
             try
             {
-                // Kiểm tra nếu không có số phiếu thuê được chọn
                 if (string.IsNullOrWhiteSpace(txtSoPhieuThue.Text))
                 {
                     MessageBox.Show("Vui lòng chọn phiếu thuê cần sửa từ danh sách.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Lấy thông tin từ các ô nhập liệu
+                if (!int.TryParse(txtSoNgayMuon.Text, out int soNgayMuon) || soNgayMuon <= 0)
+                {
+                    MessageBox.Show("Số ngày mượn phải là số nguyên dương.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 int soPhieuThue = int.Parse(txtSoPhieuThue.Text);
-                int maKhachHang = (int)comboBoxKhachHang.SelectedValue;
-                string bienSoXe = comboBoxXe.SelectedValue.ToString();
-                int soNgayMuon = int.Parse(txtSoNgayMuon.Text);
-
-                // Lấy phiếu thuê cần sửa từ cơ sở dữ liệu
                 var phieuThue = ctrlPhieuThue.findAll().FirstOrDefault(pt => pt.SoPhieuThue == soPhieuThue);
-
                 if (phieuThue == null)
                 {
                     MessageBox.Show("Không tìm thấy phiếu thuê cần sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Cập nhật thông tin phiếu thuê
-                phieuThue.MaKhachHang = maKhachHang;
-                phieuThue.BienSoXe = bienSoXe;
-                phieuThue.SoNgayMuon = soNgayMuon;
-                phieuThue.DonGia = dsXe.FirstOrDefault(x => x.BienSoXe == bienSoXe)?.GiaThueXe ?? 0;
+                // Kiểm tra xem dữ liệu có thay đổi không
+                if (phieuThue.SoNgayMuon == soNgayMuon && phieuThue.BienSoXe == comboBoxXe.SelectedValue.ToString())
+                {
+                    MessageBox.Show("Thông tin không có thay đổi. Vui lòng nhập thông tin cần sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                // Gửi thông tin cập nhật vào cơ sở dữ liệu
+                // Cập nhật thông tin phiếu thuê
+                phieuThue.SoNgayMuon = soNgayMuon;
+                phieuThue.BienSoXe = comboBoxXe.SelectedValue.ToString();
                 ctrlPhieuThue.update(phieuThue);
 
-                // Cập nhật lại danh sách hiển thị
                 LoadPhieuThue();
-                LoadKhachHang();
-                LoadXe();
-                MessageBox.Show("Cập nhật phiếu thuê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Xóa trắng các ô nhập liệu
-                ClearFields();
+                MessageBox.Show("Sửa phiếu thuê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void btnXoa_Click(object sender, EventArgs e)
         {
             try

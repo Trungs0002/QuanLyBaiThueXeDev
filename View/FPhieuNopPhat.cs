@@ -77,18 +77,52 @@ namespace QuanLyBaiThueXeDev.View
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            phieuNopPhat = new PhieuNopPhat
+            try
             {
-                SoPhieuPhat = int.Parse(txtSoPhieuPhat.Text),
-                HoTenKhachHang = comboBoxHoTen.Text,
-                SoChungMinh = txtSoChungMinh.Text,
-                LyDoNopPhat = txtLyDo.Text,
-                SoTienNopPhat = double.Parse(txtSoTienPhat.Text),
-                TongSoTien = double.Parse(txtSoTienPhat.Text) // Giả sử tổng số tiền bằng số tiền nộp phạt
-            };
-            ctrlPhieuNopPhat.add(phieuNopPhat);
-            dsPhieuNopPhat = ctrlPhieuNopPhat.findAll();
-            load_PhieuNopPhat();
+                // Ràng buộc dữ liệu
+                if (string.IsNullOrWhiteSpace(txtSoPhieuPhat.Text) ||
+                    string.IsNullOrWhiteSpace(txtSoTienPhat.Text) ||
+                    string.IsNullOrWhiteSpace(txtLyDo.Text) ||
+                    comboBoxHoTen.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!int.TryParse(txtSoPhieuPhat.Text, out int soPhieuPhat))
+                {
+                    MessageBox.Show("Số phiếu phạt phải là số nguyên hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!double.TryParse(txtSoTienPhat.Text, out double soTienPhat) || soTienPhat <= 0)
+                {
+                    MessageBox.Show("Số tiền phạt phải là số hợp lệ và lớn hơn 0.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Tạo đối tượng phiếu phạt mới
+                phieuNopPhat = new PhieuNopPhat
+                {
+                    SoPhieuPhat = soPhieuPhat,
+                    HoTenKhachHang = comboBoxHoTen.Text,
+                    SoChungMinh = txtSoChungMinh.Text,
+                    LyDoNopPhat = txtLyDo.Text,
+                    SoTienNopPhat = soTienPhat,
+                    TongSoTien = soTienPhat
+                };
+
+                // Thêm phiếu phạt vào cơ sở dữ liệu
+                ctrlPhieuNopPhat.add(phieuNopPhat);
+                dsPhieuNopPhat = ctrlPhieuNopPhat.findAll();
+                load_PhieuNopPhat();
+
+                MessageBox.Show("Thêm phiếu nộp phạt thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -100,28 +134,72 @@ namespace QuanLyBaiThueXeDev.View
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (phieuNopPhat != null)
+            try
             {
-                ctrlPhieuNopPhat.remove(phieuNopPhat);
-                dsPhieuNopPhat = ctrlPhieuNopPhat.findAll();
-                load_PhieuNopPhat();
+                if (phieuNopPhat == null)
+                {
+                    MessageBox.Show("Vui lòng chọn phiếu phạt để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa phiếu phạt này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    ctrlPhieuNopPhat.remove(phieuNopPhat);
+                    dsPhieuNopPhat = ctrlPhieuNopPhat.findAll();
+                    load_PhieuNopPhat();
+
+                    MessageBox.Show("Xóa phiếu nộp phạt thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            if (phieuNopPhat != null)
+            try
             {
+                if (phieuNopPhat == null)
+                {
+                    MessageBox.Show("Vui lòng chọn phiếu phạt để cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtSoTienPhat.Text) || string.IsNullOrWhiteSpace(txtLyDo.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin cần cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!double.TryParse(txtSoTienPhat.Text, out double soTienPhat) || soTienPhat <= 0)
+                {
+                    MessageBox.Show("Số tiền phạt phải là số hợp lệ và lớn hơn 0.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Cập nhật thông tin phiếu phạt
                 phieuNopPhat.HoTenKhachHang = comboBoxHoTen.Text;
                 phieuNopPhat.SoChungMinh = txtSoChungMinh.Text;
                 phieuNopPhat.LyDoNopPhat = txtLyDo.Text;
-                phieuNopPhat.SoTienNopPhat = double.Parse(txtSoTienPhat.Text);
-                phieuNopPhat.TongSoTien = double.Parse(txtSoTienPhat.Text); // Cập nhật tổng số tiền
+                phieuNopPhat.SoTienNopPhat = soTienPhat;
+                phieuNopPhat.TongSoTien = soTienPhat;
+
+                // Lưu vào cơ sở dữ liệu
                 ctrlPhieuNopPhat.upDate(phieuNopPhat);
                 dsPhieuNopPhat = ctrlPhieuNopPhat.findAll();
                 load_PhieuNopPhat();
+
+                MessageBox.Show("Cập nhật phiếu nộp phạt thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void comboBoxHoTen_SelectedIndexChanged(object sender, EventArgs e)
         {
