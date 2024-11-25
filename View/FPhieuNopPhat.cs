@@ -31,7 +31,16 @@ namespace QuanLyBaiThueXeDev.View
         private void load_PhieuNopPhat()
         {
             var list = from p in dsPhieuNopPhat
-                       select new { p.SoPhieuPhat, p.HoTenKhachHang, p.SoChungMinh, p.LyDoNopPhat, p.SoTienNopPhat, p.TongSoTien };
+                       select new
+                       {
+                           p.SoPhieuPhat,
+                           p.HoTenKhachHang,
+                           p.SoChungMinh,
+                           p.LyDoNopPhat,
+                           p.SoTienNopPhat,
+                           NgayThueXe = p.NgayThueXe.HasValue ? p.NgayThueXe.Value.ToString("dd/MM/yyyy") : "Chưa có", // Định dạng ngày
+                           NgayTraXe = p.NgayTraXe.HasValue ? p.NgayTraXe.Value.ToString("dd/MM/yyyy") : "Chưa có"  // Định dạng ngày
+                       };
             dtGridViewPhieuPhat.DataSource = list.ToList();
         }
         private void dtGridViewPhieuPhat_CellClick(object sender, DataGridViewCellEventArgs e)
