@@ -166,6 +166,10 @@ namespace QuanLyBaiThueXeDev.View
             LoadKhachHang();
             LoadXe();
             LoadPhieuThue();
+
+            // Định dạng DateTimePicker
+            dateTimePickerNgayThue.Format = DateTimePickerFormat.Custom;
+            dateTimePickerNgayThue.CustomFormat = "dd/MM/yyyy";
         }
         private void LoadKhachHang()
         {
@@ -543,6 +547,11 @@ namespace QuanLyBaiThueXeDev.View
         }
 
         private void dataGridViewXe_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
