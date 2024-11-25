@@ -235,7 +235,6 @@
             this.dtGridViewPhieuPhat.Size = new System.Drawing.Size(776, 150);
             this.dtGridViewPhieuPhat.TabIndex = 6;
             this.dtGridViewPhieuPhat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewPhieuPhat_CellClick);
-            this.dtGridViewPhieuPhat.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewPhieuPhat_CellContentClick);
             // 
             // FPhieuNopPhat
             // 

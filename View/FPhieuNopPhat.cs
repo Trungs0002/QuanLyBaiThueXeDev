@@ -96,10 +96,5 @@ namespace QuanLyBaiThueXeDev.View
                 load_PhieuNopPhat();
             }
         }
-
-        private void dtGridViewPhieuPhat_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
