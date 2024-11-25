@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ctrl_QLBTX\Ctrl_DoanhThu.cs" />
     <Compile Include="Ctrl_QLBTX\Ctrl_NhanVien.cs" />
     <Compile Include="DoanhThu.cs">
       <DependentUpon>Model1.tt</DependentUpon>

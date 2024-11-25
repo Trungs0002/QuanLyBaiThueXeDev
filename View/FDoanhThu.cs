@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyBaiThueXeDev.Ctrl_QLBTX;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,8 @@ namespace QuanLyBaiThueXeDev.View
 {
     public partial class FDoanhThu : Form
     {
+        private Ctrl_DoanhThu ctrlDoanhThu = new Ctrl_DoanhThu();
+        private Ctrl_PhieuThue ctrlPhieuThue = new Ctrl_PhieuThue();
         public FDoanhThu()
         {
             InitializeComponent();
@@ -25,7 +28,7 @@ namespace QuanLyBaiThueXeDev.View
             dateTimePickerMonth.Format = DateTimePickerFormat.Custom;
             dateTimePickerMonth.CustomFormat = "MM/yyyy"; // Định dạng ngày/tháng/năm
             // Tải dữ liệu tổng doanh thu hàng tháng khi load form
-            LoadTongDoanhThu(DateTime.Now.Month, DateTime.Now.Year); // Mặc định là tháng hiện tại
+            LoadDoanhThuThang(DateTime.Now.Month, DateTime.Now.Year); // Mặc định là tháng hiện tại
 
         }
 
@@ -54,8 +57,5 @@ namespace QuanLyBaiThueXeDev.View
             // Hiển thị tổng doanh thu
             lblTongDoanhThu.Text = $"Tổng Doanh Thu: {doanhThu:C}";
         }
-
-        
-
     }
 }
