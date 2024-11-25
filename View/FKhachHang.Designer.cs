@@ -247,6 +247,7 @@
             this.listViewLichSuThue.Size = new System.Drawing.Size(594, 171);
             this.listViewLichSuThue.TabIndex = 9;
             this.listViewLichSuThue.UseCompatibleStateImageBehavior = false;
+            this.listViewLichSuThue.SelectedIndexChanged += new System.EventHandler(this.listViewLichSuThue_SelectedIndexChanged);
             // 
             // btnLoadLichSu
             // 
