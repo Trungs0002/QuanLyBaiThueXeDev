@@ -86,6 +86,8 @@ namespace QuanLyBaiThueXeDev.View
         private void button3_Click(object sender, EventArgs e)
         {
             menuTrans.Start();
+            if (sidebar.Width <= 107)
+            { sideTrans.Start(); }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -177,11 +179,17 @@ namespace QuanLyBaiThueXeDev.View
         private void button8_Click(object sender, EventArgs e)
         {
             menuTrans2.Start();
+            if (sidebar.Width <= 107)
+            { sideTrans.Start(); }
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
             sideTrans.Start();
+            if (menuContainer2.Height >= 233)
+            { menuTrans2.Start(); }
+            if (menuContainer1.Height >= 233)
+            { menuTrans.Start(); }
         }
 
         private void button6_Click(object sender, EventArgs e)
