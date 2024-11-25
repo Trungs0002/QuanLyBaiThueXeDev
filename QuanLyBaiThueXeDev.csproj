@@ -58,7 +58,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ctrl_QLBTX\CtrlDoanhThu.cs" />
     <Compile Include="Ctrl_QLBTX\Ctrl_NhanVien.cs" />
     <Compile Include="DoanhThu.cs">
       <DependentUpon>QLBTX.tt</DependentUpon>
