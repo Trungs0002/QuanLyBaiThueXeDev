@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QuanLyBaiThueXeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QuanLyBaiThueXeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DoanhThu">
           <Key>
             <PropertyRef Name="MaDoanhThu" />
@@ -74,6 +74,8 @@
           <Property Name="LyDoNopPhat" Type="nvarchar" MaxLength="255" />
           <Property Name="SoTienNopPhat" Type="float" />
           <Property Name="TongSoTien" Type="float" />
+          <Property Name="NgayThueXe" Type="datetime" />
+          <Property Name="NgayTraXe" Type="datetime" />
         </EntityType>
         <EntityType Name="PhieuThue">
           <Key>
@@ -209,7 +211,8 @@
             <End Role="Xe" EntitySet="Xe" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QuanLyBaiThueXeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -288,6 +291,8 @@
           <Property Name="LyDoNopPhat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="SoTienNopPhat" Type="Double" />
           <Property Name="TongSoTien" Type="Double" />
+          <Property Name="NgayThueXe" Type="DateTime" Precision="3" />
+          <Property Name="NgayTraXe" Type="DateTime" Precision="3" />
           <NavigationProperty Name="KhachHang" Relationship="Self.FK__PhieuNopP__MaKha__46E78A0C" FromRole="PhieuNopPhat" ToRole="KhachHang" />
         </EntityType>
         <EntityType Name="PhieuThue">
@@ -508,6 +513,8 @@
                 <ScalarProperty Name="LyDoNopPhat" ColumnName="LyDoNopPhat" />
                 <ScalarProperty Name="SoTienNopPhat" ColumnName="SoTienNopPhat" />
                 <ScalarProperty Name="TongSoTien" ColumnName="TongSoTien" />
+                <ScalarProperty Name="NgayThueXe" ColumnName="NgayThueXe" />
+                <ScalarProperty Name="NgayTraXe" ColumnName="NgayTraXe" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

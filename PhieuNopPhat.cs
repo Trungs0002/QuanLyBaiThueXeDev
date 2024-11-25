@@ -22,6 +22,8 @@ namespace QuanLyBaiThueXeDev
         public string LyDoNopPhat { get; set; }
         public Nullable<double> SoTienNopPhat { get; set; }
         public Nullable<double> TongSoTien { get; set; }
+        public Nullable<System.DateTime> NgayThueXe { get; set; }
+        public Nullable<System.DateTime> NgayTraXe { get; set; }
     
         public virtual KhachHang KhachHang { get; set; }
     }
