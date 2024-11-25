@@ -129,9 +129,9 @@ namespace QuanLyBaiThueXeDev.View
                     throw new Exception("Địa chỉ không được vượt quá 100 ký tự.");
                 }
 
-                if (txtSoChungMinh.Text.Length != 12 || !txtSoChungMinh.Text.All(char.IsDigit))
+                if (txtSoChungMinh.Text.Length != 9 || !txtSoChungMinh.Text.All(char.IsDigit))
                 {
-                    throw new Exception("Số chứng minh phải đúng 12 chữ số.");
+                    throw new Exception("Số chứng minh phải đúng 9 chữ số.");
                 }
 
                 // Kiểm tra mã khách hàng là số
@@ -203,9 +203,9 @@ namespace QuanLyBaiThueXeDev.View
                         throw new Exception("Địa chỉ không được vượt quá 100 ký tự.");
                     }
 
-                    if (txtSoChungMinh.Text.Length != 12 || !txtSoChungMinh.Text.All(char.IsDigit))
+                    if (txtSoChungMinh.Text.Length != 9 || !txtSoChungMinh.Text.All(char.IsDigit))
                     {
-                        throw new Exception("Số chứng minh phải đúng 12 chữ số.");
+                        throw new Exception("Số chứng minh phải đúng 9 chữ số.");
                     }
 
                     // Kiểm tra xem thông tin có thay đổi không
