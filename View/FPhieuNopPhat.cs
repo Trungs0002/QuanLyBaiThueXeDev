@@ -14,24 +14,42 @@ namespace QuanLyBaiThueXeDev.View
     public partial class FPhieuNopPhat : Form
     {
         private Ctrl_PhieuNopPhat ctrlPhieuNopPhat = new Ctrl_PhieuNopPhat();
+        private Ctrl_KhachHang ctrlKhachHang = new Ctrl_KhachHang();
         private List<PhieuNopPhat> dsPhieuNopPhat = null;
+        private List<KhachHang> dsKhachHang;
         private PhieuNopPhat phieuNopPhat;
         private int index;
         public FPhieuNopPhat()
         {
             InitializeComponent();
         }
-
+        private void LoadKhachHang()
+        {
+            dsKhachHang = ctrlKhachHang.findAll(); // Lấy danh sách khách hàng
+            comboBoxHoTen.DataSource = dsKhachHang; // Gán danh sách khách hàng cho ComboBox
+            comboBoxHoTen.DisplayMember = "HoTen"; // Hiển thị tên khách hàng
+            comboBoxHoTen.ValueMember = "MaKhachHang"; // Giá trị là mã khách hàng
+        }
         private void FPhieuNopPhat_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
             dsPhieuNopPhat = ctrlPhieuNopPhat.findAll();
             load_PhieuNopPhat();
+            LoadKhachHang();
         }
         private void load_PhieuNopPhat()
         {
             var list = from p in dsPhieuNopPhat
-                       select new { p.SoPhieuPhat, p.HoTenKhachHang, p.SoChungMinh, p.LyDoNopPhat, p.SoTienNopPhat, p.TongSoTien };
+                       select new
+                       {
+                           p.SoPhieuPhat,
+                           p.HoTenKhachHang,
+                           p.SoChungMinh,
+                           p.LyDoNopPhat,
+                           p.SoTienNopPhat,
+                           NgayThueXe = p.NgayThueXe.HasValue ? p.NgayThueXe.Value.ToString("dd/MM/yyyy") : "Chưa có", // Định dạng ngày
+                           NgayTraXe = p.NgayTraXe.HasValue ? p.NgayTraXe.Value.ToString("dd/MM/yyyy") : "Chưa có"  // Định dạng ngày
+                       };
             dtGridViewPhieuPhat.DataSource = list.ToList();
         }
         private void dtGridViewPhieuPhat_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -42,7 +60,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 phieuNopPhat = dsPhieuNopPhat[index];
                 txtSoPhieuPhat.Text = phieuNopPhat.SoPhieuPhat.ToString();
-                txtHoTen.Text = phieuNopPhat.HoTenKhachHang;
+                comboBoxHoTen.Text = phieuNopPhat.HoTenKhachHang;
                 txtSoChungMinh.Text = phieuNopPhat.SoChungMinh;
                 txtLyDo.Text = phieuNopPhat.LyDoNopPhat;
                 txtSoTienPhat.Text = phieuNopPhat.SoTienNopPhat.ToString();
@@ -54,7 +72,7 @@ namespace QuanLyBaiThueXeDev.View
             phieuNopPhat = new PhieuNopPhat
             {
                 SoPhieuPhat = int.Parse(txtSoPhieuPhat.Text),
-                HoTenKhachHang = txtHoTen.Text,
+                HoTenKhachHang = comboBoxHoTen.Text,
                 SoChungMinh = txtSoChungMinh.Text,
                 LyDoNopPhat = txtLyDo.Text,
                 SoTienNopPhat = double.Parse(txtSoTienPhat.Text),
@@ -86,7 +104,7 @@ namespace QuanLyBaiThueXeDev.View
         {
             if (phieuNopPhat != null)
             {
-                phieuNopPhat.HoTenKhachHang = txtHoTen.Text;
+                phieuNopPhat.HoTenKhachHang = comboBoxHoTen.Text;
                 phieuNopPhat.SoChungMinh = txtSoChungMinh.Text;
                 phieuNopPhat.LyDoNopPhat = txtLyDo.Text;
                 phieuNopPhat.SoTienNopPhat = double.Parse(txtSoTienPhat.Text);
@@ -95,6 +113,42 @@ namespace QuanLyBaiThueXeDev.View
                 dsPhieuNopPhat = ctrlPhieuNopPhat.findAll();
                 load_PhieuNopPhat();
             }
+        }
+
+        private void comboBoxHoTen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxHoTen.SelectedValue != null)
+            {
+                try
+                {
+                    int maKhachHang = Convert.ToInt32(comboBoxHoTen.SelectedValue); // Sử dụng Convert.ToInt32
+                    var khachHang = dsKhachHang.FirstOrDefault(kh => kh.MaKhachHang == maKhachHang); // Tìm khách hàng tương ứng
+
+                    if (khachHang != null)
+                    {
+                        txtMaKhachHang.Text = khachHang.MaKhachHang.ToString(); // Cập nhật mã khách hàng
+                        txtSoChungMinh.Text = khachHang.SoChungMinh; // Cập nhật số chứng minh nhân dân
+                    }
+                }
+                catch (FormatException)
+                {
+                    
+                }
+                catch (InvalidCastException)
+                {
+                    
+                }
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

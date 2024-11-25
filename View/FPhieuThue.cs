@@ -18,6 +18,7 @@ namespace QuanLyBaiThueXeDev.View
         private Ctrl_LoaiXe ctrlLoaiXe = new Ctrl_LoaiXe();
         private Ctrl_Xe ctrlXe = new Ctrl_Xe();
         private Ctrl_PhieuThue ctrlPhieuThue = new Ctrl_PhieuThue();
+        private Ctrl_PhieuNopPhat ctrlPhieuNopPhat = new Ctrl_PhieuNopPhat();
         private List<KhachHang> dsKhachHang;
         private List<Xe> dsXe;
         public FPhieuThue()
@@ -303,6 +304,36 @@ namespace QuanLyBaiThueXeDev.View
                     CUtils.db.LichSuThues.Add(lichSuThue);
                     CUtils.db.SaveChanges();
 
+                    // Tính toán số tiền nộp phạt nếu có
+                    DateTime ngayTraXe = DateTime.Now; // Ngày trả xe
+                    DateTime ngayThueXe = phieuThue.NgayThue ?? DateTime.Now; // Ngày thuê từ phiếu thuê
+
+                    // Tính toán số ngày chậm trả
+                    int soNgayChamTra = -1 + (ngayTraXe - ngayThueXe).Days;
+
+                    // Nếu số ngày chậm trả > số ngày mượn
+                    if (soNgayChamTra > phieuThue.SoNgayMuon)
+                    {
+                        // Tính số tiền nộp phạt
+                        int soTienNopPhat = (int)(500000 * (soNgayChamTra - phieuThue.SoNgayMuon));
+
+                        // Tạo phiếu nộp phạt
+                        PhieuNopPhat phieuNopPhat = new PhieuNopPhat
+                        {
+                            SoPhieuPhat = GenerateNewPhieuPhatId(), // Phương thức để tạo ID mới cho phiếu nộp phạt
+                            HoTenKhachHang = dsKhachHang.FirstOrDefault(kh => kh.MaKhachHang == phieuThue.MaKhachHang)?.HoTen,
+                            SoChungMinh = phieuThue.SoChungMinh,
+                            // Cập nhật lý do nộp phạt với số ngày trễ
+                            LyDoNopPhat = $"Trễ hạn trả xe ({soNgayChamTra} Ngày)",
+                            SoTienNopPhat = soTienNopPhat,
+                            NgayThueXe = ngayThueXe, // Ngày thuê xe
+                            NgayTraXe = ngayTraXe // Ngày trả xe
+                        };
+
+                        // Thêm phiếu nộp phạt vào cơ sở dữ liệu
+                        ctrlPhieuNopPhat.add(phieuNopPhat);
+                    }
+
                     // Xóa phiếu thuê
                     string bienSoXe = phieuThue.BienSoXe;
                     ctrlPhieuThue.remove(phieuThue);
@@ -314,8 +345,7 @@ namespace QuanLyBaiThueXeDev.View
                     }
 
                     LoadPhieuThue(); // Cập nhật danh sách phiếu thuê
-                    LoadXe(); // Cập nhật danh sách xe
-
+                    LoadXe();
                     // Cập nhật lịch sử thuê trong FKhachHang
                     var khachHangForm = Application.OpenForms.OfType<FKhachHang>().FirstOrDefault();
                     if (khachHangForm != null)
@@ -336,7 +366,12 @@ namespace QuanLyBaiThueXeDev.View
                 MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
             }
         }
-
+        public int GenerateNewPhieuPhatId()
+{
+    // Lấy ID lớn nhất từ bảng PhieuNopPhat
+    var maxId = CUtils.db.PhieuNopPhats.Max(pnp => (int?)pnp.SoPhieuPhat) ?? 0;
+    return maxId + 1; // Tăng thêm 1 để tạo ID mới
+}
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             try

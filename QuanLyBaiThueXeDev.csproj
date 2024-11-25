@@ -58,44 +58,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ctrl_QLBTX\CtrlDoanhThu.cs" />
     <Compile Include="Ctrl_QLBTX\Ctrl_NhanVien.cs" />
     <Compile Include="DoanhThu.cs">
-      <DependentUpon>QLBTX.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="KhachHang.cs">
-      <DependentUpon>QLBTX.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="LichSuThue.cs">
-      <DependentUpon>QLBTX.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="LoaiXe.cs">
-      <DependentUpon>QLBTX.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="mdiProperties.cs" />
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="NhanVien.cs">
-      <DependentUpon>QLBTX.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="PhieuNopPhat.cs">
-      <DependentUpon>QLBTX.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="PhieuThue.cs">
-      <DependentUpon>QLBTX.tt</DependentUpon>
-    </Compile>
-    <Compile Include="QLBTX.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLBTX.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="QLBTX.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLBTX.tt</DependentUpon>
-    </Compile>
-    <Compile Include="QLBTX.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLBTX.edmx</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="View\FDoanhThu.cs">
       <SubType>Form</SubType>
@@ -154,7 +153,7 @@
       <DependentUpon>FKhachHang.cs</DependentUpon>
     </Compile>
     <Compile Include="Xe.cs">
-      <DependentUpon>QLBTX.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="View\FDoanhThu.resx">
       <DependentUpon>FDoanhThu.cs</DependentUpon>
@@ -189,7 +188,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="App.Config" />
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -200,27 +206,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EntityDeploy Include="QLBTX.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QLBTX.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="QLBTX.edmx.diagram">
-      <DependentUpon>QLBTX.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="QLBTX.Context.tt">
+    <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLBTX.edmx</DependentUpon>
-      <LastGenOutput>QLBTX.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="QLBTX.tt">
+    <Content Include="Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLBTX.edmx</DependentUpon>
-      <LastGenOutput>QLBTX.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

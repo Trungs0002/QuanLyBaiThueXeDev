@@ -42,12 +42,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtSoChungMinh = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtMaKhachHang = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSoPhieuPhat = new System.Windows.Forms.TextBox();
             this.dtGridViewPhieuPhat = new System.Windows.Forms.DataGridView();
+            this.comboBoxHoTen = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewPhieuPhat)).BeginInit();
@@ -81,6 +81,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.comboBoxHoTen);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtSoTienPhat);
             this.panel1.Controls.Add(this.btnXoa);
@@ -91,7 +92,6 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtSoChungMinh);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtHoTen);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtMaKhachHang);
             this.panel1.Controls.Add(this.label1);
@@ -188,21 +188,15 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "txtHoTen";
             // 
-            // txtHoTen
-            // 
-            this.txtHoTen.Location = new System.Drawing.Point(349, 31);
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(147, 20);
-            this.txtHoTen.TabIndex = 4;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 72);
+            this.label2.Location = new System.Drawing.Point(7, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "txtMaKhachHang";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtMaKhachHang
             // 
@@ -214,11 +208,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 34);
+            this.label1.Location = new System.Drawing.Point(7, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "txtSoPhieuPhat";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtSoPhieuPhat
             // 
@@ -235,6 +230,15 @@
             this.dtGridViewPhieuPhat.Size = new System.Drawing.Size(776, 150);
             this.dtGridViewPhieuPhat.TabIndex = 6;
             this.dtGridViewPhieuPhat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewPhieuPhat_CellClick);
+            // 
+            // comboBoxHoTen
+            // 
+            this.comboBoxHoTen.FormattingEnabled = true;
+            this.comboBoxHoTen.Location = new System.Drawing.Point(349, 31);
+            this.comboBoxHoTen.Name = "comboBoxHoTen";
+            this.comboBoxHoTen.Size = new System.Drawing.Size(147, 21);
+            this.comboBoxHoTen.TabIndex = 21;
+            this.comboBoxHoTen.SelectedIndexChanged += new System.EventHandler(this.comboBoxHoTen_SelectedIndexChanged);
             // 
             // FPhieuNopPhat
             // 
@@ -271,7 +275,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtSoChungMinh;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMaKhachHang;
         private System.Windows.Forms.Label label1;
@@ -279,5 +282,6 @@
         private System.Windows.Forms.DataGridView dtGridViewPhieuPhat;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtSoTienPhat;
+        private System.Windows.Forms.ComboBox comboBoxHoTen;
     }
 }

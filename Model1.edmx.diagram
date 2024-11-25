@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e0f37dd525194556b747cbc599a09ea4" Name="Diagram1" ZoomLevel="82">
-        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.DoanhThu" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+      <Diagram DiagramId="64f0408d520e4d479d527b634659bfc8" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.DoanhThu" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyBaiThueXeModel.KhachHang" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.LichSuThue" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.LichSuThue" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyBaiThueXeModel.LoaiXe" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.NhanVien" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.PhieuNopPhat" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.NhanVien" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.PhieuNopPhat" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyBaiThueXeModel.PhieuThue" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyBaiThueXeModel.Xe" Width="1.5" PointX="3.75" PointY="11.875" IsExpanded="true" />
         <AssociationConnector Association="QuanLyBaiThueXeModel.FK__LichSuThu__MaKha__5DCAEF64" ManuallyRouted="false" />
