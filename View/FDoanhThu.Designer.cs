@@ -43,26 +43,27 @@
             // 
             this.panel2.Controls.Add(this.txtTimKiem);
             this.panel2.Controls.Add(this.btnTimKiem);
-            this.panel2.Location = new System.Drawing.Point(23, 318);
-            this.panel2.Margin = new System.Windows.Forms.Padding(5);
+            this.panel2.Location = new System.Drawing.Point(17, 258);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1033, 64);
+            this.panel2.Size = new System.Drawing.Size(775, 52);
             this.panel2.TabIndex = 11;
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Location = new System.Drawing.Point(59, 22);
-            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(5);
+            this.txtTimKiem.Location = new System.Drawing.Point(44, 18);
+            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(824, 22);
+            this.txtTimKiem.Size = new System.Drawing.Size(619, 20);
             this.txtTimKiem.TabIndex = 14;
+           // this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(1201, 22);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(5);
+            this.btnTimKiem.Location = new System.Drawing.Point(901, 18);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(100, 28);
+            this.btnTimKiem.Size = new System.Drawing.Size(75, 23);
             this.btnTimKiem.TabIndex = 13;
             this.btnTimKiem.Text = "btnTimKiem";
             this.btnTimKiem.UseVisualStyleBackColor = true;
@@ -70,26 +71,27 @@
             // dtGridViewDoanhThu
             // 
             this.dtGridViewDoanhThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridViewDoanhThu.Location = new System.Drawing.Point(21, 406);
-            this.dtGridViewDoanhThu.Margin = new System.Windows.Forms.Padding(5);
+            this.dtGridViewDoanhThu.Location = new System.Drawing.Point(16, 330);
+            this.dtGridViewDoanhThu.Margin = new System.Windows.Forms.Padding(4);
             this.dtGridViewDoanhThu.Name = "dtGridViewDoanhThu";
             this.dtGridViewDoanhThu.RowHeadersWidth = 51;
-            this.dtGridViewDoanhThu.Size = new System.Drawing.Size(1035, 185);
+            this.dtGridViewDoanhThu.Size = new System.Drawing.Size(776, 150);
             this.dtGridViewDoanhThu.TabIndex = 9;
+         //   this.dtGridViewDoanhThu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridViewDoanhThu_CellContentClick);
             // 
             // dateTimePickerMonth
             // 
-            this.dateTimePickerMonth.Location = new System.Drawing.Point(329, 202);
-            this.dateTimePickerMonth.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePickerMonth.Location = new System.Drawing.Point(247, 164);
             this.dateTimePickerMonth.Name = "dateTimePickerMonth";
-            this.dateTimePickerMonth.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePickerMonth.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerMonth.TabIndex = 13;
             // 
             // btnThongKe
             // 
-            this.btnThongKe.Location = new System.Drawing.Point(935, 177);
+            this.btnThongKe.Location = new System.Drawing.Point(701, 144);
+            this.btnThongKe.Margin = new System.Windows.Forms.Padding(2);
             this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Size = new System.Drawing.Size(186, 82);
+            this.btnThongKe.Size = new System.Drawing.Size(140, 67);
             this.btnThongKe.TabIndex = 14;
             this.btnThongKe.Text = "button1";
             this.btnThongKe.UseVisualStyleBackColor = true;
@@ -97,23 +99,24 @@
             // 
             // txtTongDoanhThu
             // 
-            this.txtTongDoanhThu.Location = new System.Drawing.Point(501, 272);
+            this.txtTongDoanhThu.Location = new System.Drawing.Point(376, 221);
+            this.txtTongDoanhThu.Margin = new System.Windows.Forms.Padding(2);
             this.txtTongDoanhThu.Name = "txtTongDoanhThu";
-            this.txtTongDoanhThu.Size = new System.Drawing.Size(232, 22);
+            this.txtTongDoanhThu.Size = new System.Drawing.Size(175, 20);
             this.txtTongDoanhThu.TabIndex = 15;
             // 
             // FDoanhThu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1423, 682);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.txtTongDoanhThu);
             this.Controls.Add(this.btnThongKe);
             this.Controls.Add(this.dateTimePickerMonth);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dtGridViewDoanhThu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FDoanhThu";
             this.Text = "FDoanhThu";
             this.Load += new System.EventHandler(this.FDoanhThu_Load);

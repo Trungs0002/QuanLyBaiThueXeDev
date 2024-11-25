@@ -73,51 +73,94 @@ namespace QuanLyBaiThueXeDev
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            loaiXe = new LoaiXe
+            try
             {
-                MaLoaiXe = int.Parse(txtMaLoaiXe.Text),
-                TenLoai = txtTenLoai.Text.Trim(),
-                HangSanXuat = txtHangSanXuat.Text.Trim(),
-                NamSanXuat = int.Parse(txtNamSanXuat.Text),
-                MoTa = txtMoTa.Text.Trim()
-            };
+                loaiXe = new LoaiXe
+                {
+                    MaLoaiXe = int.Parse(txtMaLoaiXe.Text),
+                    TenLoai = txtTenLoai.Text.Trim(),
+                    HangSanXuat = txtHangSanXuat.Text.Trim(),
+                    NamSanXuat = int.Parse(txtNamSanXuat.Text),
+                    MoTa = txtMoTa.Text.Trim()
+                };
 
-            ctrlLoaiXe.add(loaiXe);
-            dsLoaiXe.Add(loaiXe);
-            load_LoaiXe();
-            ClearFields();
+                ctrlLoaiXe.add(loaiXe); // Thêm vào cơ sở dữ liệu
+                dsLoaiXe.Add(loaiXe);   // Thêm vào danh sách hiển thị
+                load_LoaiXe();          // Tải lại danh sách
+                ClearFields();          // Xóa các trường nhập liệu
+
+                MessageBox.Show("Thêm loại xe thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Thêm loại xe thất bại! Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (loaiXe != null)
+            try
             {
-                loaiXe.TenLoai = txtTenLoai.Text.Trim();
-                loaiXe.HangSanXuat = txtHangSanXuat.Text.Trim();
-                loaiXe.NamSanXuat = int.Parse(txtNamSanXuat.Text);
-                loaiXe.MoTa = txtMoTa.Text.Trim();
+                if (loaiXe != null)
+                {
+                    loaiXe.TenLoai = txtTenLoai.Text.Trim();
+                    loaiXe.HangSanXuat = txtHangSanXuat.Text.Trim();
+                    loaiXe.NamSanXuat = int.Parse(txtNamSanXuat.Text);
+                    loaiXe.MoTa = txtMoTa.Text.Trim();
 
-                ctrlLoaiXe.upDate(loaiXe);
-                load_LoaiXe();
-                ClearFields();
+                    ctrlLoaiXe.upDate(loaiXe); // Cập nhật cơ sở dữ liệu
+                    load_LoaiXe();             // Tải lại danh sách
+                    ClearFields();             // Xóa các trường nhập liệu
+
+                    MessageBox.Show("Cập nhật loại xe thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Chưa chọn loại xe để cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Chưa chọn loại xe để cập nhật!!!");
+                MessageBox.Show($"Cập nhật loại xe thất bại! Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (loaiXe != null)
+            try
             {
-                ctrlLoaiXe.remove(loaiXe);
-                dsLoaiXe.Remove(loaiXe);
-                load_LoaiXe();
-                ClearFields();
-                loaiXe = null;
+                if (loaiXe != null)
+                {
+                    // Hiển thị hộp thoại xác nhận trước khi xóa
+                    var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa loại xe này không?",
+                                                        "Xác nhận",
+                                                        MessageBoxButtons.YesNo,
+                                                        MessageBoxIcon.Question);
+
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        ctrlLoaiXe.remove(loaiXe); // Xóa khỏi cơ sở dữ liệu
+                        dsLoaiXe.Remove(loaiXe);   // Xóa khỏi danh sách hiển thị
+                        load_LoaiXe();             // Tải lại danh sách
+                        ClearFields();             // Xóa các trường nhập liệu
+                        loaiXe = null;
+
+                        MessageBox.Show("Xóa loại xe thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Chưa chọn loại xe để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Xóa loại xe thất bại! Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {

@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtGridViewLoaiXe = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.dtGridViewXe = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -99,10 +99,20 @@
             this.panel1.Controls.Add(this.txtTenLoai);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtMaLoaiXe);
-            this.panel1.Location = new System.Drawing.Point(142, 175);
+            this.panel1.Location = new System.Drawing.Point(143, 198);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(462, 289);
             this.panel1.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Cambria", 12.25F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(29, 15);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(139, 20);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "QUẢN LÍ LOẠI XE";
             // 
             // btnXoa
             // 
@@ -289,16 +299,6 @@
             this.dtGridViewXe.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtGridViewXe.Size = new System.Drawing.Size(776, 157);
             this.dtGridViewXe.TabIndex = 3;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Cambria", 12.25F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(29, 15);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(139, 20);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "QUẢN LÍ LOẠI XE";
             // 
             // label8
             // 

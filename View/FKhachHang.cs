@@ -221,5 +221,10 @@ namespace QuanLyBaiThueXeDev.View
                 MessageBox.Show("Mã khách hàng không hợp lệ.");
             }
         }
+
+        private void listViewLichSuThue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
