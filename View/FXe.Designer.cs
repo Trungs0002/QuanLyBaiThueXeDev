@@ -278,7 +278,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtGridViewXe.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dtGridViewXe.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(201)))), ((int)(((byte)(155)))));
+            this.dtGridViewXe.GridColor = System.Drawing.SystemColors.WindowText;
             this.dtGridViewXe.Location = new System.Drawing.Point(243, 433);
             this.dtGridViewXe.Name = "dtGridViewXe";
             this.dtGridViewXe.Size = new System.Drawing.Size(1118, 422);
