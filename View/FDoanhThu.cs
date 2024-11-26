@@ -34,19 +34,14 @@ namespace QuanLyBaiThueXeDev.View
         {
             chartDoanhThu.Titles[0].Font = new Font("Cambria", 8.25f, FontStyle.Bold);
 
-            // Thay đổi font cho nhãn trục X
             chartDoanhThu.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Cambria", 8.25f, FontStyle.Bold);
 
-            // Thay đổi font cho nhãn trục Y
             chartDoanhThu.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Cambria", 8.25f, FontStyle.Bold);
 
-            // Thay đổi font cho tiêu đề trục X
             chartDoanhThu.ChartAreas[0].AxisX.TitleFont = new Font("Cambria", 8.25f, FontStyle.Bold);
 
-            // Thay đổi font cho tiêu đề trục Y
             chartDoanhThu.ChartAreas[0].AxisY.TitleFont = new Font("Cambria", 8.25f, FontStyle.Bold);
 
-            // Thay đổi font cho chú thích
             chartDoanhThu.Legends[0].Font = new Font("Cambria", 8.25f, FontStyle.Bold);
         }
 
@@ -105,7 +100,7 @@ namespace QuanLyBaiThueXeDev.View
 
                 // Cập nhật tổng doanh thu
                 decimal tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoThang(month, year);
-                txtTongDoanhThu.Text = tongDoanhThu.ToString("N0");
+                txtTongDoanhThu.Text = tongDoanhThu.ToString("N0"); // "N0" Đổi số thành chuỗi 
                 label4.Text = "DANH SÁCH LỊCH SỬ PHIẾU THUÊ | THEO THÁNG " + month;
             }
             catch (Exception ex)

@@ -71,7 +71,7 @@
             // 
             this.txtUsername.Font = new System.Drawing.Font("Cambria", 13F, System.Drawing.FontStyle.Bold);
             this.txtUsername.Location = new System.Drawing.Point(196, 64);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(266, 28);
             this.txtUsername.TabIndex = 2;
@@ -80,7 +80,7 @@
             // 
             this.txtPassword.Font = new System.Drawing.Font("Cambria", 13F, System.Drawing.FontStyle.Bold);
             this.txtPassword.Location = new System.Drawing.Point(196, 117);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(266, 28);
@@ -91,7 +91,7 @@
             this.btnDN.Font = new System.Drawing.Font("Cambria", 13F, System.Drawing.FontStyle.Bold);
             this.btnDN.ForeColor = System.Drawing.Color.Black;
             this.btnDN.Location = new System.Drawing.Point(61, 168);
-            this.btnDN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDN.Margin = new System.Windows.Forms.Padding(2);
             this.btnDN.Name = "btnDN";
             this.btnDN.Size = new System.Drawing.Size(150, 30);
             this.btnDN.TabIndex = 4;
@@ -104,7 +104,7 @@
             this.btnThoat.Font = new System.Drawing.Font("Cambria", 13F, System.Drawing.FontStyle.Bold);
             this.btnThoat.ForeColor = System.Drawing.Color.Black;
             this.btnThoat.Location = new System.Drawing.Point(289, 168);
-            this.btnThoat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(150, 30);
             this.btnThoat.TabIndex = 5;
@@ -158,11 +158,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FLogin";
+            this.Text = "5";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FLogin_FormClosing);
+            this.Load += new System.EventHandler(this.FLogin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

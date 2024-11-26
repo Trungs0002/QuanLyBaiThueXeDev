@@ -57,5 +57,10 @@ namespace QuanLyBaiThueXeDev.View
                 e.Cancel = true;
             }
         }
+
+        private void FLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -25,10 +25,10 @@ namespace QuanLyBaiThueXeDev.View
         }
         private void LoadKhachHang()
         {
-            dsKhachHang = ctrlKhachHang.findAll(); // Lấy danh sách khách hàng
-            comboBoxHoTen.DataSource = dsKhachHang; // Gán danh sách khách hàng cho ComboBox
-            comboBoxHoTen.DisplayMember = "HoTen"; // Hiển thị tên khách hàng
-            comboBoxHoTen.ValueMember = "MaKhachHang"; // Giá trị là mã khách hàng
+            dsKhachHang = ctrlKhachHang.findAll(); 
+            comboBoxHoTen.DataSource = dsKhachHang; 
+            comboBoxHoTen.DisplayMember = "HoTen"; 
+            comboBoxHoTen.ValueMember = "MaKhachHang"; 
         }
         private void FPhieuNopPhat_Load(object sender, EventArgs e)
         {
@@ -47,8 +47,8 @@ namespace QuanLyBaiThueXeDev.View
                            p.SoChungMinh,
                            p.LyDoNopPhat,
                            p.SoTienNopPhat,
-                           NgayThueXe = p.NgayThueXe.HasValue ? p.NgayThueXe.Value.ToString("dd/MM/yyyy") : "Chưa có", // Định dạng ngày
-                           NgayTraXe = p.NgayTraXe.HasValue ? p.NgayTraXe.Value.ToString("dd/MM/yyyy") : "Chưa có"  // Định dạng ngày
+                           NgayThueXe = p.NgayThueXe.HasValue ? p.NgayThueXe.Value.ToString("dd/MM/yyyy") : "Chưa có", // Nếu có gtri thì trả về ToString không thì "Chưa có"
+                           NgayTraXe = p.NgayTraXe.HasValue ? p.NgayTraXe.Value.ToString("dd/MM/yyyy") : "Chưa có"  
                        };
             dtGridViewPhieuPhat.DataSource = list.ToList();
 
@@ -127,9 +127,9 @@ namespace QuanLyBaiThueXeDev.View
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string searchTerm = txtTimKiem.Text; // Lấy từ ô tìm kiếm
-            dsPhieuNopPhat = ctrlPhieuNopPhat.findByCriteria(searchTerm); // Gọi phương thức tìm kiếm
-            load_PhieuNopPhat(); // Tải lại danh sách phiếu nộp phạt
+            string searchTerm = txtTimKiem.Text; 
+            dsPhieuNopPhat = ctrlPhieuNopPhat.findByCriteria(searchTerm); 
+            load_PhieuNopPhat(); 
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -207,7 +207,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 try
                 {
-                    int maKhachHang = Convert.ToInt32(comboBoxHoTen.SelectedValue); // Sử dụng Convert.ToInt32
+                    int maKhachHang = Convert.ToInt32(comboBoxHoTen.SelectedValue); 
                     var khachHang = dsKhachHang.FirstOrDefault(kh => kh.MaKhachHang == maKhachHang); // Tìm khách hàng tương ứng
 
                     if (khachHang != null)

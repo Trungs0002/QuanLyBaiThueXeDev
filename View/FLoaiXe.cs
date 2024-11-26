@@ -103,8 +103,8 @@ namespace QuanLyBaiThueXeDev
                 // Thêm loại xe vào danh sách và cơ sở dữ liệu
                 ctrlLoaiXe.add(loaiXe); // Thêm vào cơ sở dữ liệu
                 dsLoaiXe.Add(loaiXe);   // Thêm vào danh sách hiển thị
-                load_LoaiXe();          // Cập nhật danh sách hiển thị
-                ClearFields();          // Xóa các trường nhập liệu
+                load_LoaiXe();          
+                ClearFields();          
 
                 MessageBox.Show("Thêm loại xe thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -128,8 +128,8 @@ namespace QuanLyBaiThueXeDev
                     loaiXe.MoTa = txtMoTa.Text.Trim();
 
                     ctrlLoaiXe.upDate(loaiXe); // Cập nhật cơ sở dữ liệu
-                    load_LoaiXe();             // Tải lại danh sách
-                    ClearFields();             // Xóa các trường nhập liệu
+                    load_LoaiXe();             
+                    ClearFields();             
 
                     MessageBox.Show("Cập nhật loại xe thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -151,7 +151,7 @@ namespace QuanLyBaiThueXeDev
             {
                 if (loaiXe != null)
                 {
-                    // Kiểm tra xem có xe thuộc loại xe đang được thuê hay không
+                    // Kiểm tra xem có xe thuộc xe đang còn được thuê hay không
                     var dsXeDangDuocThue = dsXe.Where(x => x.MaLoaiXe == loaiXe.MaLoaiXe && x.TinhTrang.Equals("Đang được thuê", StringComparison.OrdinalIgnoreCase)).ToList();
 
                     if (dsXeDangDuocThue.Count > 0)

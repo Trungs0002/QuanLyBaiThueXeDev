@@ -81,7 +81,7 @@ namespace QuanLyBaiThueXeDev
                     throw new Exception("Mã loại xe phải là số.");
                 if (!int.TryParse(txtGiaThueXe.Text, out int giaThueXe))
                     throw new Exception("Giá thuê xe phải là số.");
-                if (dsXe.Any(x => x.BienSoXe.Equals(txtBienSoXe.Text.Trim(), StringComparison.OrdinalIgnoreCase)))
+                if (dsXe.Any(x => x.BienSoXe.Equals(txtBienSoXe.Text.Trim(), StringComparison.OrdinalIgnoreCase))) // So sánh chuỗi không phân biệt chữ hoa chữ thường
                     throw new Exception("Biển số xe đã tồn tại.");
 
                 // Thêm mới xe

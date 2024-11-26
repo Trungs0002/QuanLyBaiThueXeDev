@@ -42,7 +42,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Mã Khách Hàng",
                 DataPropertyName = "MaKhachHang",
-                Width = 100 // Chiều rộng cột
+                Width = 100 
             };
             dataGridViewKhachHang.Columns.Add(maKhachHangColumn);
 
@@ -50,7 +50,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Họ Tên",
                 DataPropertyName = "HoTen",
-                Width = 162 // Chiều rộng cột
+                Width = 162 
             };
             dataGridViewKhachHang.Columns.Add(hoTenColumn);
 
@@ -58,7 +58,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Giới Tính",
                 DataPropertyName = "GioiTinh",
-                Width = 100 // Chiều rộng cột
+                Width = 100 
             };
             dataGridViewKhachHang.Columns.Add(gioiTinhColumn);
 
@@ -66,7 +66,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Điện Thoại",
                 DataPropertyName = "DienThoai",
-                Width = 120 // Chiều rộng cột
+                Width = 120 
             };
             dataGridViewKhachHang.Columns.Add(dienThoaiColumn);
 
@@ -74,7 +74,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Địa Chỉ",
                 DataPropertyName = "DiaChi",
-                Width = 200 // Chiều rộng cột
+                Width = 200 
             };
             dataGridViewKhachHang.Columns.Add(diaChiColumn);
 
@@ -82,7 +82,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Số Chứng Minh",
                 DataPropertyName = "SoChungMinh",
-                Width = 120 // Chiều rộng cột
+                Width = 120
             };
             dataGridViewKhachHang.Columns.Add(soChungMinhColumn);
 
@@ -108,7 +108,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Biển Số Xe",
                 DataPropertyName = "BienSoXe",
-                Width = 120 // Chiều rộng cột
+                Width = 120 
             };
             dataGridViewXe.Columns.Add(bienSoXeColumn);
 
@@ -116,7 +116,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Mã Loại Xe",
                 DataPropertyName = "MaLoaiXe",
-                Width = 100 // Chiều rộng cột
+                Width = 100 
             };
             dataGridViewXe.Columns.Add(maLoaiXeColumn);
 
@@ -124,7 +124,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Màu Sơn",
                 DataPropertyName = "MauSon",
-                Width = 100 // Chiều rộng cột
+                Width = 100 
             };
             dataGridViewXe.Columns.Add(mauSonColumn);
 
@@ -132,7 +132,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Tình Trạng",
                 DataPropertyName = "TinhTrang",
-                Width = 150 // Chiều rộng cột
+                Width = 150 
             };
             dataGridViewXe.Columns.Add(tinhTrangColumn);
 
@@ -140,7 +140,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Mô Tả",
                 DataPropertyName = "MoTa",
-                Width = 212 // Chiều rộng cột
+                Width = 212 
             };
             dataGridViewXe.Columns.Add(moTaColumn);
 
@@ -148,7 +148,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Giá Thuê",
                 DataPropertyName = "GiaThueXe",
-                Width = 120 // Chiều rộng cột
+                Width = 120 
             };
             dataGridViewXe.Columns.Add(giaThueXeColumn);
 
@@ -195,13 +195,13 @@ namespace QuanLyBaiThueXeDev.View
             {
                 pt.SoPhieuThue,
                 pt.MaKhachHang,
-                pt.BienSoXe, // Thêm cột BienSoXe nhưng ẩn
+                pt.BienSoXe, 
                 pt.SoNgayMuon,
                 pt.DonGia,
                 TongTien = pt.SoNgayMuon * pt.DonGia // Tính tổng tiền thuê
             }).ToList();
 
-            // Ẩn cột BienSoXe
+            // Ẩn BienSoXe
             dataGridViewPhieuThue.Columns["BienSoXe"].Visible = false;
         }
 
@@ -407,7 +407,7 @@ namespace QuanLyBaiThueXeDev.View
                     // Lưu thông tin vào bảng lịch sử thuê trước khi xóa
                     var lichSuThue = new LichSuThue
                     {
-                        MaKhachHang = phieuThue.MaKhachHang ?? 0, // Lấy mã khách hàng
+                        MaKhachHang = phieuThue.MaKhachHang ?? 0, // Lấy mã khách hàng 
                         BienSoXe = phieuThue.BienSoXe,
                         SoNgayMuon = phieuThue.SoNgayMuon ?? 0, // Lấy số ngày thuê
                         DonGia = (int)(phieuThue.DonGia ?? 0), // Lấy đơn giá
@@ -419,7 +419,7 @@ namespace QuanLyBaiThueXeDev.View
                     CUtils.db.LichSuThues.Add(lichSuThue);
                     CUtils.db.SaveChanges();
 
-                    // Tính toán số tiền nộp phạt nếu có
+                    // Khai báo biến để tính ngày trễ trả xe
                     DateTime ngayTraXe = DateTime.Now; // Ngày trả xe
                     DateTime ngayThueXe = phieuThue.NgayThue ?? DateTime.Now; // Ngày thuê từ phiếu thuê
 
@@ -435,14 +435,14 @@ namespace QuanLyBaiThueXeDev.View
                         // Tạo phiếu nộp phạt
                         PhieuNopPhat phieuNopPhat = new PhieuNopPhat
                         {
-                            SoPhieuPhat = GenerateNewPhieuPhatId(), // Phương thức để tạo ID mới cho phiếu nộp phạt
+                            SoPhieuPhat = GenerateNewPhieuPhatId(), // Hàm tạo id
                             HoTenKhachHang = dsKhachHang.FirstOrDefault(kh => kh.MaKhachHang == phieuThue.MaKhachHang)?.HoTen,
                             SoChungMinh = phieuThue.SoChungMinh,
                             // Cập nhật lý do nộp phạt với số ngày trễ
                             LyDoNopPhat = $"Trễ hạn trả xe ({soNgayChamTra} Ngày)",
                             SoTienNopPhat = soTienNopPhat,
-                            NgayThueXe = ngayThueXe, // Ngày thuê xe
-                            NgayTraXe = ngayTraXe // Ngày trả xe
+                            NgayThueXe = ngayThueXe, 
+                            NgayTraXe = ngayTraXe 
                         };
 
                         // Thêm phiếu nộp phạt vào cơ sở dữ liệu
@@ -482,11 +482,11 @@ namespace QuanLyBaiThueXeDev.View
             }
         }
         public int GenerateNewPhieuPhatId()
-{
-    // Lấy ID lớn nhất từ bảng PhieuNopPhat
-    var maxId = CUtils.db.PhieuNopPhats.Max(pnp => (int?)pnp.SoPhieuPhat) ?? 0;
-    return maxId + 1; // Tăng thêm 1 để tạo ID mới
-}
+        {
+            // Lấy ID lớn nhất từ bảng PhieuNopPhat
+            var maxId = CUtils.db.PhieuNopPhats.Max(pnp => (int?)pnp.SoPhieuPhat) ?? 0;
+            return maxId + 1; // Tăng thêm 1 để tạo ID mới
+        }
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             try
@@ -497,7 +497,7 @@ namespace QuanLyBaiThueXeDev.View
                 // Kiểm tra nếu từ khóa tìm kiếm trống
                 if (string.IsNullOrWhiteSpace(searchTerm))
                 {
-                    LoadPhieuThue(); // Tải lại toàn bộ danh sách phiếu thuê
+                    LoadPhieuThue(); 
                     return;
                 }
 
