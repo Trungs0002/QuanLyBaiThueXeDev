@@ -88,6 +88,7 @@ namespace QuanLyBaiThueXeDev.View
                 txtDienThoai.Text = nhanVien.DienThoai;
                 txtMoTa.Text = nhanVien.MoTa;
 
+                txtDoanhThu.Clear();
                 // Sau khi chọn nhân viên, tải doanh thu cho nhân viên này theo tháng và năm hiện tại
                 LoadDoanhThuForNhanVien();
             }
@@ -104,19 +105,12 @@ namespace QuanLyBaiThueXeDev.View
                 // Gọi phương thức từ Ctrl_NhanVien để lấy doanh thu
                 var doanhThu = ctrlNhanVien.GetDoanhThuTheoThang(thang, nam, nhanVien.MaNhanVien);
 
-                // Xóa dữ liệu cũ trong DataGridView
-                dtGridViewDoanhThu.Rows.Clear();
-
+                // Kiểm tra dữ liệu doanh thu
                 if (doanhThu != null && doanhThu.Count > 0)
                 {
-                    foreach (var item in doanhThu)
-                    {
-                        // Tạo dòng mới cho mỗi phiếu
-                        int rowIndex = dtGridViewDoanhThu.Rows.Add();
-                        dtGridViewDoanhThu.Rows[rowIndex].Cells["MaPhieu"].Value = item.Key;
-                        dtGridViewDoanhThu.Rows[rowIndex].Cells["DoanhThu"].Value = item.Value.ToString("N0"); // Định dạng số
-                    }
-
+                    // Hiển thị tổng doanh thu vào TextBox (ví dụ: txtDoanhThu)
+                    decimal tongDoanhThu = doanhThu.Values.Sum();
+                    txtDoanhThu.Text = tongDoanhThu.ToString("N0");  // Định dạng số cho dễ đọc
                     MessageBox.Show("Dữ liệu doanh thu đã được tải thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -130,26 +124,26 @@ namespace QuanLyBaiThueXeDev.View
             }
         }
 
-        private void InitializeDataGridViewDoanhThu()
-        {
-            // Thêm cột MaPhieu nếu chưa có
-            if (!dtGridViewDoanhThu.Columns.Contains("MaPhieu"))
-            {
-                DataGridViewTextBoxColumn maPhieuColumn = new DataGridViewTextBoxColumn();
-                maPhieuColumn.Name = "MaPhieu";
-                maPhieuColumn.HeaderText = "Mã Phiếu";
-                dtGridViewDoanhThu.Columns.Add(maPhieuColumn);
-            }
+        //private void InitializeDataGridViewDoanhThu()
+        //{
+        //    // Thêm cột MaPhieu nếu chưa có
+        //    if (!dtGridViewDoanhThu.Columns.Contains("MaPhieu"))
+        //    {
+        //        DataGridViewTextBoxColumn maPhieuColumn = new DataGridViewTextBoxColumn();
+        //        maPhieuColumn.Name = "MaPhieu";
+        //        maPhieuColumn.HeaderText = "Mã Phiếu";
+        //        dtGridViewDoanhThu.Columns.Add(maPhieuColumn);
+        //    }
 
-            // Thêm cột DoanhThu nếu chưa có
-            if (!dtGridViewDoanhThu.Columns.Contains("DoanhThu"))
-            {
-                DataGridViewTextBoxColumn doanhThuColumn = new DataGridViewTextBoxColumn();
-                doanhThuColumn.Name = "DoanhThu";
-                doanhThuColumn.HeaderText = "Doanh Thu";
-                dtGridViewDoanhThu.Columns.Add(doanhThuColumn);
-            }
-        }
+        //    // Thêm cột DoanhThu nếu chưa có
+        //    if (!dtGridViewDoanhThu.Columns.Contains("DoanhThu"))
+        //    {
+        //        DataGridViewTextBoxColumn doanhThuColumn = new DataGridViewTextBoxColumn();
+        //        doanhThuColumn.Name = "DoanhThu";
+        //        doanhThuColumn.HeaderText = "Doanh Thu";
+        //        dtGridViewDoanhThu.Columns.Add(doanhThuColumn);
+        //    }
+        //}
 
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -323,6 +317,7 @@ namespace QuanLyBaiThueXeDev.View
             txtTenNhanVien.Clear();
             txtDienThoai.Clear();
             txtMoTa.Clear();
+
             nhanVien = null;
         }
 
@@ -366,46 +361,9 @@ namespace QuanLyBaiThueXeDev.View
 
         }
 
-        private void btnXemDoanhThu_Click(object sender, EventArgs e)
+        private void dtGridViewDoanhThu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                // Lấy giá trị tháng và năm từ ComboBox
-                int thang = Convert.ToInt32(cmbThang.SelectedItem);
-                int nam = Convert.ToInt32(cmbNam.SelectedItem);
 
-                // Gọi phương thức từ Ctrl_NhanVien
-                var doanhThu = ctrlNhanVien.GetDoanhThuTheoThang(thang, nam, nhanVien.MaNhanVien);
-
-
-                // Xóa dữ liệu cũ trong DataGridView (kiểm tra nếu không đang sử dụng BindingSource)
-                if (dtGridViewNhanVien.DataSource != null)
-                {
-                    dtGridViewNhanVien.DataSource = null;  // Tách nguồn dữ liệu khỏi DataGridView
-                }
-
-                // Tạo lại các dòng trong DataGridView
-                if (doanhThu != null && doanhThu.Count > 0)
-                {
-                    foreach (var item in doanhThu)
-                    {
-                        // Tạo dòng mới cho mỗi nhân viên
-                        int rowIndex = dtGridViewNhanVien.Rows.Add();
-                        dtGridViewNhanVien.Rows[rowIndex].Cells["MaNhanVien"].Value = item.Key;
-                        dtGridViewNhanVien.Rows[rowIndex].Cells["DoanhThu"].Value = item.Value.ToString("N0"); // Định dạng số
-                    }
-
-                    MessageBox.Show("Dữ liệu doanh thu đã được tải thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Không có dữ liệu doanh thu trong tháng này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Có lỗi khi tải dữ liệu doanh thu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
     }
 }

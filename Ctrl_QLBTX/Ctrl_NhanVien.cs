@@ -68,9 +68,5 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
 
 
 
-
-
-
-
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
@@ -50,12 +50,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cmbThang = new System.Windows.Forms.ComboBox();
             this.cmbNam = new System.Windows.Forms.ComboBox();
-            this.btnXemDoanhThu = new System.Windows.Forms.Button();
-            this.dtGridViewDoanhThu = new System.Windows.Forms.DataGridView();
+            this.txtDoanhThu = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewNhanVien)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewDoanhThu)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -96,7 +94,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
-            this.panel1.Controls.Add(this.btnXemDoanhThu);
+            this.panel1.Controls.Add(this.txtDoanhThu);
             this.panel1.Controls.Add(this.cmbNam);
             this.panel1.Controls.Add(this.cmbThang);
             this.panel1.Controls.Add(this.btnXoa);
@@ -261,14 +259,14 @@
             // 
             this.dtGridViewNhanVien.BackgroundColor = System.Drawing.Color.White;
             this.dtGridViewNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridViewNhanVien.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridViewNhanVien.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtGridViewNhanVien.Location = new System.Drawing.Point(360, 604);
             this.dtGridViewNhanVien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtGridViewNhanVien.Name = "dtGridViewNhanVien";
@@ -320,25 +318,12 @@
             this.cmbNam.Size = new System.Drawing.Size(304, 24);
             this.cmbNam.TabIndex = 26;
             // 
-            // btnXemDoanhThu
+            // txtDoanhThu
             // 
-            this.btnXemDoanhThu.Location = new System.Drawing.Point(622, 86);
-            this.btnXemDoanhThu.Name = "btnXemDoanhThu";
-            this.btnXemDoanhThu.Size = new System.Drawing.Size(127, 41);
-            this.btnXemDoanhThu.TabIndex = 27;
-            this.btnXemDoanhThu.Text = "button1";
-            this.btnXemDoanhThu.UseVisualStyleBackColor = true;
-            this.btnXemDoanhThu.Click += new System.EventHandler(this.btnXemDoanhThu_Click);
-            // 
-            // dtGridViewDoanhThu
-            // 
-            this.dtGridViewDoanhThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridViewDoanhThu.Location = new System.Drawing.Point(32, 501);
-            this.dtGridViewDoanhThu.Name = "dtGridViewDoanhThu";
-            this.dtGridViewDoanhThu.RowHeadersWidth = 51;
-            this.dtGridViewDoanhThu.RowTemplate.Height = 24;
-            this.dtGridViewDoanhThu.Size = new System.Drawing.Size(240, 150);
-            this.dtGridViewDoanhThu.TabIndex = 27;
+            this.txtDoanhThu.Location = new System.Drawing.Point(1160, 168);
+            this.txtDoanhThu.Name = "txtDoanhThu";
+            this.txtDoanhThu.Size = new System.Drawing.Size(100, 22);
+            this.txtDoanhThu.TabIndex = 28;
             // 
             // FNhanVien
             // 
@@ -346,7 +331,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(2172, 1237);
-            this.Controls.Add(this.dtGridViewDoanhThu);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.panel2);
@@ -362,7 +346,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewNhanVien)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewDoanhThu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,7 +374,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbNam;
         private System.Windows.Forms.ComboBox cmbThang;
-        private System.Windows.Forms.Button btnXemDoanhThu;
-        private System.Windows.Forms.DataGridView dtGridViewDoanhThu;
+        private System.Windows.Forms.TextBox txtDoanhThu;
     }
 }
