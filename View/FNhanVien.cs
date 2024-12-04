@@ -124,27 +124,6 @@ namespace QuanLyBaiThueXeDev.View
             }
         }
 
-        //private void InitializeDataGridViewDoanhThu()
-        //{
-        //    // Thêm cột MaPhieu nếu chưa có
-        //    if (!dtGridViewDoanhThu.Columns.Contains("MaPhieu"))
-        //    {
-        //        DataGridViewTextBoxColumn maPhieuColumn = new DataGridViewTextBoxColumn();
-        //        maPhieuColumn.Name = "MaPhieu";
-        //        maPhieuColumn.HeaderText = "Mã Phiếu";
-        //        dtGridViewDoanhThu.Columns.Add(maPhieuColumn);
-        //    }
-
-        //    // Thêm cột DoanhThu nếu chưa có
-        //    if (!dtGridViewDoanhThu.Columns.Contains("DoanhThu"))
-        //    {
-        //        DataGridViewTextBoxColumn doanhThuColumn = new DataGridViewTextBoxColumn();
-        //        doanhThuColumn.Name = "DoanhThu";
-        //        doanhThuColumn.HeaderText = "Doanh Thu";
-        //        dtGridViewDoanhThu.Columns.Add(doanhThuColumn);
-        //    }
-        //}
-
 
         private void btnThem_Click(object sender, EventArgs e)
         {

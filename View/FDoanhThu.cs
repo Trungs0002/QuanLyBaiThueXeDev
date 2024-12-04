@@ -11,7 +11,7 @@ namespace QuanLyBaiThueXeDev.View
     public partial class FDoanhThu : Form
     {
         private Ctrl_DoanhThu ctrlDoanhThu = new Ctrl_DoanhThu();
-        private Dictionary<int, decimal> doanhThuTheoThang = new Dictionary<int, decimal>();
+        
 
         public FDoanhThu()
         {
@@ -63,30 +63,6 @@ namespace QuanLyBaiThueXeDev.View
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    // Lấy tháng và năm từ DateTimePicker
-            //    int month = dateTimePickerMonth.Value.Month;
-            //    int year = dateTimePickerMonth.Value.Year;
-
-            //    // Hiển thị lịch sử thuê
-            //    LoadLichSuThue(month, year);
-
-            //    // Lấy tổng doanh thu từ TextBox
-            //    if (decimal.TryParse(txtTongDoanhThu.Text, out decimal tongDoanhThu))
-            //    {
-            //        // Cập nhật biểu đồ với tổng doanh thu
-            //        UpdateChart(tongDoanhThu);
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Tổng doanh thu không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Lỗi khi thống kê doanh thu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
             try
             {
                 string loaiThongKe = cbThoiGian.SelectedItem.ToString();
@@ -106,15 +82,7 @@ namespace QuanLyBaiThueXeDev.View
                     LoadLichSuThueTheoNgay(ngayBatDau, ngayKetThuc);
                     tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoNgay(ngayBatDau, ngayKetThuc);
                 }
-                //else if (loaiThongKe == "Theo Tuần")
-                //{
-                //    // Tính toán tuần từ ngày bắt đầu
-                //    DateTime ngayBatDau = datePickerStart.Value.Date;
-                //    DateTime ngayKetThuc = ngayBatDau.AddDays(6);
-
-                //    LoadLichSuThueTheoNgay(ngayBatDau, ngayKetThuc);
-                //    tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoNgay(ngayBatDau, ngayKetThuc);
-                //}
+                
                 else if (loaiThongKe == "Theo Tháng")
                 {
                     int month = dateTimePickerMonth.Value.Month;
