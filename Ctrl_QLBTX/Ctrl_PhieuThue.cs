@@ -61,7 +61,7 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
                 .Where(pt =>
                     pt.KhachHang.HoTen.ToLower().Contains(searchTerm) ||  // Tìm theo tên khách hàng
                     pt.BienSoXe.ToLower().Contains(searchTerm) ||         // Tìm theo biển số xe
-                    pt.SoChungMinh.ToLower().Contains(searchTerm)         // Tìm theo số chứng minh
+                    pt.KhachHang.SoChungMinh.ToLower().Contains(searchTerm)         // Tìm theo số chứng minh
                 ).ToList();
         }
 
