@@ -570,7 +570,7 @@ namespace QuanLyBaiThueXeDev.View
                         {
                             SoPhieuPhat = GenerateNewPhieuPhatId(), // Hàm tạo id
                             HoTenKhachHang = dsKhachHang.FirstOrDefault(kh => kh.MaKhachHang == phieuThue.MaKhachHang)?.HoTen,
-                            SoChungMinh = phieuThue.SoChungMinh,
+                            SoChungMinh = phieuThue.KhachHang.SoChungMinh,
                             // Cập nhật lý do nộp phạt với số ngày trễ
                             LyDoNopPhat = $"Trễ hạn trả xe ({soNgayChamTra} Ngày)",
                             SoTienNopPhat = soTienNopPhat,
