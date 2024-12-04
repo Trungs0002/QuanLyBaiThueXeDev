@@ -274,7 +274,6 @@ namespace QuanLyBaiThueXeDev.View
         private void UpdateChart(decimal tongDoanhThu)
         {
             chartDoanhThu.Series.Clear();
-
             var series = new Series("Tổng Doanh Thu")
             {
                 ChartType = SeriesChartType.Column,
@@ -286,11 +285,26 @@ namespace QuanLyBaiThueXeDev.View
 
             if (loaiThongKe == "Theo Tháng")
             {
+                // Cập nhật biểu đồ theo tháng
                 series.Points.AddXY($"{dateTimePickerMonth.Value.Month}/{dateTimePickerMonth.Value.Year}", tongDoanhThu);
             }
             else if (loaiThongKe == "Theo Năm")
             {
+                // Cập nhật biểu đồ theo năm
                 series.Points.AddXY($"{dateTimePickerYear.Value.Year}", tongDoanhThu);
+            }
+            else if (loaiThongKe == "Theo Ngày")
+            {
+                // Cập nhật biểu đồ theo ngày
+                DateTime ngayBatDau = datePickerStart.Value.Date;
+                DateTime ngayKetThuc = datePickerEnd.Value.Date;
+                var doanhThuTheoNgay = ctrlDoanhThu.GetLichSuThueTheoNgay(ngayBatDau, ngayKetThuc);
+
+                // Thêm dữ liệu từng ngày vào biểu đồ
+                foreach (var item in doanhThuTheoNgay)
+                {
+                    series.Points.AddXY(item.NgayThue.ToString("dd/MM/yyyy"), item.TongTien);
+                }
             }
 
             chartDoanhThu.Series.Add(series);
