@@ -27,7 +27,6 @@ namespace QuanLyBaiThueXeDev.View
         {
             Application.Exit();
         }
-
         private void btnDN_Click(object sender, EventArgs e)
         {
             // Lấy giá trị từ TextBox
@@ -35,11 +34,20 @@ namespace QuanLyBaiThueXeDev.View
             string password = txtPassword.Text.Trim();
 
             // Kiểm tra tài khoản và mật khẩu
-            if (username == "admin" && password == "admin")
+            if ((username == "admin" && password == "admin") ||
+                (username == "nhanvien" && password == "nhanvien")) // Thay đổi tên tài khoản và mật khẩu cho nhân viên
             {
                 // Nếu đúng, mở form chính
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 FTong f = new FTong();
+
+                // Gọi sự kiện nếu đăng nhập bằng tài khoản nhân viên
+                if (username == "nhanvien")
+                {
+                    f.HidePanelNhanVien();
+                }
+
                 f.Show();
                 this.Hide(); // Ẩn form đăng nhập
             }

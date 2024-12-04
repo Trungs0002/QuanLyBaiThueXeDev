@@ -20,6 +20,11 @@ namespace QuanLyBaiThueXeDev.View
         FPhieuThue phieuthue;
         FXe xe;
 
+        public void HidePanelNhanVien()
+        {
+            pnNhanVien.Visible = false; // Ẩn panel nhân viên
+        }
+
         bool menuExpand = false;
         bool menuExpand1 = false;
         bool sideExpand = true;
@@ -47,6 +52,7 @@ namespace QuanLyBaiThueXeDev.View
             InitializeComponent();
             mdiProp();
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
