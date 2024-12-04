@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
@@ -55,6 +55,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.btnNhapMoi = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewKhachHang)).BeginInit();
@@ -94,6 +95,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.panel1.Controls.Add(this.btnNhapMoi);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtSoChungMinh);
             this.panel1.Controls.Add(this.label8);
@@ -269,6 +271,7 @@
             this.txtMaKhachHang.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
             this.txtMaKhachHang.Location = new System.Drawing.Point(138, 55);
             this.txtMaKhachHang.Name = "txtMaKhachHang";
+            this.txtMaKhachHang.ReadOnly = true;
             this.txtMaKhachHang.Size = new System.Drawing.Size(99, 20);
             this.txtMaKhachHang.TabIndex = 0;
             this.txtMaKhachHang.TextChanged += new System.EventHandler(this.txtMaKhachHang_TextChanged);
@@ -276,14 +279,14 @@
             // dtGridViewKhachHang
             // 
             this.dtGridViewKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridViewKhachHang.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridViewKhachHang.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtGridViewKhachHang.Location = new System.Drawing.Point(711, 299);
             this.dtGridViewKhachHang.Name = "dtGridViewKhachHang";
             this.dtGridViewKhachHang.Size = new System.Drawing.Size(776, 220);
@@ -350,6 +353,19 @@
             this.label11.TabIndex = 31;
             this.label11.Text = "DANH SÁCH KHÁCH HÀNG TRONG HỆ THỐNG";
             // 
+            // btnNhapMoi
+            // 
+            this.btnNhapMoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.btnNhapMoi.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnNhapMoi.ForeColor = System.Drawing.Color.White;
+            this.btnNhapMoi.Location = new System.Drawing.Point(317, 282);
+            this.btnNhapMoi.Name = "btnNhapMoi";
+            this.btnNhapMoi.Size = new System.Drawing.Size(80, 30);
+            this.btnNhapMoi.TabIndex = 36;
+            this.btnNhapMoi.Text = "Nhập mới";
+            this.btnNhapMoi.UseVisualStyleBackColor = false;
+            this.btnNhapMoi.Click += new System.EventHandler(this.btnNhapMoi_Click);
+            // 
             // FKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,5 +422,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnNhapMoi;
     }
 }

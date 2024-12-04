@@ -280,10 +280,15 @@ namespace QuanLyBaiThueXeDev.View
             dsKhachHang = ctrlKhachHang.findByCriteria(searchTerm); 
             load_KhachHang();
         }
-
+        public int GenerateNewPhieuThueId()
+        {
+            // Lấy ID lớn nhất từ bảng PhieuNopPhat
+            var maxId = CUtils.db.KhachHangs.Max(pnp => (int?)pnp.MaKhachHang) ?? 0;
+            return maxId + 1; // Tăng thêm 1 để tạo ID mới
+        }
         private void ClearFields()
         {
-            txtMaKhachHang.Clear();
+            txtMaKhachHang.Text = GenerateNewPhieuThueId().ToString();
             txtHoTen.Clear();
             txtGioiTinh.Clear();
             txtDienThoai.Clear();
@@ -325,6 +330,11 @@ namespace QuanLyBaiThueXeDev.View
         private void dtGridViewKhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnNhapMoi_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
     }
 }
