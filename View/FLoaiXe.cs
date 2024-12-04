@@ -31,6 +31,7 @@ namespace QuanLyBaiThueXeDev
             this.ControlBox = false;
             dsLoaiXe = ctrlLoaiXe.findAll();
             load_LoaiXe();
+            ClearFields();
         }
         private void LoadXeByLoaiXe(int maLoaiXe)
         {
@@ -202,15 +203,30 @@ namespace QuanLyBaiThueXeDev
             dsLoaiXe = ctrlLoaiXe.findByName(searchTerm); 
             load_LoaiXe();
         }
-
+        public int GenerateNewPhieuThueId()
+        {
+            // Lấy ID lớn nhất từ bảng PhieuNopPhat
+            var maxId = CUtils.db.LoaiXes.Max(pnp => (int?)pnp.MaLoaiXe) ?? 0;
+            return maxId + 1; // Tăng thêm 1 để tạo ID mới
+        }
         private void ClearFields()
         {
-            txtMaLoaiXe.Clear();
+            txtMaLoaiXe.Text = GenerateNewPhieuThueId().ToString();
             txtTenLoai.Clear();
             txtHangSanXuat.Clear();
             txtNamSanXuat.Clear();
             txtMoTa.Clear();
             txtTimKiem.Clear();
+        }
+
+        private void btnNhapMoi_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+        }
+
+        private void txtMaLoaiXe_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Trường này không thể chỉnh sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

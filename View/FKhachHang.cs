@@ -29,6 +29,7 @@ namespace QuanLyBaiThueXeDev.View
             dsKhachHang = ctrlKhachHang.findAll();
             load_KhachHang();
             SetupListView();
+            ClearFields();
 
         }
         private void SetupListView()
@@ -335,6 +336,11 @@ namespace QuanLyBaiThueXeDev.View
         private void btnNhapMoi_Click(object sender, EventArgs e)
         {
             ClearFields();
+        }
+
+        private void txtMaKhachHang_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Trường này không thể chỉnh sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
