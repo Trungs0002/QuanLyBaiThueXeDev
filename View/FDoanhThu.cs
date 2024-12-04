@@ -23,6 +23,7 @@ namespace QuanLyBaiThueXeDev.View
             this.ControlBox = false;
 
             // Định dạng DateTimePickers
+            //label1.Text = "Chọn từ Ngày - Ngày";
             datePickerStart.Format = DateTimePickerFormat.Custom;
             datePickerStart.CustomFormat = "dd/MM/yyyy";
 
@@ -36,11 +37,13 @@ namespace QuanLyBaiThueXeDev.View
             // Định dạng DateTimePicker
             dateTimePickerMonth.Format = DateTimePickerFormat.Custom;
             dateTimePickerMonth.CustomFormat = "MM/yyyy";
+            //label1.Text = "Chọn Tháng/Năm";
 
             dateTimePickerYear.Format = DateTimePickerFormat.Custom;
             dateTimePickerYear.CustomFormat = "yyyy";
             dateTimePickerYear.ShowUpDown = true; // Hiển thị dạng cuộn chọn năm
             dateTimePickerYear.Visible = false; // Ẩn mặc định, chỉ hiện khi chọn "Theo Năm"
+            //label1.Text = "Chọn Năm";
 
             // Cấu hình biểu đồ
             ConfigureChart();
@@ -72,7 +75,7 @@ namespace QuanLyBaiThueXeDev.View
                 {
                     DateTime ngayBatDau = datePickerStart.Value.Date;
                     DateTime ngayKetThuc = datePickerEnd.Value.Date;
-
+                    //label1.Text = "Chọn từ Ngày - Ngày";
                     if (ngayBatDau > ngayKetThuc)
                     {
                         MessageBox.Show("Ngày bắt đầu không thể lớn hơn ngày kết thúc.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -90,6 +93,7 @@ namespace QuanLyBaiThueXeDev.View
 
                     LoadLichSuThue(month, year);
                     tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoThang(month, year);
+                    //label1.Text = "Chọn Tháng/Năm";
                 }
                 else if (loaiThongKe == "Theo Năm")
                 {
@@ -99,6 +103,7 @@ namespace QuanLyBaiThueXeDev.View
                     LoadLichSuThueTheoNam(lichSuThueList);
 
                     tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoNam(year);
+                    //label1.Text = "Chọn Năm";
                 }
 
                 // Hiển thị tổng doanh thu
@@ -288,10 +293,29 @@ namespace QuanLyBaiThueXeDev.View
         {
             string loaiThongKe = cbThoiGian.SelectedItem.ToString();
 
-            datePickerStart.Visible = loaiThongKe == "Theo Ngày";
-            datePickerEnd.Visible = loaiThongKe == "Theo Ngày";
-            dateTimePickerMonth.Visible = loaiThongKe == "Theo Tháng";
-            dateTimePickerYear.Visible = loaiThongKe == "Theo Năm";
+            // Ẩn tất cả các DateTimePicker trước khi hiển thị cái cần thiết
+            datePickerStart.Visible = false;
+            datePickerEnd.Visible = false;
+            dateTimePickerMonth.Visible = false;
+            dateTimePickerYear.Visible = false;
+
+            // Kiểm tra loại thống kê và hiển thị các DateTimePicker tương ứng
+            if (loaiThongKe == "Theo Ngày")
+            {
+                datePickerStart.Visible = true;
+                datePickerEnd.Visible = true;
+                label1.Text = "Chọn Từ Ngày - Ngày";
+            }
+            else if (loaiThongKe == "Theo Tháng")
+            {
+                dateTimePickerMonth.Visible = true;
+                label1.Text = "Chọn Tháng/Năm";
+            }
+            else if (loaiThongKe == "Theo Năm")
+            {
+                dateTimePickerYear.Visible = true;
+                label1.Text = "Chọn Năm";
+            }
         }
     }
 }
