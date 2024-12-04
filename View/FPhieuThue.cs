@@ -864,5 +864,35 @@ namespace QuanLyBaiThueXeDev.View
         private void txtTimKiemKH_TextChanged(object sender, EventArgs e)
         {
         }
+
+        private void dataGridViewLichSuPhieuThue_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewLichSuPhieuThue_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewLichSuPhieuThue_MouseEnter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewLichSuPhieuThue_MouseLeave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewLichSuPhieuThue_Enter(object sender, EventArgs e)
+        {
+            btnXoa.Visible = false;
+        }
+
+        private void dataGridViewLichSuPhieuThue_Leave(object sender, EventArgs e)
+        {
+            btnXoa.Visible = true;
+        }
     }
 }
