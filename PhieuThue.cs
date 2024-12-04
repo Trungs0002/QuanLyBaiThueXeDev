@@ -26,9 +26,12 @@ namespace QuanLyBaiThueXeDev
         public Nullable<int> SoLuong { get; set; }
         public Nullable<int> SoNgayMuon { get; set; }
         public Nullable<double> DonGia { get; set; }
+        public string TrangThai { get; set; }
+        public Nullable<int> MaNhanVien { get; set; }
     
         public virtual KhachHang KhachHang { get; set; }
         public virtual LoaiXe LoaiXe { get; set; }
+        public virtual NhanVien NhanVien { get; set; }
         public virtual Xe Xe { get; set; }
     }
 }

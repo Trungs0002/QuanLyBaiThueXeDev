@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
@@ -56,11 +57,16 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxNhanVien = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dataGridViewLichSuPhieuThue = new System.Windows.Forms.DataGridView();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPhieuThue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKhachHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewXe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLichSuPhieuThue)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -98,6 +104,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.panel1.Controls.Add(this.comboBoxNhanVien);
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.comboBoxXe);
             this.panel1.Controls.Add(this.comboBoxKhachHang);
@@ -208,18 +216,19 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(516, 94);
+            this.label5.Location = new System.Drawing.Point(35, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 12);
             this.label5.TabIndex = 9;
             this.label5.Text = "Số Ngày Thuê";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // txtSoNgayMuon
             // 
             this.txtSoNgayMuon.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
-            this.txtSoNgayMuon.Location = new System.Drawing.Point(605, 91);
+            this.txtSoNgayMuon.Location = new System.Drawing.Point(124, 91);
             this.txtSoNgayMuon.Name = "txtSoNgayMuon";
-            this.txtSoNgayMuon.Size = new System.Drawing.Size(98, 20);
+            this.txtSoNgayMuon.Size = new System.Drawing.Size(106, 20);
             this.txtSoNgayMuon.TabIndex = 8;
             // 
             // label4
@@ -276,7 +285,7 @@
             this.dataGridViewPhieuThue.Location = new System.Drawing.Point(945, 296);
             this.dataGridViewPhieuThue.Name = "dataGridViewPhieuThue";
             this.dataGridViewPhieuThue.RowHeadersWidth = 51;
-            this.dataGridViewPhieuThue.Size = new System.Drawing.Size(541, 483);
+            this.dataGridViewPhieuThue.Size = new System.Drawing.Size(541, 188);
             this.dataGridViewPhieuThue.TabIndex = 9;
             this.dataGridViewPhieuThue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPhieuThue_CellClick);
             this.dataGridViewPhieuThue.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPhieuThue_CellContentClick);
@@ -362,12 +371,64 @@
             this.label6.TabIndex = 36;
             this.label6.Text = "CHI TIẾT PHIẾU THUÊ: XE THUÊ";
             // 
+            // comboBoxNhanVien
+            // 
+            this.comboBoxNhanVien.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.comboBoxNhanVien.FormattingEnabled = true;
+            this.comboBoxNhanVien.Location = new System.Drawing.Point(605, 91);
+            this.comboBoxNhanVien.Name = "comboBoxNhanVien";
+            this.comboBoxNhanVien.Size = new System.Drawing.Size(200, 20);
+            this.comboBoxNhanVien.TabIndex = 34;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(516, 94);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(57, 12);
+            this.label10.TabIndex = 33;
+            this.label10.Text = "Nhân Viên";
+            // 
+            // dataGridViewLichSuPhieuThue
+            // 
+            this.dataGridViewLichSuPhieuThue.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewLichSuPhieuThue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewLichSuPhieuThue.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewLichSuPhieuThue.Location = new System.Drawing.Point(945, 528);
+            this.dataGridViewLichSuPhieuThue.Name = "dataGridViewLichSuPhieuThue";
+            this.dataGridViewLichSuPhieuThue.RowHeadersWidth = 51;
+            this.dataGridViewLichSuPhieuThue.Size = new System.Drawing.Size(541, 251);
+            this.dataGridViewLichSuPhieuThue.TabIndex = 37;
+            this.dataGridViewLichSuPhieuThue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLichSuPhieuThue_CellClick);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Cambria", 12.25F, System.Drawing.FontStyle.Bold);
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(942, 505);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(419, 20);
+            this.label12.TabIndex = 38;
+            this.label12.Text = "DANH SÁCH LỊCH SỬ PHIẾU THUÊ TRONG HỆ THỐNG";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
             // FPhieuThue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.ClientSize = new System.Drawing.Size(1455, 894);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.dataGridViewLichSuPhieuThue);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label11);
@@ -388,6 +449,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPhieuThue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKhachHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewXe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLichSuPhieuThue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,5 +482,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBoxNhanVien;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView dataGridViewLichSuPhieuThue;
+        private System.Windows.Forms.Label label12;
     }
 }

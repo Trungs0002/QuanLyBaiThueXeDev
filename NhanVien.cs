@@ -14,9 +14,18 @@ namespace QuanLyBaiThueXeDev
     
     public partial class NhanVien
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public NhanVien()
+        {
+            this.PhieuThues = new HashSet<PhieuThue>();
+        }
+    
         public int MaNhanVien { get; set; }
         public string TenNhanVien { get; set; }
         public string DienThoai { get; set; }
         public string MoTa { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhieuThue> PhieuThues { get; set; }
     }
 }

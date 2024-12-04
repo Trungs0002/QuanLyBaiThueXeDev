@@ -21,6 +21,8 @@ namespace QuanLyBaiThueXeDev.View
         private Ctrl_PhieuNopPhat ctrlPhieuNopPhat = new Ctrl_PhieuNopPhat();
         private List<KhachHang> dsKhachHang;
         private List<Xe> dsXe;
+        private List<NhanVien> dsNhanVien;
+        private Ctrl_NhanVien ctrlNhanVien = new Ctrl_NhanVien();
         public FPhieuThue()
         {
             InitializeComponent();
@@ -42,7 +44,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Mã Khách Hàng",
                 DataPropertyName = "MaKhachHang",
-                Width = 100 
+                Width = 100
             };
             dataGridViewKhachHang.Columns.Add(maKhachHangColumn);
 
@@ -50,7 +52,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Họ Tên",
                 DataPropertyName = "HoTen",
-                Width = 162 
+                Width = 162
             };
             dataGridViewKhachHang.Columns.Add(hoTenColumn);
 
@@ -58,7 +60,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Giới Tính",
                 DataPropertyName = "GioiTinh",
-                Width = 100 
+                Width = 100
             };
             dataGridViewKhachHang.Columns.Add(gioiTinhColumn);
 
@@ -66,7 +68,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Điện Thoại",
                 DataPropertyName = "DienThoai",
-                Width = 120 
+                Width = 120
             };
             dataGridViewKhachHang.Columns.Add(dienThoaiColumn);
 
@@ -74,7 +76,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Địa Chỉ",
                 DataPropertyName = "DiaChi",
-                Width = 200 
+                Width = 200
             };
             dataGridViewKhachHang.Columns.Add(diaChiColumn);
 
@@ -108,7 +110,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Biển Số Xe",
                 DataPropertyName = "BienSoXe",
-                Width = 120 
+                Width = 120
             };
             dataGridViewXe.Columns.Add(bienSoXeColumn);
 
@@ -116,7 +118,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Mã Loại Xe",
                 DataPropertyName = "MaLoaiXe",
-                Width = 100 
+                Width = 100
             };
             dataGridViewXe.Columns.Add(maLoaiXeColumn);
 
@@ -124,7 +126,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Màu Sơn",
                 DataPropertyName = "MauSon",
-                Width = 100 
+                Width = 100
             };
             dataGridViewXe.Columns.Add(mauSonColumn);
 
@@ -132,7 +134,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Tình Trạng",
                 DataPropertyName = "TinhTrang",
-                Width = 150 
+                Width = 150
             };
             dataGridViewXe.Columns.Add(tinhTrangColumn);
 
@@ -140,7 +142,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Mô Tả",
                 DataPropertyName = "MoTa",
-                Width = 212 
+                Width = 212
             };
             dataGridViewXe.Columns.Add(moTaColumn);
 
@@ -148,7 +150,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 HeaderText = "Giá Thuê",
                 DataPropertyName = "GiaThueXe",
-                Width = 120 
+                Width = 120
             };
             dataGridViewXe.Columns.Add(giaThueXeColumn);
 
@@ -165,6 +167,7 @@ namespace QuanLyBaiThueXeDev.View
             SetupDataGridView();
             LoadKhachHang();
             LoadXe();
+            LoadNhanVien();
             LoadPhieuThue();
 
             // Định dạng DateTimePicker
@@ -179,6 +182,14 @@ namespace QuanLyBaiThueXeDev.View
             comboBoxKhachHang.ValueMember = "MaKhachHang"; // Giá trị là mã khách hàng
         }
 
+        private void LoadNhanVien()
+        {
+            dsNhanVien = ctrlNhanVien.findAll();
+            comboBoxNhanVien.DataSource = dsNhanVien;
+            comboBoxNhanVien.DisplayMember = "TenNhanVien";
+            comboBoxNhanVien.ValueMember = "MaNhanVien";
+        }
+
         private void LoadXe()
         {
             dsXe = ctrlXe.findAll();
@@ -189,20 +200,79 @@ namespace QuanLyBaiThueXeDev.View
 
         private void LoadPhieuThue()
         {
+            //var list = ctrlPhieuThue.findAll();
+
+            //// Kiểm tra nếu không có phiếu thuê nào
+            //if (list == null || !list.Any())
+            //{
+            //    MessageBox.Show("Không có phiếu thuê nào trong hệ thống.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    dataGridViewPhieuThue.DataSource = null; // Xóa dữ liệu trong DataGridView
+            //    return;
+            //}
+
+            //dataGridViewPhieuThue.DataSource = list.Select(pt => new
+            //{
+            //    pt.SoPhieuThue,
+            //    pt.MaKhachHang,
+            //    pt.BienSoXe,
+            //    pt.SoNgayMuon,
+            //    pt.DonGia,
+            //    TongTien = pt.SoNgayMuon * pt.DonGia, // Tính tổng tiền thuê
+            //    pt.MaNhanVien,
+            //    pt.TrangThai// Thêm mã nhân viên vào danh sách
+            //}).ToList();
+
             var list = ctrlPhieuThue.findAll();
 
-            dataGridViewPhieuThue.DataSource = list.Select(pt => new
+            // Xóa dữ liệu cũ trong DataGridView
+            dataGridViewPhieuThue.DataSource = null;
+            dataGridViewLichSuPhieuThue.DataSource = null;
+
+            // Tạo danh sách cho từng trạng thái
+            var phieuThueDaGiao = new List<PhieuThue>();
+            var phieuThueDaTra = new List<PhieuThue>();
+
+            foreach (var phieuThue in list)
+            {
+                // Phân loại phiếu thuê theo trạng thái
+                if (phieuThue.TrangThai == "Đã giao xe")
+                {
+                    phieuThueDaGiao.Add(phieuThue);
+                }
+                else if (phieuThue.TrangThai == "Đã trả xe")
+                {
+                    phieuThueDaTra.Add(phieuThue);
+                }
+            }
+
+            // Cập nhật DataGridView với danh sách tương ứng
+            dataGridViewPhieuThue.DataSource = phieuThueDaGiao.Select(pt => new
             {
                 pt.SoPhieuThue,
                 pt.MaKhachHang,
-                pt.BienSoXe, 
+                pt.BienSoXe,
                 pt.SoNgayMuon,
                 pt.DonGia,
-                TongTien = pt.SoNgayMuon * pt.DonGia // Tính tổng tiền thuê
+                TongTien = pt.SoNgayMuon * pt.DonGia, // Tính tổng tiền
+                pt.MaNhanVien
+            }).ToList();
+
+            dataGridViewLichSuPhieuThue.DataSource = phieuThueDaTra.Select(pt => new
+            {
+                pt.SoPhieuThue,
+                pt.MaKhachHang,
+                pt.BienSoXe,
+                pt.SoNgayMuon,
+                pt.DonGia,
+                TongTien = pt.SoNgayMuon * pt.DonGia, // Tính tổng tiền
+                pt.MaNhanVien
             }).ToList();
 
             // Ẩn BienSoXe
             dataGridViewPhieuThue.Columns["BienSoXe"].Visible = false;
+
+            // Ẩn cột mã nhân viên nếu không cần hiển thị
+            dataGridViewPhieuThue.Columns["MaNhanVien"].Visible = true;
         }
 
 
@@ -219,7 +289,8 @@ namespace QuanLyBaiThueXeDev.View
                 if (string.IsNullOrWhiteSpace(txtSoPhieuThue.Text) ||
                     string.IsNullOrWhiteSpace(txtSoNgayMuon.Text) ||
                     comboBoxKhachHang.SelectedIndex == -1 ||
-                    comboBoxXe.SelectedIndex == -1)
+                    comboBoxXe.SelectedIndex == -1 ||
+                    comboBoxNhanVien.SelectedIndex == -1) // Kiểm tra nhân viên
                 {
                     MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -262,7 +333,9 @@ namespace QuanLyBaiThueXeDev.View
                     MaKhachHang = (int)comboBoxKhachHang.SelectedValue,
                     BienSoXe = bienSoXe,
                     SoNgayMuon = soNgayMuon,
-                    DonGia = xe?.GiaThueXe ?? 0 // Lấy giá thuê từ xe
+                    DonGia = xe?.GiaThueXe ?? 0, // Lấy giá thuê từ xe
+                    TrangThai = "Đã giao xe", // Mặc định trạng thái
+                    MaNhanVien = (int)comboBoxNhanVien.SelectedValue // Lưu mã nhân viên
                 };
 
                 ctrlPhieuThue.add(phieuThue);
@@ -303,9 +376,10 @@ namespace QuanLyBaiThueXeDev.View
                 var phieuThue = ctrlPhieuThue.findAll().FirstOrDefault(pt => pt.SoPhieuThue == soPhieuThue);
                 if (phieuThue != null)
                 {
-                    // Lấy mã khách hàng và biển số xe từ phiếu thuê
+                    // Lấy mã khách hàng, biển số xe và mã nhân viên từ phiếu thuê
                     int maKhachHang = phieuThue.MaKhachHang ?? 0; // Sử dụng ?? để xử lý giá trị null
                     string bienSoXe = phieuThue.BienSoXe;
+                    int maNhanVien = phieuThue.MaNhanVien ?? 0; // Lấy mã nhân viên
 
                     // Hiển thị thông tin vào các điều khiển
                     txtSoPhieuThue.Text = phieuThue.SoPhieuThue.ToString();
@@ -313,6 +387,9 @@ namespace QuanLyBaiThueXeDev.View
                     comboBoxXe.SelectedValue = bienSoXe; // Cập nhật comboBoxXe
                     dateTimePickerNgayThue.Value = (DateTime)phieuThue.NgayThue; // Cập nhật ngày thuê
                     txtSoNgayMuon.Text = phieuThue.SoNgayMuon.ToString(); // Cập nhật số ngày thuê
+
+                    // Cập nhật comboBoxNhanVien với mã nhân viên
+                    comboBoxNhanVien.SelectedValue = maNhanVien; // Cập nhật comboBoxNhanVien
 
                     // Lấy thông tin khách hàng từ cơ sở dữ liệu
                     var khachHang = ctrlKhachHang.findById(maKhachHang);
@@ -338,6 +415,7 @@ namespace QuanLyBaiThueXeDev.View
             txtSoNgayMuon.Clear();
             comboBoxKhachHang.SelectedIndex = -1;
             comboBoxXe.SelectedIndex = -1;
+            comboBoxNhanVien.SelectedIndex = -1;
             dateTimePickerNgayThue.Value = DateTime.Now;
         }
 
@@ -366,7 +444,9 @@ namespace QuanLyBaiThueXeDev.View
                 }
 
                 // Kiểm tra xem dữ liệu có thay đổi không
-                if (phieuThue.SoNgayMuon == soNgayMuon && phieuThue.BienSoXe == comboBoxXe.SelectedValue.ToString())
+                if (phieuThue.SoNgayMuon == soNgayMuon &&
+                    phieuThue.BienSoXe == comboBoxXe.SelectedValue.ToString() &&
+                    phieuThue.MaNhanVien == (int)comboBoxNhanVien.SelectedValue) // Kiểm tra mã nhân viên từ comboBox
                 {
                     MessageBox.Show("Thông tin không có thay đổi. Vui lòng nhập thông tin cần sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -375,6 +455,7 @@ namespace QuanLyBaiThueXeDev.View
                 // Cập nhật thông tin phiếu thuê
                 phieuThue.SoNgayMuon = soNgayMuon;
                 phieuThue.BienSoXe = comboBoxXe.SelectedValue.ToString();
+                phieuThue.MaNhanVien = (int)comboBoxNhanVien.SelectedValue; // Cập nhật mã nhân viên từ comboBox
                 ctrlPhieuThue.update(phieuThue);
 
                 LoadPhieuThue();
@@ -404,7 +485,11 @@ namespace QuanLyBaiThueXeDev.View
                 var phieuThue = ctrlPhieuThue.findAll().FirstOrDefault(pt => pt.SoPhieuThue == soPhieuThue);
                 if (phieuThue != null)
                 {
-                    // Lưu thông tin vào bảng lịch sử thuê trước khi xóa
+                    // Cập nhật trạng thái phiếu thuê thành "Đã trả xe"
+                    phieuThue.TrangThai = "Đã trả xe"; // Cập nhật trạng thái
+                    ctrlPhieuThue.upDate(phieuThue); // Lưu thay đổi vào cơ sở dữ liệu
+
+                    // Lưu thông tin vào bảng lịch sử thuê
                     var lichSuThue = new LichSuThue
                     {
                         MaKhachHang = phieuThue.MaKhachHang ?? 0, // Lấy mã khách hàng 
@@ -441,17 +526,15 @@ namespace QuanLyBaiThueXeDev.View
                             // Cập nhật lý do nộp phạt với số ngày trễ
                             LyDoNopPhat = $"Trễ hạn trả xe ({soNgayChamTra} Ngày)",
                             SoTienNopPhat = soTienNopPhat,
-                            NgayThueXe = ngayThueXe, 
-                            NgayTraXe = ngayTraXe 
+                            NgayThueXe = ngayThueXe,
+                            NgayTraXe = ngayTraXe
                         };
 
                         // Thêm phiếu nộp phạt vào cơ sở dữ liệu
                         ctrlPhieuNopPhat.add(phieuNopPhat);
                     }
 
-                    // Xóa phiếu thuê
                     string bienSoXe = phieuThue.BienSoXe;
-                    ctrlPhieuThue.remove(phieuThue);
                     var xe = ctrlXe.findByBienSo(bienSoXe);
                     if (xe != null)
                     {
@@ -459,8 +542,10 @@ namespace QuanLyBaiThueXeDev.View
                         ctrlXe.upDate(xe); // Cập nhật xe trong cơ sở dữ liệu
                     }
 
+                    // Cập nhật lại danh sách phiếu thuê
                     LoadPhieuThue(); // Cập nhật danh sách phiếu thuê
-                    LoadXe();
+                    LoadXe(); // Cập nhật danh sách xe
+
                     // Cập nhật lịch sử thuê trong FKhachHang
                     var khachHangForm = Application.OpenForms.OfType<FKhachHang>().FirstOrDefault();
                     if (khachHangForm != null)
@@ -469,7 +554,7 @@ namespace QuanLyBaiThueXeDev.View
                         khachHangForm.LoadLichSuThue(phieuThue.MaKhachHang ?? 0);
                     }
 
-                    MessageBox.Show("Xóa phiếu thuê thành công!");
+                    MessageBox.Show("Cập nhật trạng thái phiếu thuê thành công!");
                 }
                 else
                 {
@@ -497,7 +582,7 @@ namespace QuanLyBaiThueXeDev.View
                 // Kiểm tra nếu từ khóa tìm kiếm trống
                 if (string.IsNullOrWhiteSpace(searchTerm))
                 {
-                    LoadPhieuThue(); 
+                    LoadPhieuThue();
                     return;
                 }
 
@@ -530,12 +615,6 @@ namespace QuanLyBaiThueXeDev.View
             }
         }
 
-
-
-
-
-
-
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
 
@@ -554,6 +633,62 @@ namespace QuanLyBaiThueXeDev.View
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewLichSuPhieuThue_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Kiểm tra nếu hàng được click là hợp lệ
+            {
+                // Lấy thông tin phiếu thuê từ dòng đã chọn
+                var selectedRow = dataGridViewLichSuPhieuThue.Rows[e.RowIndex];
+                int soPhieuThue = (int)selectedRow.Cells["SoPhieuThue"].Value;
+
+                // Lấy thông tin phiếu thuê từ cơ sở dữ liệu
+                var phieuThue = ctrlPhieuThue.findAll().FirstOrDefault(pt => pt.SoPhieuThue == soPhieuThue);
+                if (phieuThue != null)
+                {
+                    // Lấy mã khách hàng, biển số xe và mã nhân viên từ phiếu thuê
+                    int maKhachHang = phieuThue.MaKhachHang ?? 0; // Sử dụng ?? để xử lý giá trị null
+                    string bienSoXe = phieuThue.BienSoXe;
+                    int maNhanVien = phieuThue.MaNhanVien ?? 0; // Lấy mã nhân viên
+
+                    // Hiển thị thông tin vào các điều khiển
+                    txtSoPhieuThue.Text = phieuThue.SoPhieuThue.ToString();
+                    comboBoxKhachHang.SelectedValue = maKhachHang; // Cập nhật comboBoxKhachHang
+                    comboBoxXe.SelectedValue = bienSoXe; // Cập nhật comboBoxXe
+                    dateTimePickerNgayThue.Value = (DateTime)phieuThue.NgayThue; // Cập nhật ngày thuê
+                    txtSoNgayMuon.Text = phieuThue.SoNgayMuon.ToString(); // Cập nhật số ngày thuê
+
+                    // Cập nhật comboBoxNhanVien với mã nhân viên
+                    comboBoxNhanVien.SelectedValue = maNhanVien; // Cập nhật comboBoxNhanVien
+
+                    // Lấy thông tin khách hàng từ cơ sở dữ liệu
+                    var khachHang = ctrlKhachHang.findById(maKhachHang);
+                    if (khachHang != null)
+                    {
+                        // Hiển thị thông tin khách hàng
+                        dataGridViewKhachHang.DataSource = new List<KhachHang> { khachHang };
+                    }
+
+                    // Lấy thông tin xe từ cơ sở dữ liệu
+                    var xe = ctrlXe.findByBienSo(bienSoXe);
+                    if (xe != null)
+                    {
+                        // Hiển thị thông tin xe
+                        dataGridViewXe.DataSource = new List<Xe> { xe };
+                    }
+                }
+            }
         }
     }
 }
