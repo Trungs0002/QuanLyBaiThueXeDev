@@ -31,7 +31,7 @@ namespace QuanLyBaiThueXeDev
             load_Xe();
             ClearFields();
             txtTinhTrang.Items.Add("Hỏng Hóc");
-            txtTinhTrang.Items.Add("Còn Sử Dụng");
+            txtTinhTrang.Items.Add("Còn sử dụng");
             txtTinhTrang.Items.Add("Chưa Đăng Kiểm");
             txtTinhTrang.Items.Add("Đang được thuê");
         }
