@@ -170,7 +170,9 @@
             this.comboBoxXe.Name = "comboBoxXe";
             this.comboBoxXe.Size = new System.Drawing.Size(138, 20);
             this.comboBoxXe.TabIndex = 24;
+            this.comboBoxXe.DropDown += new System.EventHandler(this.comboBoxXe_DropDown);
             this.comboBoxXe.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBoxXe.DropDownClosed += new System.EventHandler(this.comboBoxXe_DropDownClosed);
             // 
             // comboBoxKhachHang
             // 
@@ -180,6 +182,7 @@
             this.comboBoxKhachHang.Name = "comboBoxKhachHang";
             this.comboBoxKhachHang.Size = new System.Drawing.Size(138, 20);
             this.comboBoxKhachHang.TabIndex = 23;
+            this.comboBoxKhachHang.TextChanged += new System.EventHandler(this.comboBoxKhachHang_TextChanged);
             // 
             // label7
             // 
@@ -292,10 +295,11 @@
             this.txtSoPhieuThue.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
             this.txtSoPhieuThue.Location = new System.Drawing.Point(124, 51);
             this.txtSoPhieuThue.Name = "txtSoPhieuThue";
+            this.txtSoPhieuThue.ReadOnly = true;
             this.txtSoPhieuThue.Size = new System.Drawing.Size(106, 20);
             this.txtSoPhieuThue.TabIndex = 0;
             this.txtSoPhieuThue.Click += new System.EventHandler(this.txtSoPhieuThue_Click);
-            this.txtSoPhieuThue.TextChanged += new System.EventHandler(this.txtSoPhieuThue_TextChanged);
+            this.txtSoPhieuThue.TextChanged += new System.EventHandler(this.comboBoxXe_DropDown);
             this.txtSoPhieuThue.Enter += new System.EventHandler(this.txtSoPhieuThue_Enter);
             // 
             // dataGridViewPhieuThue
@@ -417,6 +421,12 @@
             this.dataGridViewLichSuPhieuThue.Size = new System.Drawing.Size(541, 186);
             this.dataGridViewLichSuPhieuThue.TabIndex = 37;
             this.dataGridViewLichSuPhieuThue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLichSuPhieuThue_CellClick);
+            this.dataGridViewLichSuPhieuThue.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLichSuPhieuThue_CellMouseEnter);
+            this.dataGridViewLichSuPhieuThue.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLichSuPhieuThue_CellMouseLeave);
+            this.dataGridViewLichSuPhieuThue.Enter += new System.EventHandler(this.dataGridViewLichSuPhieuThue_Enter);
+            this.dataGridViewLichSuPhieuThue.Leave += new System.EventHandler(this.dataGridViewLichSuPhieuThue_Leave);
+            this.dataGridViewLichSuPhieuThue.MouseEnter += new System.EventHandler(this.dataGridViewLichSuPhieuThue_MouseEnter);
+            this.dataGridViewLichSuPhieuThue.MouseLeave += new System.EventHandler(this.dataGridViewLichSuPhieuThue_MouseLeave);
             // 
             // label12
             // 

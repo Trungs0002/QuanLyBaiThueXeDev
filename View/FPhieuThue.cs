@@ -165,7 +165,7 @@ namespace QuanLyBaiThueXeDev.View
         private void FPhieuThue_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
-            txtSoPhieuThue.ReadOnly = true;
+            //txtSoPhieuThue.ReadOnly = true;
             ClearFields();
             SetupDataGridView();
             LoadKhachHang();
@@ -192,13 +192,20 @@ namespace QuanLyBaiThueXeDev.View
             comboBoxNhanVien.DisplayMember = "TenNhanVien";
             comboBoxNhanVien.ValueMember = "MaNhanVien";
         }
-
+        //private List<string> tempXeList = new List<string>(); // Danh sách tạm thời
         private void LoadXe()
         {
             dsXe = ctrlXe.findAll();
+
+            // Lọc danh sách xe để chỉ lấy xe có trạng thái "Còn sử dụng"
             comboBoxXe.DataSource = dsXe;
             comboBoxXe.DisplayMember = "BienSoXe"; // Hiển thị biển số xe
             comboBoxXe.ValueMember = "BienSoXe"; // Giá trị là biển số xe
+            //var availableXe = dsXe.Where(xe => xe.TinhTrang != "Đang được thuê").ToList();
+
+            //comboBoxXe.DataSource = availableXe; // Gán danh sách xe đã lọc cho ComboBox
+            //comboBoxXe.DisplayMember = "BienSoXe"; // Hiển thị biển số xe
+            //comboBoxXe.ValueMember = "BienSoXe";
         }
 
         private void LoadPhieuThue()
@@ -350,6 +357,7 @@ namespace QuanLyBaiThueXeDev.View
                     ctrlXe.upDate(xe);
                 }
 
+                LoadXe();
                 LoadPhieuThue();
                 ClearFields();
 
@@ -364,13 +372,14 @@ namespace QuanLyBaiThueXeDev.View
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void dataGridViewPhieuThue_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0) // Kiểm tra nếu hàng được click là hợp lệ
             {
+                //LoadXe();
                 isEditingPhieuThue = true;
                 // Lấy thông tin phiếu thuê từ dòng đã chọn
                 var selectedRow = dataGridViewPhieuThue.Rows[e.RowIndex];
@@ -388,7 +397,14 @@ namespace QuanLyBaiThueXeDev.View
                     // Hiển thị thông tin vào các điều khiển
                     txtSoPhieuThue.Text = phieuThue.SoPhieuThue.ToString();
                     comboBoxKhachHang.SelectedValue = maKhachHang; // Cập nhật comboBoxKhachHang
-                    comboBoxXe.SelectedValue = bienSoXe; // Cập nhật comboBoxXe
+                    //comboBoxXe.SelectedValue = bienSoXe; // Cập nhật comboBoxXe
+                    //if (!tempXeList.Contains(bienSoXe)) // Kiểm tra xem đã có trong danh sách tạm thời chưa
+                    //{
+                    //    tempXeList.Add(bienSoXe); // Thêm biển số xe vào danh sách tạm thời
+                    //}
+                    //comboBoxXe.DataSource = null; // Xóa DataSource hiện tại
+                    //comboBoxXe.DataSource = tempXeList; // Gán lại DataSource với danh sách tạm thời
+                    comboBoxXe.SelectedValue = bienSoXe;
                     dateTimePickerNgayThue.Value = (DateTime)phieuThue.NgayThue; // Cập nhật ngày thuê
                     txtSoNgayMuon.Text = phieuThue.SoNgayMuon.ToString(); // Cập nhật số ngày thuê
 
@@ -418,6 +434,7 @@ namespace QuanLyBaiThueXeDev.View
             txtSoPhieuThue.Text = GenerateNewPhieuThueId().ToString();
             txtSoNgayMuon.Clear();
             comboBoxKhachHang.SelectedIndex = -1;
+            LoadXe();
             comboBoxXe.SelectedIndex = -1;
             comboBoxNhanVien.SelectedIndex = -1;
             dateTimePickerNgayThue.Value = DateTime.Now;
@@ -426,56 +443,76 @@ namespace QuanLyBaiThueXeDev.View
         private bool isEditingPhieuThue = false; // Biến để xác định 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (!isEditingPhieuThue) // Kiểm tra nếu không phải là phiếu thuê
-                {
-                    MessageBox.Show("Lịch sử không thể sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+             try
+    {
+        if (!isEditingPhieuThue) // Kiểm tra nếu không phải là phiếu thuê
+        {
+            MessageBox.Show("Lịch sử không thể sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
 
-                if (string.IsNullOrWhiteSpace(txtSoPhieuThue.Text))
-                {
-                    MessageBox.Show("Vui lòng chọn phiếu thuê cần sửa từ danh sách.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+        if (string.IsNullOrWhiteSpace(txtSoPhieuThue.Text))
+        {
+            MessageBox.Show("Vui lòng chọn phiếu thuê cần sửa từ danh sách.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
 
-                if (!int.TryParse(txtSoNgayMuon.Text, out int soNgayMuon) || soNgayMuon <= 0)
-                {
-                    MessageBox.Show("Số ngày mượn phải là số nguyên dương.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+        if (!int.TryParse(txtSoNgayMuon.Text, out int soNgayMuon) || soNgayMuon <= 0)
+        {
+            MessageBox.Show("Số ngày mượn phải là số nguyên dương.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
 
-                int soPhieuThue = int.Parse(txtSoPhieuThue.Text);
-                var phieuThue = ctrlPhieuThue.findAll().FirstOrDefault(pt => pt.SoPhieuThue == soPhieuThue);
-                if (phieuThue == null)
-                {
-                    MessageBox.Show("Không tìm thấy phiếu thuê cần sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+        int soPhieuThue = int.Parse(txtSoPhieuThue.Text);
+        var phieuThue = ctrlPhieuThue.findAll().FirstOrDefault(pt => pt.SoPhieuThue == soPhieuThue);
+        if (phieuThue == null)
+        {
+            MessageBox.Show("Không tìm thấy phiếu thuê cần sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
 
-                // Kiểm tra xem dữ liệu có thay đổi không
-                if (phieuThue.SoNgayMuon == soNgayMuon &&
-                    phieuThue.BienSoXe == comboBoxXe.SelectedValue.ToString() &&
-                    phieuThue.MaNhanVien == (int)comboBoxNhanVien.SelectedValue) // Kiểm tra mã nhân viên từ comboBox
-                {
-                    MessageBox.Show("Thông tin không có thay đổi. Vui lòng nhập thông tin cần sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+        // Lưu biển số xe cũ
+        string bienSoXeCu = phieuThue.BienSoXe;
 
-                // Cập nhật thông tin phiếu thuê
-                phieuThue.SoNgayMuon = soNgayMuon;
-                phieuThue.BienSoXe = comboBoxXe.SelectedValue.ToString();
-                phieuThue.MaNhanVien = (int)comboBoxNhanVien.SelectedValue; // Cập nhật mã nhân viên từ comboBox
-                ctrlPhieuThue.update(phieuThue);
+        // Kiểm tra xem dữ liệu có thay đổi không
+        if (phieuThue.SoNgayMuon == soNgayMuon &&
+            phieuThue.BienSoXe == comboBoxXe.SelectedValue.ToString() &&
+            phieuThue.MaNhanVien == (int)comboBoxNhanVien.SelectedValue) // Kiểm tra mã nhân viên từ comboBox
+        {
+            MessageBox.Show("Thông tin không có thay đổi. Vui lòng nhập thông tin cần sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
 
-                LoadPhieuThue();
-                MessageBox.Show("Sửa phiếu thuê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        // Cập nhật thông tin phiếu thuê
+        phieuThue.SoNgayMuon = soNgayMuon;
+        phieuThue.BienSoXe = comboBoxXe.SelectedValue.ToString(); // Biển số xe mới
+        phieuThue.MaNhanVien = (int)comboBoxNhanVien.SelectedValue; // Cập nhật mã nhân viên từ comboBox
+        ctrlPhieuThue.update(phieuThue); // Cập nhật phiếu thuê
+
+        // Cập nhật trạng thái xe cũ
+        var xeCu = ctrlXe.findByBienSo(bienSoXeCu);
+        if (xeCu != null)
+        {
+            xeCu.TinhTrang = "Còn sử dụng"; // Cập nhật trạng thái xe cũ
+            ctrlXe.upDate(xeCu); // Lưu thay đổi vào cơ sở dữ liệu
+        }
+
+        // Cập nhật trạng thái xe mới
+        var xeMoi = ctrlXe.findByBienSo(phieuThue.BienSoXe);
+        if (xeMoi != null)
+        {
+            xeMoi.TinhTrang = "Đang được thuê"; // Cập nhật trạng thái xe mới
+            ctrlXe.upDate(xeMoi); // Lưu thay đổi vào cơ sở dữ liệu
+        }
+
+        LoadXe(); // Cập nhật danh sách xe
+        LoadPhieuThue(); // Cập nhật danh sách phiếu thuê
+        MessageBox.Show("Sửa phiếu thuê thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -669,6 +706,7 @@ namespace QuanLyBaiThueXeDev.View
         {
             if (e.RowIndex >= 0) // Kiểm tra nếu hàng được click là hợp lệ
             {
+                //LoadXe();
                 isEditingPhieuThue = false;
                 // Lấy thông tin phiếu thuê từ dòng đã chọn
                 var selectedRow = dataGridViewLichSuPhieuThue.Rows[e.RowIndex];
@@ -686,7 +724,14 @@ namespace QuanLyBaiThueXeDev.View
                     // Hiển thị thông tin vào các điều khiển
                     txtSoPhieuThue.Text = phieuThue.SoPhieuThue.ToString();
                     comboBoxKhachHang.SelectedValue = maKhachHang; // Cập nhật comboBoxKhachHang
-                    comboBoxXe.SelectedValue = bienSoXe; // Cập nhật comboBoxXe
+                    //comboBoxXe.SelectedValue = bienSoXe; // Cập nhật comboBoxXe
+                    //if (!tempXeList.Contains(bienSoXe)) // Kiểm tra xem đã có trong danh sách tạm thời chưa
+                    //{
+                    //    tempXeList.Add(bienSoXe); // Thêm biển số xe vào danh sách tạm thời
+                    //}
+                    //comboBoxXe.DataSource = null; // Xóa DataSource hiện tại
+                    //comboBoxXe.DataSource = tempXeList; // Gán lại DataSource với danh sách tạm thời
+                    comboBoxXe.SelectedValue = bienSoXe;
                     dateTimePickerNgayThue.Value = (DateTime)phieuThue.NgayThue; // Cập nhật ngày thuê
                     txtSoNgayMuon.Text = phieuThue.SoNgayMuon.ToString(); // Cập nhật số ngày thuê
 
@@ -760,7 +805,7 @@ namespace QuanLyBaiThueXeDev.View
         private void txtSoPhieuThue_Enter(object sender, EventArgs e)
         {
             
-            this.ActiveControl = null;
+            //this.ActiveControl = null;
         }
 
         private void txtSoPhieuThue_Click(object sender, EventArgs e)
@@ -771,6 +816,83 @@ namespace QuanLyBaiThueXeDev.View
         private void btnNhapMoi_Click(object sender, EventArgs e)
         {
             ClearFields();
+        }
+
+        private void comboBoxXe_DropDown(object sender, EventArgs e)
+        {
+            //var availableXe = dsXe.Where(xe => xe.TinhTrang != "Đang được thuê").ToList(); // Lọc xe còn sử dụng
+            //comboBoxXe.DataSource = availableXe; // Cập nhật DataSource
+        }
+
+        private void comboBoxXe_DropDownClosed(object sender, EventArgs e)
+        {
+            //var availableXe = dsXe.Where(xe => xe.TinhTrang != "Đang được thuê").ToList(); // Lọc xe còn sử dụng
+            //comboBoxXe.DataSource = availableXe; // Cập nhật DataSource
+        }
+        //private bool isUpdating = false;
+        private void comboBoxKhachHang_TextChanged(object sender, EventArgs e)
+        {
+            //if (isUpdating) return; // Nếu đang cập nhật thì không xử lý
+
+            //string searchTerm = comboBoxKhachHang.Text.ToLower(); // Lấy từ khóa tìm kiếm và chuyển thành chữ thường
+
+            //// Lọc danh sách khách hàng dựa trên từ khóa tìm kiếm
+            //var filteredList = dsKhachHang
+            //    .Where(kh => kh.HoTen.ToLower().Contains(searchTerm)) // Kiểm tra xem họ tên có chứa từ khóa không
+            //    .ToList();
+
+            //// Tạm thời tắt sự kiện
+            //isUpdating = true;
+
+            //// Cập nhật DataSource cho ComboBox
+            //comboBoxKhachHang.DataSource = filteredList;
+
+            //// Nếu không có kết quả nào, có thể chọn giá trị mặc định
+            //if (filteredList.Count == 0)
+            //{
+            //    comboBoxKhachHang.SelectedIndex = -1; // Không chọn gì
+            //}
+            //else
+            //{
+            //    comboBoxKhachHang.SelectedIndex = 0; // Chọn giá trị đầu tiên
+            //}
+
+            //// Bật lại sự kiện
+            //isUpdating = false;
+        }
+
+        private void txtTimKiemKH_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void dataGridViewLichSuPhieuThue_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewLichSuPhieuThue_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewLichSuPhieuThue_MouseEnter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewLichSuPhieuThue_MouseLeave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewLichSuPhieuThue_Enter(object sender, EventArgs e)
+        {
+            btnXoa.Visible = false;
+        }
+
+        private void dataGridViewLichSuPhieuThue_Leave(object sender, EventArgs e)
+        {
+            btnXoa.Visible = true;
         }
     }
 }
