@@ -49,18 +49,15 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
         //
         public Dictionary<int, decimal> GetDoanhThuTheoThang(int thang, int nam)
         {
-            var doanhThu = CUtils.db.PhieuThues
+            return CUtils.db.PhieuThues
                 .Where(p => p.NgayThue.HasValue && p.NgayThue.Value.Month == thang && p.NgayThue.Value.Year == nam)
-                .GroupBy(p => p.MaNhanVien) // Nhóm theo mã nhân viên
-                .AsEnumerable() // Chuyển đổi sang LINQ to Objects
+                .GroupBy(p => p.MaNhanVien)
                 .Select(group => new
                 {
                     MaNhanVien = group.Key,
-                    DoanhThu = group.Sum(p => (decimal)(p.DonGia * p.SoLuong)) // Chuyển đổi ở đây sau khi chuyển sang LINQ to Objects
+                    DoanhThu = group.Sum(p => (decimal)(p.DonGia * p.SoLuong))
                 })
-                .ToDictionary(x => x.MaNhanVien.Value, x => x.DoanhThu); // Chuyển MaNhanVien thành int nếu cần thiết
-
-            return doanhThu;
+                .ToDictionary(x => x.MaNhanVien.GetValueOrDefault(), x => x.DoanhThu); // Xử lý nullable
         }
 
 

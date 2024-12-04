@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="21e71560436a4b3383176389185e8f63" Name="Diagram1" ZoomLevel="124">
+      <Diagram DiagramId="21e71560436a4b3383176389185e8f63" Name="Diagram1" ZoomLevel="60">
         <EntityTypeShape EntityType="QuanLyBaiThueXeModel.DoanhThu" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyBaiThueXeModel.KhachHang" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.LichSuThue" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.LichSuThue" Width="1.5" PointX="3.25" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyBaiThueXeModel.LoaiXe" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.NhanVien" Width="1.5" PointX="3.75" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.PhieuNopPhat" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.PhieuThue" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.Xe" Width="1.5" PointX="3.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.NhanVien" Width="1.5" PointX="13.125" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.PhieuNopPhat" Width="1.5" PointX="7.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.PhieuThue" Width="1.5" PointX="10.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBaiThueXeModel.Xe" Width="1.5" PointX="5.375" PointY="7" IsExpanded="true" />
         <AssociationConnector Association="QuanLyBaiThueXeModel.FK__LichSuThu__MaKha__72C60C4A" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBaiThueXeModel.FK__PhieuNopP__MaKha__46E78A0C" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBaiThueXeModel.FK__PhieuThue__MaKha__412EB0B6" ManuallyRouted="false" />

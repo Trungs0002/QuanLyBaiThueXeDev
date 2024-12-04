@@ -45,7 +45,16 @@ namespace QuanLyBaiThueXeDev.View
         }
         private void InitializeDataGridView()
         {
-            // Kiểm tra và thêm cột "DoanhThu" nếu chưa có
+            // Thêm cột MaNhanVien nếu chưa có
+            if (!dtGridViewNhanVien.Columns.Contains("MaNhanVien"))
+            {
+                DataGridViewTextBoxColumn maNVColumn = new DataGridViewTextBoxColumn();
+                maNVColumn.Name = "MaNhanVien";
+                maNVColumn.HeaderText = "Mã Nhân Viên";
+                dtGridViewNhanVien.Columns.Add(maNVColumn);
+            }
+
+            // Thêm cột DoanhThu nếu chưa có
             if (!dtGridViewNhanVien.Columns.Contains("DoanhThu"))
             {
                 DataGridViewTextBoxColumn doanhThuColumn = new DataGridViewTextBoxColumn();
@@ -297,21 +306,38 @@ namespace QuanLyBaiThueXeDev.View
 
         private void btnXemDoanhThu_Click(object sender, EventArgs e)
         {
-            int thang = Convert.ToInt32(cmbThang.SelectedItem);
-            int nam = Convert.ToInt32(cmbNam.SelectedItem);
-
-            // Gọi phương thức từ đối tượng ctrlNhanVien
-            var doanhThu = ctrlNhanVien.GetDoanhThuTheoThang(thang, nam);
-
-            // Đưa dữ liệu vào DataGridView
-            dtGridViewNhanVien.Rows.Clear(); // Xóa các hàng cũ trước khi thêm dữ liệu mới
-
-            foreach (var item in doanhThu)
+            try
             {
-                // Tạo dòng mới cho DataGridView
-                int rowIndex = dtGridViewNhanVien.Rows.Add();
-                dtGridViewNhanVien.Rows[rowIndex].Cells["MaNhanVien"].Value = item.Key;
-                dtGridViewNhanVien.Rows[rowIndex].Cells["DoanhThu"].Value = item.Value;
+                // Lấy giá trị tháng và năm từ ComboBox
+                int thang = Convert.ToInt32(cmbThang.SelectedItem);
+                int nam = Convert.ToInt32(cmbNam.SelectedItem);
+
+                // Gọi phương thức từ Ctrl_NhanVien
+                var doanhThu = ctrlNhanVien.GetDoanhThuTheoThang(thang, nam);
+
+                // Xóa dữ liệu cũ trong DataGridView
+                dtGridViewNhanVien.Rows.Clear();
+
+                if (doanhThu != null && doanhThu.Count > 0)
+                {
+                    foreach (var item in doanhThu)
+                    {
+                        // Tạo dòng mới cho mỗi nhân viên
+                        int rowIndex = dtGridViewNhanVien.Rows.Add();
+                        dtGridViewNhanVien.Rows[rowIndex].Cells["MaNhanVien"].Value = item.Key;
+                        dtGridViewNhanVien.Rows[rowIndex].Cells["DoanhThu"].Value = item.Value.ToString("N0"); // Định dạng số
+                    }
+
+                    MessageBox.Show("Dữ liệu doanh thu đã được tải thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Không có dữ liệu doanh thu trong tháng này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Có lỗi khi tải dữ liệu doanh thu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

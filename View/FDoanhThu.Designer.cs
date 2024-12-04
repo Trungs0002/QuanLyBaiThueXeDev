@@ -50,6 +50,7 @@
             this.cbThoiGian = new System.Windows.Forms.ComboBox();
             this.datePickerStart = new System.Windows.Forms.DateTimePicker();
             this.datePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerYear = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewDoanhThu)).BeginInit();
             this.panel1.SuspendLayout();
@@ -63,7 +64,7 @@
             this.panel2.Controls.Add(this.txtTimKiem);
             this.panel2.Controls.Add(this.btnTimKiem);
             this.panel2.Location = new System.Drawing.Point(149, 521);
-            this.panel2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel2.Margin = new System.Windows.Forms.Padding(5);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1033, 64);
             this.panel2.TabIndex = 11;
@@ -74,7 +75,7 @@
             this.timkiem.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
             this.timkiem.ForeColor = System.Drawing.Color.White;
             this.timkiem.Location = new System.Drawing.Point(893, 14);
-            this.timkiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.timkiem.Margin = new System.Windows.Forms.Padding(4);
             this.timkiem.Name = "timkiem";
             this.timkiem.Size = new System.Drawing.Size(107, 37);
             this.timkiem.TabIndex = 15;
@@ -86,7 +87,7 @@
             // 
             this.txtTimKiem.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
             this.txtTimKiem.Location = new System.Drawing.Point(37, 21);
-            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(5);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(824, 24);
             this.txtTimKiem.TabIndex = 14;
@@ -94,7 +95,7 @@
             // btnTimKiem
             // 
             this.btnTimKiem.Location = new System.Drawing.Point(1201, 22);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(5);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(100, 28);
             this.btnTimKiem.TabIndex = 13;
@@ -113,7 +114,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtGridViewDoanhThu.DefaultCellStyle = dataGridViewCellStyle1;
             this.dtGridViewDoanhThu.Location = new System.Drawing.Point(148, 639);
-            this.dtGridViewDoanhThu.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dtGridViewDoanhThu.Margin = new System.Windows.Forms.Padding(5);
             this.dtGridViewDoanhThu.Name = "dtGridViewDoanhThu";
             this.dtGridViewDoanhThu.RowHeadersWidth = 51;
             this.dtGridViewDoanhThu.Size = new System.Drawing.Size(1035, 379);
@@ -123,7 +124,7 @@
             // 
             this.dateTimePickerMonth.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
             this.dateTimePickerMonth.Location = new System.Drawing.Point(235, 55);
-            this.dateTimePickerMonth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerMonth.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerMonth.Name = "dateTimePickerMonth";
             this.dateTimePickerMonth.Size = new System.Drawing.Size(265, 24);
             this.dateTimePickerMonth.TabIndex = 13;
@@ -255,6 +256,7 @@
             this.cbThoiGian.Name = "cbThoiGian";
             this.cbThoiGian.Size = new System.Drawing.Size(489, 24);
             this.cbThoiGian.TabIndex = 34;
+            this.cbThoiGian.SelectedIndexChanged += new System.EventHandler(this.cbThoiGian_SelectedIndexChanged);
             // 
             // datePickerStart
             // 
@@ -270,12 +272,20 @@
             this.datePickerEnd.Size = new System.Drawing.Size(200, 22);
             this.datePickerEnd.TabIndex = 37;
             // 
+            // dateTimePickerYear
+            // 
+            this.dateTimePickerYear.Location = new System.Drawing.Point(358, 174);
+            this.dateTimePickerYear.Name = "dateTimePickerYear";
+            this.dateTimePickerYear.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerYear.TabIndex = 38;
+            // 
             // FDoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(2172, 1237);
+            this.Controls.Add(this.dateTimePickerYear);
             this.Controls.Add(this.datePickerEnd);
             this.Controls.Add(this.datePickerStart);
             this.Controls.Add(this.cbThoiGian);
@@ -286,7 +296,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dtGridViewDoanhThu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FDoanhThu";
             this.Text = "FDoanhThu";
             this.Load += new System.EventHandler(this.FDoanhThu_Load);
@@ -321,5 +331,6 @@
         private System.Windows.Forms.ComboBox cbThoiGian;
         private System.Windows.Forms.DateTimePicker datePickerStart;
         private System.Windows.Forms.DateTimePicker datePickerEnd;
+        private System.Windows.Forms.DateTimePicker dateTimePickerYear;
     }
 }

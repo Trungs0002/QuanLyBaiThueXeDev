@@ -30,12 +30,17 @@ namespace QuanLyBaiThueXeDev.View
             datePickerEnd.CustomFormat = "dd/MM/yyyy";
 
             // Đặt các tùy chọn cho ComboBox
-            cbThoiGian.Items.AddRange(new string[] { "Theo Ngày", "Theo Tuần", "Theo Tháng" });
-            cbThoiGian.SelectedIndex = 2; // Mặc định là "Theo Tháng"
+            cbThoiGian.Items.AddRange(new string[] { "Theo Ngày", "Theo Tháng", "Theo Năm" });
+            cbThoiGian.SelectedIndex = 0; // Mặc định là "Theo Ngày"
 
             // Định dạng DateTimePicker
             dateTimePickerMonth.Format = DateTimePickerFormat.Custom;
             dateTimePickerMonth.CustomFormat = "MM/yyyy";
+
+            dateTimePickerYear.Format = DateTimePickerFormat.Custom;
+            dateTimePickerYear.CustomFormat = "yyyy";
+            dateTimePickerYear.ShowUpDown = true; // Hiển thị dạng cuộn chọn năm
+            dateTimePickerYear.Visible = false; // Ẩn mặc định, chỉ hiện khi chọn "Theo Năm"
 
             // Cấu hình biểu đồ
             ConfigureChart();
@@ -89,23 +94,27 @@ namespace QuanLyBaiThueXeDev.View
 
                 if (loaiThongKe == "Theo Ngày")
                 {
-                    // Lấy ngày bắt đầu và ngày kết thúc
                     DateTime ngayBatDau = datePickerStart.Value.Date;
                     DateTime ngayKetThuc = datePickerEnd.Value.Date;
 
+                    if (ngayBatDau > ngayKetThuc)
+                    {
+                        MessageBox.Show("Ngày bắt đầu không thể lớn hơn ngày kết thúc.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;  // Dừng việc thực hiện nếu ngày không hợp lệ
+                    }
                     // Lấy dữ liệu và hiển thị
                     LoadLichSuThueTheoNgay(ngayBatDau, ngayKetThuc);
                     tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoNgay(ngayBatDau, ngayKetThuc);
                 }
-                else if (loaiThongKe == "Theo Tuần")
-                {
-                    // Tính toán tuần từ ngày bắt đầu
-                    DateTime ngayBatDau = datePickerStart.Value.Date;
-                    DateTime ngayKetThuc = ngayBatDau.AddDays(6);
+                //else if (loaiThongKe == "Theo Tuần")
+                //{
+                //    // Tính toán tuần từ ngày bắt đầu
+                //    DateTime ngayBatDau = datePickerStart.Value.Date;
+                //    DateTime ngayKetThuc = ngayBatDau.AddDays(6);
 
-                    LoadLichSuThueTheoNgay(ngayBatDau, ngayKetThuc);
-                    tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoNgay(ngayBatDau, ngayKetThuc);
-                }
+                //    LoadLichSuThueTheoNgay(ngayBatDau, ngayKetThuc);
+                //    tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoNgay(ngayBatDau, ngayKetThuc);
+                //}
                 else if (loaiThongKe == "Theo Tháng")
                 {
                     int month = dateTimePickerMonth.Value.Month;
@@ -113,6 +122,15 @@ namespace QuanLyBaiThueXeDev.View
 
                     LoadLichSuThue(month, year);
                     tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoThang(month, year);
+                }
+                else if (loaiThongKe == "Theo Năm")
+                {
+                    int year = dateTimePickerYear.Value.Year;
+
+                    var lichSuThueList = ctrlDoanhThu.GetLichSuThueTheoNam(year);
+                    LoadLichSuThueTheoNam(lichSuThueList);
+
+                    tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoNam(year);
                 }
 
                 // Hiển thị tổng doanh thu
@@ -127,12 +145,10 @@ namespace QuanLyBaiThueXeDev.View
             }
         }
 
-        private void LoadLichSuThueTheoNgay(DateTime ngayBatDau, DateTime ngayKetThuc)
+        private void LoadLichSuThueTheoNam(List<LichSuThue> lichSuThueList)
         {
             try
             {
-                var lichSuThueList = ctrlDoanhThu.GetLichSuThueTheoNgay(ngayBatDau, ngayKetThuc);
-
                 dtGridViewDoanhThu.DataSource = lichSuThueList.Select(ls => new
                 {
                     ls.MaKhachHang,
@@ -143,15 +159,33 @@ namespace QuanLyBaiThueXeDev.View
                     NgayThue = ls.NgayThue.ToString("dd/MM/yyyy")
                 }).ToList();
 
-                decimal tongDoanhThu = lichSuThueList.Sum(ls => ls.TongTien);
-                txtTongDoanhThu.Text = tongDoanhThu.ToString("N0");
-
-                label4.Text = $"DANH SÁCH LỊCH SỬ PHIẾU THUÊ | TỪ {ngayBatDau:dd/MM/yyyy} ĐẾN {ngayKetThuc:dd/MM/yyyy}";
+                txtTongDoanhThu.Text = lichSuThueList.Sum(ls => ls.TongTien).ToString("N0");
+                label4.Text = $"DANH SÁCH LỊCH SỬ PHIẾU THUÊ | NĂM {dateTimePickerYear.Value.Year}";
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi tải dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void LoadLichSuThueTheoNgay(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            var lichSuThueList = ctrlDoanhThu.GetLichSuThueTheoNgay(ngayBatDau, ngayKetThuc);
+
+            dtGridViewDoanhThu.DataSource = lichSuThueList.Select(ls => new
+            {
+                ls.MaKhachHang,
+                ls.BienSoXe,
+                ls.SoNgayMuon,
+                ls.DonGia,
+                ls.TongTien,
+                NgayThue = ls.NgayThue.ToString("dd/MM/yyyy")
+            }).ToList();
+
+            decimal tongDoanhThu = lichSuThueList.Sum(ls => ls.TongTien);
+            txtTongDoanhThu.Text = tongDoanhThu.ToString("N0");
+
+            label4.Text = $"DANH SÁCH LỊCH SỬ PHIẾU THUÊ | TỪ {ngayBatDau:dd/MM/yyyy} ĐẾN {ngayKetThuc:dd/MM/yyyy}";
         }
 
 
@@ -248,7 +282,16 @@ namespace QuanLyBaiThueXeDev.View
                 Color = Color.FromArgb(56, 56, 56)
             };
 
-            series.Points.AddXY($"{dateTimePickerMonth.Value.Month}/{dateTimePickerMonth.Value.Year}", tongDoanhThu);
+            string loaiThongKe = cbThoiGian.SelectedItem.ToString();
+
+            if (loaiThongKe == "Theo Tháng")
+            {
+                series.Points.AddXY($"{dateTimePickerMonth.Value.Month}/{dateTimePickerMonth.Value.Year}", tongDoanhThu);
+            }
+            else if (loaiThongKe == "Theo Năm")
+            {
+                series.Points.AddXY($"{dateTimePickerYear.Value.Year}", tongDoanhThu);
+            }
 
             chartDoanhThu.Series.Add(series);
             chartDoanhThu.ChartAreas[0].RecalculateAxesScale();
@@ -257,6 +300,16 @@ namespace QuanLyBaiThueXeDev.View
         private void dateTimePickerMonth_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbThoiGian_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string loaiThongKe = cbThoiGian.SelectedItem.ToString();
+
+            datePickerStart.Visible = loaiThongKe == "Theo Ngày";
+            datePickerEnd.Visible = loaiThongKe == "Theo Ngày";
+            dateTimePickerMonth.Visible = loaiThongKe == "Theo Tháng";
+            dateTimePickerYear.Visible = loaiThongKe == "Theo Năm";
         }
     }
 }

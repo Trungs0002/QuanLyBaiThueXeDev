@@ -16,9 +16,11 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
 
         public List<LichSuThue> GetLichSuThueTheoThang(int month, int year)
         {
+            if (context?.LichSuThues == null) return new List<LichSuThue>();
             return context.LichSuThues
                 .Where(ls => ls.NgayThue.Month == month && ls.NgayThue.Year == year)
                 .ToList();
+
         }
 
         public decimal GetTongDoanhThuTheoThang(int month, int year)
@@ -68,6 +70,27 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
             return context.LichSuThues
                 .Where(ls => ls.NgayThue >= ngayBatDau && ls.NgayThue <= ngayKetThuc)
                 .ToList();
+        }
+
+        public List<LichSuThue> GetLichSuThueTheoNam(int year)
+        {
+            return context.LichSuThues
+                .Where(ls => ls.NgayThue.Year == year)
+                .ToList();
+        }
+
+        public decimal GetTongDoanhThuTheoNam(int year)
+        {
+            try
+            {
+                return context.LichSuThues
+                    .Where(ls => ls.NgayThue.Year == year)
+                    .Sum(ls => ls.TongTien);
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
 
