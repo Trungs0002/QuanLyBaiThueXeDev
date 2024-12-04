@@ -121,7 +121,7 @@ namespace QuanLyBaiThueXeDev.View
                     // Hiển thị tổng doanh thu vào TextBox (ví dụ: txtDoanhThu)
                     decimal tongDoanhThu = doanhThu.Values.Sum();
                     txtDoanhThu.Text = tongDoanhThu.ToString("N0");  // Định dạng số cho dễ đọc
-                    MessageBox.Show("Dữ liệu doanh thu đã được tải thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Dữ liệu doanh thu của tháng đã được tải thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -353,6 +353,11 @@ namespace QuanLyBaiThueXeDev.View
         private void dtGridViewDoanhThu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dtpThangNam_ValueChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
