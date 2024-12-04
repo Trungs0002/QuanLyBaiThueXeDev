@@ -36,6 +36,8 @@
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBoxNhanVien = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxXe = new System.Windows.Forms.ComboBox();
             this.comboBoxKhachHang = new System.Windows.Forms.ComboBox();
@@ -57,16 +59,20 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBoxNhanVien = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.dataGridViewLichSuPhieuThue = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtTimKiemLS = new System.Windows.Forms.TextBox();
+            this.btnTimKiemLS = new System.Windows.Forms.Button();
+            this.btnNhapMoi = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPhieuThue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKhachHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewXe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLichSuPhieuThue)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -104,6 +110,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.panel1.Controls.Add(this.btnNhapMoi);
             this.panel1.Controls.Add(this.comboBoxNhanVien);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label8);
@@ -125,6 +132,25 @@
             this.panel1.Size = new System.Drawing.Size(846, 171);
             this.panel1.TabIndex = 10;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // comboBoxNhanVien
+            // 
+            this.comboBoxNhanVien.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.comboBoxNhanVien.FormattingEnabled = true;
+            this.comboBoxNhanVien.Location = new System.Drawing.Point(605, 91);
+            this.comboBoxNhanVien.Name = "comboBoxNhanVien";
+            this.comboBoxNhanVien.Size = new System.Drawing.Size(200, 20);
+            this.comboBoxNhanVien.TabIndex = 34;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(516, 94);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(57, 12);
+            this.label10.TabIndex = 33;
+            this.label10.Text = "Nhân Viên";
             // 
             // label8
             // 
@@ -268,7 +294,9 @@
             this.txtSoPhieuThue.Name = "txtSoPhieuThue";
             this.txtSoPhieuThue.Size = new System.Drawing.Size(106, 20);
             this.txtSoPhieuThue.TabIndex = 0;
+            this.txtSoPhieuThue.Click += new System.EventHandler(this.txtSoPhieuThue_Click);
             this.txtSoPhieuThue.TextChanged += new System.EventHandler(this.txtSoPhieuThue_TextChanged);
+            this.txtSoPhieuThue.Enter += new System.EventHandler(this.txtSoPhieuThue_Enter);
             // 
             // dataGridViewPhieuThue
             // 
@@ -285,7 +313,7 @@
             this.dataGridViewPhieuThue.Location = new System.Drawing.Point(945, 296);
             this.dataGridViewPhieuThue.Name = "dataGridViewPhieuThue";
             this.dataGridViewPhieuThue.RowHeadersWidth = 51;
-            this.dataGridViewPhieuThue.Size = new System.Drawing.Size(541, 188);
+            this.dataGridViewPhieuThue.Size = new System.Drawing.Size(541, 172);
             this.dataGridViewPhieuThue.TabIndex = 9;
             this.dataGridViewPhieuThue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPhieuThue_CellClick);
             this.dataGridViewPhieuThue.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPhieuThue_CellContentClick);
@@ -371,25 +399,6 @@
             this.label6.TabIndex = 36;
             this.label6.Text = "CHI TIẾT PHIẾU THUÊ: XE THUÊ";
             // 
-            // comboBoxNhanVien
-            // 
-            this.comboBoxNhanVien.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
-            this.comboBoxNhanVien.FormattingEnabled = true;
-            this.comboBoxNhanVien.Location = new System.Drawing.Point(605, 91);
-            this.comboBoxNhanVien.Name = "comboBoxNhanVien";
-            this.comboBoxNhanVien.Size = new System.Drawing.Size(200, 20);
-            this.comboBoxNhanVien.TabIndex = 34;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(516, 94);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(57, 12);
-            this.label10.TabIndex = 33;
-            this.label10.Text = "Nhân Viên";
-            // 
             // dataGridViewLichSuPhieuThue
             // 
             this.dataGridViewLichSuPhieuThue.BackgroundColor = System.Drawing.Color.White;
@@ -402,10 +411,10 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewLichSuPhieuThue.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewLichSuPhieuThue.Location = new System.Drawing.Point(945, 528);
+            this.dataGridViewLichSuPhieuThue.Location = new System.Drawing.Point(945, 593);
             this.dataGridViewLichSuPhieuThue.Name = "dataGridViewLichSuPhieuThue";
             this.dataGridViewLichSuPhieuThue.RowHeadersWidth = 51;
-            this.dataGridViewLichSuPhieuThue.Size = new System.Drawing.Size(541, 251);
+            this.dataGridViewLichSuPhieuThue.Size = new System.Drawing.Size(541, 186);
             this.dataGridViewLichSuPhieuThue.TabIndex = 37;
             this.dataGridViewLichSuPhieuThue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLichSuPhieuThue_CellClick);
             // 
@@ -414,12 +423,67 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Cambria", 12.25F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(942, 505);
+            this.label12.Location = new System.Drawing.Point(943, 570);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(419, 20);
             this.label12.TabIndex = 38;
             this.label12.Text = "DANH SÁCH LỊCH SỬ PHIẾU THUÊ TRONG HỆ THỐNG";
             this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Cambria", 12.25F, System.Drawing.FontStyle.Bold);
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(941, 480);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(404, 20);
+            this.label13.TabIndex = 40;
+            this.label13.Text = "TÌM KIẾM LỊCH SỬ PHIẾU THUÊ TRONG HỆ THỐNG";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.panel3.Controls.Add(this.txtTimKiemLS);
+            this.panel3.Controls.Add(this.btnTimKiemLS);
+            this.panel3.Location = new System.Drawing.Point(945, 503);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(540, 52);
+            this.panel3.TabIndex = 39;
+            // 
+            // txtTimKiemLS
+            // 
+            this.txtTimKiemLS.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.txtTimKiemLS.Location = new System.Drawing.Point(33, 15);
+            this.txtTimKiemLS.Name = "txtTimKiemLS";
+            this.txtTimKiemLS.Size = new System.Drawing.Size(383, 20);
+            this.txtTimKiemLS.TabIndex = 14;
+            // 
+            // btnTimKiemLS
+            // 
+            this.btnTimKiemLS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.btnTimKiemLS.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnTimKiemLS.ForeColor = System.Drawing.Color.White;
+            this.btnTimKiemLS.Location = new System.Drawing.Point(439, 10);
+            this.btnTimKiemLS.Name = "btnTimKiemLS";
+            this.btnTimKiemLS.Size = new System.Drawing.Size(80, 30);
+            this.btnTimKiemLS.TabIndex = 13;
+            this.btnTimKiemLS.Text = "Tìm Kiếm";
+            this.btnTimKiemLS.UseVisualStyleBackColor = false;
+            this.btnTimKiemLS.Click += new System.EventHandler(this.btnTimKiemLS_Click);
+            // 
+            // btnNhapMoi
+            // 
+            this.btnNhapMoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.btnNhapMoi.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnNhapMoi.ForeColor = System.Drawing.Color.White;
+            this.btnNhapMoi.Location = new System.Drawing.Point(326, 123);
+            this.btnNhapMoi.Name = "btnNhapMoi";
+            this.btnNhapMoi.Size = new System.Drawing.Size(80, 30);
+            this.btnNhapMoi.TabIndex = 35;
+            this.btnNhapMoi.Text = "Nhập mới";
+            this.btnNhapMoi.UseVisualStyleBackColor = false;
+            this.btnNhapMoi.Click += new System.EventHandler(this.btnNhapMoi_Click);
             // 
             // FPhieuThue
             // 
@@ -427,6 +491,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.dataGridViewLichSuPhieuThue);
             this.Controls.Add(this.label6);
@@ -450,6 +516,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKhachHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewXe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLichSuPhieuThue)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -486,5 +554,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dataGridViewLichSuPhieuThue;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox txtTimKiemLS;
+        private System.Windows.Forms.Button btnTimKiemLS;
+        private System.Windows.Forms.Button btnNhapMoi;
     }
 }

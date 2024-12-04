@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace QuanLyBaiThueXeDev.View
 {
@@ -164,6 +165,8 @@ namespace QuanLyBaiThueXeDev.View
         private void FPhieuThue_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
+            txtSoPhieuThue.ReadOnly = true;
+            ClearFields();
             SetupDataGridView();
             LoadKhachHang();
             LoadXe();
@@ -278,7 +281,7 @@ namespace QuanLyBaiThueXeDev.View
 
         private void txtSoPhieuThue_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -368,6 +371,7 @@ namespace QuanLyBaiThueXeDev.View
         {
             if (e.RowIndex >= 0) // Kiểm tra nếu hàng được click là hợp lệ
             {
+                isEditingPhieuThue = true;
                 // Lấy thông tin phiếu thuê từ dòng đã chọn
                 var selectedRow = dataGridViewPhieuThue.Rows[e.RowIndex];
                 int soPhieuThue = (int)selectedRow.Cells["SoPhieuThue"].Value;
@@ -411,7 +415,7 @@ namespace QuanLyBaiThueXeDev.View
         }
         private void ClearFields()
         {
-            txtSoPhieuThue.Clear();
+            txtSoPhieuThue.Text = GenerateNewPhieuThueId().ToString();
             txtSoNgayMuon.Clear();
             comboBoxKhachHang.SelectedIndex = -1;
             comboBoxXe.SelectedIndex = -1;
@@ -419,10 +423,17 @@ namespace QuanLyBaiThueXeDev.View
             dateTimePickerNgayThue.Value = DateTime.Now;
         }
 
+        private bool isEditingPhieuThue = false; // Biến để xác định 
         private void btnSua_Click(object sender, EventArgs e)
         {
             try
             {
+                if (!isEditingPhieuThue) // Kiểm tra nếu không phải là phiếu thuê
+                {
+                    MessageBox.Show("Lịch sử không thể sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (string.IsNullOrWhiteSpace(txtSoPhieuThue.Text))
                 {
                     MessageBox.Show("Vui lòng chọn phiếu thuê cần sửa từ danh sách.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -566,6 +577,12 @@ namespace QuanLyBaiThueXeDev.View
                 MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
             }
         }
+        public int GenerateNewPhieuThueId()
+        {
+            // Lấy ID lớn nhất từ bảng PhieuNopPhat
+            var maxId = CUtils.db.PhieuThues.Max(pnp => (int?)pnp.SoPhieuThue) ?? 0;
+            return maxId + 1; // Tăng thêm 1 để tạo ID mới
+        }
         public int GenerateNewPhieuPhatId()
         {
             // Lấy ID lớn nhất từ bảng PhieuNopPhat
@@ -576,37 +593,40 @@ namespace QuanLyBaiThueXeDev.View
         {
             try
             {
-                // Lấy từ khóa tìm kiếm từ TextBox
+                // Lấy từ khóa tìm kiếm từ TextBox 
                 string searchTerm = txtTimKiem.Text.Trim();
 
-                // Kiểm tra nếu từ khóa tìm kiếm trống
+                // Kiểm tra nếu từ khóa tìm kiếm trống 
                 if (string.IsNullOrWhiteSpace(searchTerm))
                 {
                     LoadPhieuThue();
                     return;
                 }
 
-                // Tìm kiếm phiếu thuê dựa trên từ khóa
-                var filteredPhieuThue = ctrlPhieuThue.findByCriteria(searchTerm);
+                // Tìm kiếm phiếu thuê dựa trên từ khóa và trạng thái "Đã giao xe"
+                var filteredPhieuThue = ctrlPhieuThue.findByCriteria(searchTerm)
+                    .Where(pt => pt.TrangThai == "Đã giao xe") // Chỉ lấy phiếu đã giao xe
+                    .ToList();
 
-                // Hiển thị danh sách phiếu thuê đã lọc
+                // Hiển thị danh sách phiếu thuê đã lọc 
                 dataGridViewPhieuThue.DataSource = filteredPhieuThue.Select(pt => new
                 {
                     pt.SoPhieuThue,
                     pt.MaKhachHang,
-                    pt.BienSoXe, // Dữ liệu vẫn cần cho tìm kiếm nhưng ẩn
+                    pt.BienSoXe,
                     pt.SoNgayMuon,
                     pt.DonGia,
-                    TongTien = pt.SoNgayMuon * pt.DonGia // Tính tổng tiền thuê
+                    TongTien = pt.SoNgayMuon * pt.DonGia,
+                    pt.MaNhanVien
                 }).ToList();
 
-                // Ẩn cột BienSoXe
+                // Ẩn cột BienSoXe 
                 dataGridViewPhieuThue.Columns["BienSoXe"].Visible = false;
 
-                // Thông báo nếu không tìm thấy kết quả
+                // Thông báo nếu không tìm thấy kết quả 
                 if (filteredPhieuThue.Count == 0)
                 {
-                    MessageBox.Show("Không tìm thấy phiếu thuê phù hợp với từ khóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Không tìm thấy phiếu thuê phù hợp với từ khóa. ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -649,6 +669,7 @@ namespace QuanLyBaiThueXeDev.View
         {
             if (e.RowIndex >= 0) // Kiểm tra nếu hàng được click là hợp lệ
             {
+                isEditingPhieuThue = false;
                 // Lấy thông tin phiếu thuê từ dòng đã chọn
                 var selectedRow = dataGridViewLichSuPhieuThue.Rows[e.RowIndex];
                 int soPhieuThue = (int)selectedRow.Cells["SoPhieuThue"].Value;
@@ -689,6 +710,67 @@ namespace QuanLyBaiThueXeDev.View
                     }
                 }
             }
+        }
+
+        private void btnTimKiemLS_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Lấy từ khóa tìm kiếm từ TextBox 
+                string searchTerm = txtTimKiemLS.Text.Trim();
+
+                // Kiểm tra nếu từ khóa tìm kiếm trống 
+                if (string.IsNullOrWhiteSpace(searchTerm))
+                {
+                    LoadPhieuThue();
+                    return;
+                }
+
+                // Tìm kiếm phiếu thuê lịch sử dựa trên từ khóa và trạng thái "Đã trả xe"
+                var filteredLichSuPhieuThue = ctrlPhieuThue.findByCriteria(searchTerm)
+                    .Where(pt => pt.TrangThai == "Đã trả xe") // Chỉ lấy phiếu đã trả xe
+                    .ToList();
+
+                // Hiển thị danh sách lịch sử phiếu thuê đã lọc 
+                dataGridViewLichSuPhieuThue.DataSource = filteredLichSuPhieuThue.Select(pt => new
+                {
+                    pt.SoPhieuThue,
+                    pt.MaKhachHang,
+                    pt.BienSoXe,
+                    pt.SoNgayMuon,
+                    pt.DonGia,
+                    TongTien = pt.SoNgayMuon * pt.DonGia // Tính tổng tiền thuê 
+                }).ToList();
+
+                // Ẩn cột BienSoXe 
+                dataGridViewLichSuPhieuThue.Columns["BienSoXe"].Visible = false;
+
+                // Thông báo nếu không tìm thấy kết quả 
+                if (filteredLichSuPhieuThue.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy lịch sử phiếu thuê phù hợp với từ khóa. ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtSoPhieuThue_Enter(object sender, EventArgs e)
+        {
+            
+            this.ActiveControl = null;
+        }
+
+        private void txtSoPhieuThue_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Trường này không thể chỉnh sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnNhapMoi_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
     }
 }
