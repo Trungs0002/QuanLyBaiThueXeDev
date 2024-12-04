@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
@@ -48,9 +48,8 @@
             this.dtGridViewNhanVien = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.cmbThang = new System.Windows.Forms.ComboBox();
-            this.cmbNam = new System.Windows.Forms.ComboBox();
             this.txtDoanhThu = new System.Windows.Forms.TextBox();
+            this.dtpThangNam = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewNhanVien)).BeginInit();
@@ -94,9 +93,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.panel1.Controls.Add(this.dtpThangNam);
             this.panel1.Controls.Add(this.txtDoanhThu);
-            this.panel1.Controls.Add(this.cmbNam);
-            this.panel1.Controls.Add(this.cmbThang);
             this.panel1.Controls.Add(this.btnXoa);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.btnSua);
@@ -259,14 +257,14 @@
             // 
             this.dtGridViewNhanVien.BackgroundColor = System.Drawing.Color.White;
             this.dtGridViewNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGridViewNhanVien.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGridViewNhanVien.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtGridViewNhanVien.Location = new System.Drawing.Point(360, 604);
             this.dtGridViewNhanVien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtGridViewNhanVien.Name = "dtGridViewNhanVien";
@@ -302,28 +300,19 @@
             this.label5.Text = "DANH SÁCH NHÂN VIÊN TRONG HỆ THỐNG";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // cmbThang
-            // 
-            this.cmbThang.FormattingEnabled = true;
-            this.cmbThang.Location = new System.Drawing.Point(445, 160);
-            this.cmbThang.Name = "cmbThang";
-            this.cmbThang.Size = new System.Drawing.Size(304, 24);
-            this.cmbThang.TabIndex = 25;
-            // 
-            // cmbNam
-            // 
-            this.cmbNam.FormattingEnabled = true;
-            this.cmbNam.Location = new System.Drawing.Point(785, 160);
-            this.cmbNam.Name = "cmbNam";
-            this.cmbNam.Size = new System.Drawing.Size(304, 24);
-            this.cmbNam.TabIndex = 26;
-            // 
             // txtDoanhThu
             // 
             this.txtDoanhThu.Location = new System.Drawing.Point(1160, 168);
             this.txtDoanhThu.Name = "txtDoanhThu";
             this.txtDoanhThu.Size = new System.Drawing.Size(100, 22);
             this.txtDoanhThu.TabIndex = 28;
+            // 
+            // dtpThangNam
+            // 
+            this.dtpThangNam.Location = new System.Drawing.Point(604, 120);
+            this.dtpThangNam.Name = "dtpThangNam";
+            this.dtpThangNam.Size = new System.Drawing.Size(200, 22);
+            this.dtpThangNam.TabIndex = 29;
             // 
             // FNhanVien
             // 
@@ -372,8 +361,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cmbNam;
-        private System.Windows.Forms.ComboBox cmbThang;
         private System.Windows.Forms.TextBox txtDoanhThu;
+        private System.Windows.Forms.DateTimePicker dtpThangNam;
     }
 }

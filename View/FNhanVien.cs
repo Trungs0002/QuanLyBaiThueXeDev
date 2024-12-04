@@ -25,23 +25,26 @@ namespace QuanLyBaiThueXeDev.View
         private void FNhanVien_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
+
+            // Khởi tạo giá trị cho dtpThangNam (Chỉ chọn tháng và năm)
+            dtpThangNam.Format = DateTimePickerFormat.Custom;
+            dtpThangNam.CustomFormat = "MM/yyyy"; // Định dạng tháng/năm
+
+            // Set giá trị mặc định là tháng hiện tại
+            dtpThangNam.Value = DateTime.Now;
+
+            // Tải danh sách nhân viên
             dsNhanVien = ctrlNhanVien.findAll();
-            load_NhanVien();
 
-            // Khởi tạo giá trị cho cmbThang (tháng 1 đến tháng 12)
-            for (int i = 1; i <= 12; i++)
+            // Kiểm tra xem dsNhanVien có dữ liệu không
+            if (dsNhanVien != null && dsNhanVien.Count > 0)
             {
-                cmbThang.Items.Add(i);
+                load_NhanVien(); // Gọi để hiển thị dữ liệu lên DataGridView
             }
-            cmbThang.SelectedIndex = 0; // Mặc định chọn tháng 1
-
-            // Khởi tạo giá trị cho cmbNam (ví dụ từ năm 2020 đến năm hiện tại)
-            int currentYear = DateTime.Now.Year;
-            for (int i = 2020; i <= currentYear; i++)
+            else
             {
-                cmbNam.Items.Add(i);
+                MessageBox.Show("Không có dữ liệu nhân viên.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            cmbNam.SelectedIndex = 0; // Mặc định chọn năm hiện tại
         }
         private void InitializeDataGridView()
         {
@@ -98,9 +101,16 @@ namespace QuanLyBaiThueXeDev.View
         {
             try
             {
-                // Lấy giá trị tháng và năm từ ComboBox
-                int thang = Convert.ToInt32(cmbThang.SelectedItem);
-                int nam = Convert.ToInt32(cmbNam.SelectedItem);
+                // Kiểm tra xem người dùng đã chọn tháng và năm chưa
+                if (dtpThangNam.Value == null)
+                {
+                    MessageBox.Show("Vui lòng chọn tháng và năm trước khi lấy doanh thu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Lấy giá trị tháng và năm từ DateTimePicker
+                int thang = dtpThangNam.Value.Month;
+                int nam = dtpThangNam.Value.Year;
 
                 // Gọi phương thức từ Ctrl_NhanVien để lấy doanh thu
                 var doanhThu = ctrlNhanVien.GetDoanhThuTheoThang(thang, nam, nhanVien.MaNhanVien);
