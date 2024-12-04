@@ -33,6 +33,7 @@
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.txtSoLanThueXe = new System.Windows.Forms.TextBox();
             this.txtTinhTrang = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -53,7 +54,7 @@
             this.dtGridViewXe = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.btnNhapMoi = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewXe)).BeginInit();
@@ -94,6 +95,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.panel1.Controls.Add(this.btnNhapMoi);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.txtSoLanThueXe);
             this.panel1.Controls.Add(this.txtTinhTrang);
@@ -117,11 +119,21 @@
             this.panel1.Size = new System.Drawing.Size(1118, 171);
             this.panel1.TabIndex = 4;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(920, 92);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(73, 12);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Số Lượt Thuê";
+            // 
             // txtSoLanThueXe
             // 
             this.txtSoLanThueXe.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
             this.txtSoLanThueXe.Location = new System.Drawing.Point(1000, 89);
-            this.txtSoLanThueXe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSoLanThueXe.Margin = new System.Windows.Forms.Padding(2);
             this.txtSoLanThueXe.Name = "txtSoLanThueXe";
             this.txtSoLanThueXe.ReadOnly = true;
             this.txtSoLanThueXe.Size = new System.Drawing.Size(76, 20);
@@ -335,15 +347,18 @@
             this.label9.TabIndex = 23;
             this.label9.Text = "TÌM KIẾM XE TRONG BÃI";
             // 
-            // label10
+            // btnNhapMoi
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(920, 92);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(73, 12);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Số Lượt Thuê";
+            this.btnNhapMoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.btnNhapMoi.Font = new System.Drawing.Font("Cambria", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnNhapMoi.ForeColor = System.Drawing.Color.White;
+            this.btnNhapMoi.Location = new System.Drawing.Point(315, 124);
+            this.btnNhapMoi.Name = "btnNhapMoi";
+            this.btnNhapMoi.Size = new System.Drawing.Size(80, 30);
+            this.btnNhapMoi.TabIndex = 39;
+            this.btnNhapMoi.Text = "Nhập mới";
+            this.btnNhapMoi.UseVisualStyleBackColor = false;
+            this.btnNhapMoi.Click += new System.EventHandler(this.btnNhapMoi_Click);
             // 
             // FXe
             // 
@@ -397,5 +412,6 @@
         private System.Windows.Forms.ComboBox txtTinhTrang;
         private System.Windows.Forms.TextBox txtSoLanThueXe;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnNhapMoi;
     }
 }

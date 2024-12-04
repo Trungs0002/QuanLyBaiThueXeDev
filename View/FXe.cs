@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QuanLyBaiThueXeDev
 {
@@ -28,6 +29,11 @@ namespace QuanLyBaiThueXeDev
             this.ControlBox = false;
             dsXe = ctrlXe.findAll();
             load_Xe();
+            ClearFields();
+            txtTinhTrang.Items.Add("Hỏng Hóc");
+            txtTinhTrang.Items.Add("Còn Sử Dụng");
+            txtTinhTrang.Items.Add("Chưa Đăng Kiểm");
+            txtTinhTrang.Items.Add("Đang được thuê");
         }
         private void load_Xe()
         {
@@ -230,6 +236,11 @@ namespace QuanLyBaiThueXeDev
         private void txtTinhTrang_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnNhapMoi_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
     }
 }

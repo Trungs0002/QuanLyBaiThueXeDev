@@ -36,6 +36,7 @@ namespace QuanLyBaiThueXeDev.View
             dsPhieuNopPhat = ctrlPhieuNopPhat.findAll();
             load_PhieuNopPhat();
             LoadKhachHang();
+            ClearFields();
         }
         private void load_PhieuNopPhat()
         {
@@ -235,6 +236,29 @@ namespace QuanLyBaiThueXeDev.View
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+        public int GenerateNewPhieuThueId()
+        {
+            // Lấy ID lớn nhất từ bảng PhieuNopPhat
+            var maxId = CUtils.db.PhieuNopPhats.Max(pnp => (int?)pnp.SoPhieuPhat) ?? 0;
+            return maxId + 1; // Tăng thêm 1 để tạo ID mới
+        }
+        private void btnNhapMoi_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+        }
+        private void ClearFields()
+        {
+            txtSoPhieuPhat.Text = GenerateNewPhieuThueId().ToString();
+            txtLyDo.Clear();
+            txtMaKhachHang.Clear();
+            txtSoChungMinh.Clear();
+            txtSoTienPhat.Clear();
+        }
+
+        private void txtSoPhieuPhat_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Trường này không thể chỉnh sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

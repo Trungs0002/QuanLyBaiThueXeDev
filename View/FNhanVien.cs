@@ -45,6 +45,7 @@ namespace QuanLyBaiThueXeDev.View
             {
                 MessageBox.Show("Không có dữ liệu nhân viên.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            ClearFields();
         }
         private void InitializeDataGridView()
         {
@@ -299,10 +300,16 @@ namespace QuanLyBaiThueXeDev.View
             }
         }
 
+        public int GenerateNewPhieuThueId()
+        {
+            // Lấy ID lớn nhất từ bảng PhieuNopPhat
+            var maxId = CUtils.db.NhanViens.Max(pnp => (int?)pnp.MaNhanVien) ?? 0;
+            return maxId + 1; // Tăng thêm 1 để tạo ID mới
+        }
 
         private void ClearFields()
         {
-            txtMaNhanVien.Clear();
+            txtMaNhanVien.Text = GenerateNewPhieuThueId().ToString();
             txtTenNhanVien.Clear();
             txtDienThoai.Clear();
             txtMoTa.Clear();
@@ -358,6 +365,16 @@ namespace QuanLyBaiThueXeDev.View
         private void dtpThangNam_ValueChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnNhapMoi_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+        }
+
+        private void txtMaNhanVien_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Trường này không thể chỉnh sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
