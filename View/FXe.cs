@@ -54,6 +54,10 @@ namespace QuanLyBaiThueXeDev
                 txtTinhTrang.Text = xe.TinhTrang;
                 txtMoTa.Text = xe.MoTa;
                 txtGiaThueXe.Text = xe.GiaThueXe.ToString();
+
+                // Lấy số lượt xe đã được thuê và hiển thị vào TextBox
+                int soLanThue = ctrlXe.GetSoLanThueXe(xe.BienSoXe); // Gọi phương thức từ ctrlXe
+                txtSoLanThueXe.Text = soLanThue.ToString();  // Cập nhật TextBox
             }
         }
         private void btnThem_Click(object sender, EventArgs e)

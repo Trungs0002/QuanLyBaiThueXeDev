@@ -12,7 +12,11 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
         {
             return CUtils.db.Xes.ToList();
         }
+        public int GetSoLanThueXe(string bienSoXe)
+        {
 
+            return CUtils.db.LichSuThues.Count(ls => ls.BienSoXe == bienSoXe);
+        }
         public List<Xe> findByCriteria(string searchTerm)
         {
             searchTerm = searchTerm.ToLower(); // Chuyển đổi tìm kiếm thành chữ thường
@@ -56,5 +60,7 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
         {
             return CUtils.db.Xes.FirstOrDefault(x => x.BienSoXe == bienSoXe);
         }
+
+        
     }
 }
