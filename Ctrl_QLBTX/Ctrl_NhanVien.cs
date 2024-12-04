@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyBaiThueXeDev.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,18 +48,27 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
         }
 
         //
-        public Dictionary<int, decimal> GetDoanhThuTheoThang(int thang, int nam)
+        public Dictionary<int, decimal> GetDoanhThuTheoThang(int thang, int nam, int maNhanVien)
         {
-            return CUtils.db.PhieuThues
-                .Where(p => p.NgayThue.HasValue && p.NgayThue.Value.Month == thang && p.NgayThue.Value.Year == nam)
-                .GroupBy(p => p.MaNhanVien)
-                .Select(group => new
-                {
-                    MaNhanVien = group.Key,
-                    DoanhThu = group.Sum(p => (decimal)(p.DonGia * p.SoLuong))
-                })
-                .ToDictionary(x => x.MaNhanVien.GetValueOrDefault(), x => x.DoanhThu); // Xử lý nullable
+            var doanhThu = CUtils.db.PhieuThues
+                .Where(p => p.NhanVien.MaNhanVien == maNhanVien &&
+                            p.NgayThue.HasValue &&  // Kiểm tra NgayThue có giá trị không
+                            p.NgayThue.Value.Month == thang &&
+                            p.NgayThue.Value.Year == nam)
+                .GroupBy(p => p.NgayThue.Value.Month)  // Sử dụng .Value để lấy tháng của DateTime
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.Sum(p => p.DonGia.HasValue ? (decimal)p.DonGia.Value : 0m)  // Chuyển đổi giá trị của DonGia sang decimal
+                );
+
+            return doanhThu;
         }
+
+
+
+
+
+
 
 
 

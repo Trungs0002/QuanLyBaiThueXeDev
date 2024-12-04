@@ -51,9 +51,11 @@
             this.cmbThang = new System.Windows.Forms.ComboBox();
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.btnXemDoanhThu = new System.Windows.Forms.Button();
+            this.dtGridViewDoanhThu = new System.Windows.Forms.DataGridView();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewNhanVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewDoanhThu)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -328,12 +330,23 @@
             this.btnXemDoanhThu.UseVisualStyleBackColor = true;
             this.btnXemDoanhThu.Click += new System.EventHandler(this.btnXemDoanhThu_Click);
             // 
+            // dtGridViewDoanhThu
+            // 
+            this.dtGridViewDoanhThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridViewDoanhThu.Location = new System.Drawing.Point(32, 501);
+            this.dtGridViewDoanhThu.Name = "dtGridViewDoanhThu";
+            this.dtGridViewDoanhThu.RowHeadersWidth = 51;
+            this.dtGridViewDoanhThu.RowTemplate.Height = 24;
+            this.dtGridViewDoanhThu.Size = new System.Drawing.Size(240, 150);
+            this.dtGridViewDoanhThu.TabIndex = 27;
+            // 
             // FNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(2172, 1237);
+            this.Controls.Add(this.dtGridViewDoanhThu);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.panel2);
@@ -349,6 +362,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewNhanVien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewDoanhThu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,5 +392,6 @@
         private System.Windows.Forms.ComboBox cmbNam;
         private System.Windows.Forms.ComboBox cmbThang;
         private System.Windows.Forms.Button btnXemDoanhThu;
+        private System.Windows.Forms.DataGridView dtGridViewDoanhThu;
     }
 }
