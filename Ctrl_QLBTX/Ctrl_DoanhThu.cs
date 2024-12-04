@@ -49,6 +49,28 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
                 .ToList();
         }
 
+        public decimal GetTongDoanhThuTheoNgay(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            try
+            {
+                return context.LichSuThues
+                    .Where(ls => ls.NgayThue >= ngayBatDau && ls.NgayThue <= ngayKetThuc)
+                    .Sum(ls => ls.TongTien);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public List<LichSuThue> GetLichSuThueTheoNgay(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            return context.LichSuThues
+                .Where(ls => ls.NgayThue >= ngayBatDau && ls.NgayThue <= ngayKetThuc)
+                .ToList();
+        }
+
+
 
     }
 

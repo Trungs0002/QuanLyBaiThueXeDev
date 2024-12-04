@@ -27,20 +27,49 @@ namespace QuanLyBaiThueXeDev.View
             this.ControlBox = false;
             dsNhanVien = ctrlNhanVien.findAll();
             load_NhanVien();
+
+            // Khởi tạo giá trị cho cmbThang (tháng 1 đến tháng 12)
+            for (int i = 1; i <= 12; i++)
+            {
+                cmbThang.Items.Add(i);
+            }
+            cmbThang.SelectedIndex = 0; // Mặc định chọn tháng 1
+
+            // Khởi tạo giá trị cho cmbNam (ví dụ từ năm 2020 đến năm hiện tại)
+            int currentYear = DateTime.Now.Year;
+            for (int i = 2020; i <= currentYear; i++)
+            {
+                cmbNam.Items.Add(i);
+            }
+            cmbNam.SelectedIndex = 0; // Mặc định chọn năm hiện tại
         }
+        private void InitializeDataGridView()
+        {
+            // Kiểm tra và thêm cột "DoanhThu" nếu chưa có
+            if (!dtGridViewNhanVien.Columns.Contains("DoanhThu"))
+            {
+                DataGridViewTextBoxColumn doanhThuColumn = new DataGridViewTextBoxColumn();
+                doanhThuColumn.Name = "DoanhThu";
+                doanhThuColumn.HeaderText = "Doanh Thu";
+                dtGridViewNhanVien.Columns.Add(doanhThuColumn);
+            }
+        }
+
         private void load_NhanVien()
         {
-            var list = from nv in dsNhanVien
-                       select new { nv.MaNhanVien, nv.TenNhanVien, nv.DienThoai, nv.MoTa };
-            dtGridViewKhachHang.DataSource = list.ToList();
-            dtGridViewKhachHang.Columns["MaNhanVien"].Width = 100; 
-            dtGridViewKhachHang.Columns["TenNhanVien"].Width = 200; 
-            dtGridViewKhachHang.Columns["DienThoai"].Width = 150; 
-            dtGridViewKhachHang.Columns["MoTa"].Width = 557;
+            //var list = from nv in dsNhanVien
+            //           select new { nv.MaNhanVien, nv.TenNhanVien, nv.DienThoai, nv.MoTa };
+            //dtGridViewKhachHang.DataSource = list.ToList();
+            //dtGridViewKhachHang.Columns["MaNhanVien"].Width = 100; 
+            //dtGridViewKhachHang.Columns["TenNhanVien"].Width = 200; 
+            //dtGridViewKhachHang.Columns["DienThoai"].Width = 150; 
+            //dtGridViewKhachHang.Columns["MoTa"].Width = 557;
+
+
         }
         private void dtGridViewKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = dtGridViewKhachHang.CurrentRow;
+            DataGridViewRow row = dtGridViewNhanVien.CurrentRow;
             index = row.Index;
             if (index >= 0)
             {
@@ -264,6 +293,26 @@ namespace QuanLyBaiThueXeDev.View
         private void label7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnXemDoanhThu_Click(object sender, EventArgs e)
+        {
+            int thang = Convert.ToInt32(cmbThang.SelectedItem);
+            int nam = Convert.ToInt32(cmbNam.SelectedItem);
+
+            // Gọi phương thức từ đối tượng ctrlNhanVien
+            var doanhThu = ctrlNhanVien.GetDoanhThuTheoThang(thang, nam);
+
+            // Đưa dữ liệu vào DataGridView
+            dtGridViewNhanVien.Rows.Clear(); // Xóa các hàng cũ trước khi thêm dữ liệu mới
+
+            foreach (var item in doanhThu)
+            {
+                // Tạo dòng mới cho DataGridView
+                int rowIndex = dtGridViewNhanVien.Rows.Add();
+                dtGridViewNhanVien.Rows[rowIndex].Cells["MaNhanVien"].Value = item.Key;
+                dtGridViewNhanVien.Rows[rowIndex].Cells["DoanhThu"].Value = item.Value;
+            }
         }
     }
 }

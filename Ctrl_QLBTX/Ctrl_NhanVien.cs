@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
 {
@@ -12,6 +13,9 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
         {
             return CUtils.db.NhanViens.ToList();
         }
+
+        
+
 
         public List<NhanVien> findByCriteria(string searchTerm)
         {
@@ -41,5 +45,25 @@ namespace QuanLyBaiThueXeDev.Ctrl_QLBTX
             CUtils.db.NhanViens.Remove(nhanVien);
             CUtils.db.SaveChanges();
         }
+
+        //
+        public Dictionary<int, decimal> GetDoanhThuTheoThang(int thang, int nam)
+        {
+            var doanhThu = CUtils.db.PhieuThues
+                .Where(p => p.NgayThue.HasValue && p.NgayThue.Value.Month == thang && p.NgayThue.Value.Year == nam)
+                .GroupBy(p => p.MaNhanVien) // Nhóm theo mã nhân viên
+                .AsEnumerable() // Chuyển đổi sang LINQ to Objects
+                .Select(group => new
+                {
+                    MaNhanVien = group.Key,
+                    DoanhThu = group.Sum(p => (decimal)(p.DonGia * p.SoLuong)) // Chuyển đổi ở đây sau khi chuyển sang LINQ to Objects
+                })
+                .ToDictionary(x => x.MaNhanVien.Value, x => x.DoanhThu); // Chuyển MaNhanVien thành int nếu cần thiết
+
+            return doanhThu;
+        }
+
+
+
     }
 }

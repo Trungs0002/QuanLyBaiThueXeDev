@@ -22,6 +22,17 @@ namespace QuanLyBaiThueXeDev.View
         {
             this.ControlBox = false;
 
+            // Định dạng DateTimePickers
+            datePickerStart.Format = DateTimePickerFormat.Custom;
+            datePickerStart.CustomFormat = "dd/MM/yyyy";
+
+            datePickerEnd.Format = DateTimePickerFormat.Custom;
+            datePickerEnd.CustomFormat = "dd/MM/yyyy";
+
+            // Đặt các tùy chọn cho ComboBox
+            cbThoiGian.Items.AddRange(new string[] { "Theo Ngày", "Theo Tuần", "Theo Tháng" });
+            cbThoiGian.SelectedIndex = 2; // Mặc định là "Theo Tháng"
+
             // Định dạng DateTimePicker
             dateTimePickerMonth.Format = DateTimePickerFormat.Custom;
             dateTimePickerMonth.CustomFormat = "MM/yyyy";
@@ -47,31 +58,102 @@ namespace QuanLyBaiThueXeDev.View
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
+            //try
+            //{
+            //    // Lấy tháng và năm từ DateTimePicker
+            //    int month = dateTimePickerMonth.Value.Month;
+            //    int year = dateTimePickerMonth.Value.Year;
+
+            //    // Hiển thị lịch sử thuê
+            //    LoadLichSuThue(month, year);
+
+            //    // Lấy tổng doanh thu từ TextBox
+            //    if (decimal.TryParse(txtTongDoanhThu.Text, out decimal tongDoanhThu))
+            //    {
+            //        // Cập nhật biểu đồ với tổng doanh thu
+            //        UpdateChart(tongDoanhThu);
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Tổng doanh thu không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Lỗi khi thống kê doanh thu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
             try
             {
-                // Lấy tháng và năm từ DateTimePicker
-                int month = dateTimePickerMonth.Value.Month;
-                int year = dateTimePickerMonth.Value.Year;
+                string loaiThongKe = cbThoiGian.SelectedItem.ToString();
+                decimal tongDoanhThu = 0;
 
-                // Hiển thị lịch sử thuê
-                LoadLichSuThue(month, year);
+                if (loaiThongKe == "Theo Ngày")
+                {
+                    // Lấy ngày bắt đầu và ngày kết thúc
+                    DateTime ngayBatDau = datePickerStart.Value.Date;
+                    DateTime ngayKetThuc = datePickerEnd.Value.Date;
 
-                // Lấy tổng doanh thu từ TextBox
-                if (decimal.TryParse(txtTongDoanhThu.Text, out decimal tongDoanhThu))
-                {
-                    // Cập nhật biểu đồ với tổng doanh thu
-                    UpdateChart(tongDoanhThu);
+                    // Lấy dữ liệu và hiển thị
+                    LoadLichSuThueTheoNgay(ngayBatDau, ngayKetThuc);
+                    tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoNgay(ngayBatDau, ngayKetThuc);
                 }
-                else
+                else if (loaiThongKe == "Theo Tuần")
                 {
-                    MessageBox.Show("Tổng doanh thu không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Tính toán tuần từ ngày bắt đầu
+                    DateTime ngayBatDau = datePickerStart.Value.Date;
+                    DateTime ngayKetThuc = ngayBatDau.AddDays(6);
+
+                    LoadLichSuThueTheoNgay(ngayBatDau, ngayKetThuc);
+                    tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoNgay(ngayBatDau, ngayKetThuc);
                 }
+                else if (loaiThongKe == "Theo Tháng")
+                {
+                    int month = dateTimePickerMonth.Value.Month;
+                    int year = dateTimePickerMonth.Value.Year;
+
+                    LoadLichSuThue(month, year);
+                    tongDoanhThu = ctrlDoanhThu.GetTongDoanhThuTheoThang(month, year);
+                }
+
+                // Hiển thị tổng doanh thu
+                txtTongDoanhThu.Text = tongDoanhThu.ToString("N0");
+
+                // Cập nhật biểu đồ
+                UpdateChart(tongDoanhThu);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi thống kê doanh thu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void LoadLichSuThueTheoNgay(DateTime ngayBatDau, DateTime ngayKetThuc)
+        {
+            try
+            {
+                var lichSuThueList = ctrlDoanhThu.GetLichSuThueTheoNgay(ngayBatDau, ngayKetThuc);
+
+                dtGridViewDoanhThu.DataSource = lichSuThueList.Select(ls => new
+                {
+                    ls.MaKhachHang,
+                    ls.BienSoXe,
+                    ls.SoNgayMuon,
+                    ls.DonGia,
+                    ls.TongTien,
+                    NgayThue = ls.NgayThue.ToString("dd/MM/yyyy")
+                }).ToList();
+
+                decimal tongDoanhThu = lichSuThueList.Sum(ls => ls.TongTien);
+                txtTongDoanhThu.Text = tongDoanhThu.ToString("N0");
+
+                label4.Text = $"DANH SÁCH LỊCH SỬ PHIẾU THUÊ | TỪ {ngayBatDau:dd/MM/yyyy} ĐẾN {ngayKetThuc:dd/MM/yyyy}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         private void LoadLichSuThue(int month, int year)
         {
