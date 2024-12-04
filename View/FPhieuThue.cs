@@ -165,7 +165,7 @@ namespace QuanLyBaiThueXeDev.View
         private void FPhieuThue_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
-            txtSoPhieuThue.ReadOnly = true;
+            //txtSoPhieuThue.ReadOnly = true;
             ClearFields();
             SetupDataGridView();
             LoadKhachHang();
@@ -805,7 +805,7 @@ namespace QuanLyBaiThueXeDev.View
         private void txtSoPhieuThue_Enter(object sender, EventArgs e)
         {
             
-            this.ActiveControl = null;
+            //this.ActiveControl = null;
         }
 
         private void txtSoPhieuThue_Click(object sender, EventArgs e)
@@ -828,6 +828,41 @@ namespace QuanLyBaiThueXeDev.View
         {
             //var availableXe = dsXe.Where(xe => xe.TinhTrang != "Đang được thuê").ToList(); // Lọc xe còn sử dụng
             //comboBoxXe.DataSource = availableXe; // Cập nhật DataSource
+        }
+        //private bool isUpdating = false;
+        private void comboBoxKhachHang_TextChanged(object sender, EventArgs e)
+        {
+            //if (isUpdating) return; // Nếu đang cập nhật thì không xử lý
+
+            //string searchTerm = comboBoxKhachHang.Text.ToLower(); // Lấy từ khóa tìm kiếm và chuyển thành chữ thường
+
+            //// Lọc danh sách khách hàng dựa trên từ khóa tìm kiếm
+            //var filteredList = dsKhachHang
+            //    .Where(kh => kh.HoTen.ToLower().Contains(searchTerm)) // Kiểm tra xem họ tên có chứa từ khóa không
+            //    .ToList();
+
+            //// Tạm thời tắt sự kiện
+            //isUpdating = true;
+
+            //// Cập nhật DataSource cho ComboBox
+            //comboBoxKhachHang.DataSource = filteredList;
+
+            //// Nếu không có kết quả nào, có thể chọn giá trị mặc định
+            //if (filteredList.Count == 0)
+            //{
+            //    comboBoxKhachHang.SelectedIndex = -1; // Không chọn gì
+            //}
+            //else
+            //{
+            //    comboBoxKhachHang.SelectedIndex = 0; // Chọn giá trị đầu tiên
+            //}
+
+            //// Bật lại sự kiện
+            //isUpdating = false;
+        }
+
+        private void txtTimKiemKH_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }
